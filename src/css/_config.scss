@@ -1,0 +1,81 @@
+// Global
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+
+::-webkit-scrollbar {
+  background: transparent; /* optional: just make scrollbar invisible */
+  height: 5px; /* 가로 스크롤바 넓이 */
+  // width: 10px; /* 세로 스크롤바 넓이 */
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(232, 217, 217); /* 스크롤바 색깔 */
+}
+
+$rgba-black-light-color: rgba(0, 0, 0, 0.35);
+$rgba-black-strong-color: rgba(0, 0, 0, 0.7);
+$rgba-gray-color: rgba(196, 193, 193, 1);
+$rgba-gray-dark-color: rgba(196, 193, 193, 0.8);
+
+*,
+body {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.rgba-black-light {
+  background-color: $rgba-black-light-color;
+}
+
+.rgba-black-strong {
+  background-color: $rgba-black-strong-color;
+}
+
+.bgcolor-transparent {
+  background-color: transparent !important;
+}
+
+.transparent-input {
+  background-color: darken(
+    $color: $rgba-gray-dark-color,
+    $amount: 5
+  ) !important;
+  border: none;
+}
+
+// 갤럭시 폴더
+@media screen and (max-width: 280px) {
+  html {
+    width: 280px;
+    overflow: auto;
+  }
+}
+
+@media (min-width: 576px) {
+  ::-webkit-scrollbar {
+    height: 12px; /* 가로 스크롤바 넓이 */
+  }
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    height: 13px; /* 가로 스크롤바 넓이 */
+  }
+}
+
+@media (min-width: 992px) {
+  ::-webkit-scrollbar {
+    height: 14px; /* 가로 스크롤바 넓이 */
+  }
+}

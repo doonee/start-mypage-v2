@@ -1,0 +1,184 @@
+// masonry
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  margin: 0.3rem auto;
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+  /* Style your items */
+  div {
+    /* change div to reference your elements you put in <Masonry> */
+    // background: grey;
+    // margin-bottom: 30px;
+    font-size: 1rem;
+    word-break: break-all; // 문단을 전체적으로 채워서 좀 더 깔끔하게 보임.
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid #888;
+    border-top: 5px solid #999;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    h6 {
+      text-align: center;
+      background-color: rgba(136, 136, 136, 0.842);
+      padding: 0.5rem;
+
+      a {
+        color: #fff;
+      }
+    }
+
+    p {
+      padding: 0.4rem;
+      margin-bottom: 0;
+
+      del {
+        color: rgba(128, 128, 128, 0.845);
+      }
+
+      a {
+        color: rgba(0, 0, 0, 0.806);
+      }
+      a:hover {
+        color: gray;
+      }
+      svg {
+        color: gray;
+        cursor: pointer;
+      }
+      i:hover {
+        color: orange;
+      }
+    }
+
+    p:nth-child(even) {
+      background-color: rgb(215, 208, 208, 0.5);
+    }
+  }
+}
+
+// .grid {
+//   margin: 0.3rem auto;
+
+//   .grid-item {
+//     min-width: 260px; // 갤럭시 폴더: 280px
+//     //width: 90%; // percent로 하면 깨짐.
+//     width: 260px;
+//     max-width: 400px;
+//     font-size: 1rem;
+//     word-break: break-all; // 문단을 전체적으로 채워서 좀 더 깔끔하게 보임.
+//     margin-bottom: 5px;
+//     padding: 5px;
+//     border: 1px solid #888;
+//     border-top: 5px solid #999;
+//     -webkit-box-sizing: border-box;
+//     -moz-box-sizing: border-box;
+//     box-sizing: border-box;
+
+//     h6 {
+//       text-align: center;
+//       background-color: rgba(136, 136, 136, 0.842);
+//       padding: 0.5rem;
+
+//       a {
+//         color: #fff;
+//       }
+//     }
+
+//     p {
+//       padding: 0.4rem;
+//       margin-bottom: 0;
+
+//       del {
+//         color: rgba(128, 128, 128, 0.845);
+//       }
+
+//       a {
+//         color: rgba(0, 0, 0, 0.806);
+//       }
+//       a:hover {
+//         color: gray;
+//       }
+//       svg {
+//         color: gray;
+//         cursor: pointer;
+//       }
+//       i:hover {
+//         color: orange;
+//       }
+//     }
+
+//     p:nth-child(even) {
+//       background-color: rgb(215, 208, 208, 0.5);
+//     }
+//   }
+// }
+// /* clearfix */
+// .grid:after {
+//   content: "";
+//   display: block;
+//   clear: both;
+// }
+// @media (min-width: 320px) {
+//   .grid {
+//     .grid-item {
+//       width: 300px;
+//     }
+//   }
+// }
+// @media (min-width: 370px) {
+//   .grid {
+//     .grid-item {
+//       width: 340px;
+//     }
+//   }
+// }
+// @media (min-width: 430px) {
+//   .grid {
+//     .grid-item {
+//       width: 400px;
+//     }
+//   }
+// }
+// @media (min-width: 576px) {
+//   .grid {
+//     .grid-item {
+//       width: 250px;
+//     }
+//   }
+// }
+// @media (min-width: 700px) {
+//   .grid {
+//     .grid-item {
+//       width: 330px;
+//     }
+//   }
+// }
+// @media (min-width: 768px) {
+//   .grid {
+//     .grid-item {
+//       width: 360px;
+//     }
+//   }
+// }
+// @media (min-width: 992px) {
+//   .grid {
+//     .grid-item {
+//       width: 300px;
+//     }
+//   }
+// }
+// @media (min-width: 1200px) {
+//   .grid {
+//     .grid-item {
+//       width: 360px;
+//     }
+//   }
+// }

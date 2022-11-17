@@ -1,22 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/main.css";
+import React from "react";
+import TopMenus from "./components/TopMenus";
+import CateLinks from "./components/CateLinks";
+import Contents from "./components/Contents";
+import Footer from "./components/Footer";
+import TopLink from "./components/TopLink";
+
+// const TopLink = () => {
+//   return <a name="top"></a>;
+// };
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* <a name="top"></a> */}
+        <TopLink />
+        <TopMenus />
+        <CateLinks />
+        <Contents />
+        <Footer />
+        <TopLink />
       </header>
     </div>
   );

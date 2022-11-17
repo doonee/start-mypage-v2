@@ -1,0 +1,134 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+::-webkit-scrollbar {
+  background: transparent; /* optional: just make scrollbar invisible */
+  height: 5px; /* 가로 스크롤바 넓이 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(232, 217, 217); /* 스크롤바 색깔 */
+}
+
+*,
+body {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.rgba-black-light {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.rgba-black-strong {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.bgcolor-transparent {
+  background-color: transparent !important;
+}
+
+.transparent-input {
+  background-color: rgba(184, 180, 180, 0.8) !important;
+  border: none;
+}
+
+@media screen and (max-width: 280px) {
+  html {
+    width: 280px;
+    overflow: auto;
+  }
+}
+@media (min-width: 576px) {
+  ::-webkit-scrollbar {
+    height: 12px; /* 가로 스크롤바 넓이 */
+  }
+}
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    height: 13px; /* 가로 스크롤바 넓이 */
+  }
+}
+@media (min-width: 992px) {
+  ::-webkit-scrollbar {
+    height: 14px; /* 가로 스크롤바 넓이 */
+  }
+}
+header .navbar .navbar-nav .nav-item {
+  width: 50px;
+  font-size: 0.75rem;
+}
+header .navbar .navbar-nav .nav-item .nav-link {
+  text-align: center;
+  padding: 0;
+}
+header .navbar .navbar-nav .nav-item .nav-link > p {
+  padding: 0;
+  margin: 0;
+}
+
+.my-masonry-grid { /* Not needed if autoprefixing */ /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  margin: 0.3rem auto;
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+  /* Style your items */
+}
+.my-masonry-grid_column div {
+  /* change div to reference your elements you put in <Masonry> */
+  font-size: 1rem;
+  word-break: break-all;
+  margin-bottom: 5px;
+  padding: 5px;
+  border: 1px solid #888;
+  border-top: 5px solid #999;
+  box-sizing: border-box;
+}
+.my-masonry-grid_column div h6 {
+  text-align: center;
+  background-color: rgba(136, 136, 136, 0.842);
+  padding: 0.5rem;
+}
+.my-masonry-grid_column div h6 a {
+  color: #fff;
+}
+.my-masonry-grid_column div p {
+  padding: 0.4rem;
+  margin-bottom: 0;
+}
+.my-masonry-grid_column div p del {
+  color: rgba(128, 128, 128, 0.845);
+}
+.my-masonry-grid_column div p a {
+  color: rgba(0, 0, 0, 0.806);
+}
+.my-masonry-grid_column div p a:hover {
+  color: gray;
+}
+.my-masonry-grid_column div p svg {
+  color: gray;
+  cursor: pointer;
+}
+.my-masonry-grid_column div p i:hover {
+  color: orange;
+}
+.my-masonry-grid_column div p:nth-child(even) {
+  background-color: rgba(215, 208, 208, 0.5);
+}/*# sourceMappingURL=main.css.map */
