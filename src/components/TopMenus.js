@@ -20,7 +20,7 @@ const TopMenus = () => {
         <div className="container-fluid navbar-expand">
           <a
             className="navbar-brand col-md-5 col-lg-6 col-xl-7 overflow-hidden"
-            href="./">
+            href="/">
             <h1 className="h4">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore
               ad facilis accusantium distinctio, magnam quia eius rerum? Impedit
@@ -33,7 +33,7 @@ const TopMenus = () => {
             id="navbarText">
             <ul className="navbar-nav navbar-nav-scroll ms-auto mb-2 mb-lg-0 text-center">
               <li className="nav-item">
-                <a className="nav-link" href="./">
+                <a className="nav-link" href="/">
                   <FontAwesomeIcon icon={faHome} size={"lg"} />
                   <p>Home</p>
                 </a>
@@ -51,7 +51,7 @@ const TopMenus = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="./bookmarks.html">
+                <a className="nav-link" href="/bookmarks.html">
                   <FontAwesomeIcon icon={faBookmark} size={"lg"} />
                   <p>북마크</p>
                 </a>

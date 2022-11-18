@@ -20,6 +20,7 @@ const Contents = () => {
   // });
 
   const showBookmarkModal = (e) => {
+    // 애니메이션 적용안됨
     // var groupModal = new bootstrap.Modal(
     //   document.getElementById("newModal"),
     //   {}
@@ -28,8 +29,10 @@ const Contents = () => {
     //   .getElementById("newModal")
     //   .classList.add("animate__animated", "animate__pulse");
     // groupModal.show();
-    e.preventDefault();
-    e.target.closest("p").style.fontWeight = "bold";
+    if (e) {
+      e.preventDefault();
+      e.target.closest("p").style.fontWeight = "bold";
+    }
     setModalShow(true);
   };
 
@@ -54,21 +57,22 @@ const Contents = () => {
     { id: 5, name: "High Five" },
   ];
 
-  // Convert array to JSX items
   items = items.map(function (item) {
-    //return <div key={item.id}>{item.name}</div>;
     return (
       <div key={item.id}>
         <h6>
           <a href="/bookmarks/2/1223" data-category="1223">
             <strong>자주 찾는 페이지</strong>
           </a>
-          <a
-            href="wrapWindowByMask(null, 1223);"
-            title="새 북마크 추가"
-            alt="새 북마크 추가">
-            (<FontAwesomeIcon icon={faPlus} />)
-          </a>
+          &nbsp;
+          <span className="text-white" style={{ cursor: "pointer" }}>
+            (
+            <FontAwesomeIcon
+              icon={faPlus}
+              onClick={(e) => showBookmarkModal(null)}
+            />
+            )
+          </span>
         </h6>
         <p>
           <Icon.InfoCircle onClick={(e) => showBookmarkModal(e)} />
