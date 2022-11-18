@@ -125,11 +125,13 @@ header .navbar .navbar-nav .nav-item .nav-link > p {
   padding: 0.4rem;
   margin-bottom: 0;
 }
-.my-masonry-grid_column div p small {
-  color: rgba(128, 128, 128, 0.845);
-}
 .my-masonry-grid_column div p a {
   color: rgba(0, 0, 0, 0.806);
+}
+.my-masonry-grid_column div p a del,
+.my-masonry-grid_column div p a small {
+  --bs-text-opacity: 1;
+  color: #6c757d !important;
 }
 .my-masonry-grid_column div p a:hover {
   color: gray;

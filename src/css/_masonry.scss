@@ -52,12 +52,13 @@
       padding: 0.4rem;
       margin-bottom: 0;
 
-      small {
-        color: rgba(128, 128, 128, 0.845);
-      }
-
       a {
         color: rgba(0, 0, 0, 0.806);
+        del,
+        small {
+          --bs-text-opacity: 1;
+          color: #6c757d !important;
+        }
       }
       a:hover {
         color: gray;
