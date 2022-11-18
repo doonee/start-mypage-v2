@@ -3,24 +3,25 @@
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  margin-left: -30px; /* gutter size offset */
+  margin-left: -1rem; /* gutter size offset, gutter size와 반대로 일치해야함! */
   width: auto;
 }
 .my-masonry-grid_column {
-  margin: 0.3rem auto;
-  padding-left: 30px; /* gutter size */
+  margin: 0.5rem auto;
+  padding-left: 1rem; /* gutter size, 좌우간 간격 */
   background-clip: padding-box;
   /* Style your items */
   div {
     /* change div to reference your elements you put in <Masonry> */
     // background: grey;
     // margin-bottom: 30px;
-    font-size: 1rem;
+    //font-size: 1rem;
     word-break: break-all; // 문단을 전체적으로 채워서 좀 더 깔끔하게 보임.
-    margin-bottom: 5px;
-    padding: 5px;
+    margin-bottom: 1rem; // 상하간 간격
+    padding: 0.3rem;
     border: 1px solid #888;
     border-top: 5px solid #999;
+    border-radius: 0.3rem;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -30,8 +31,20 @@
       background-color: rgba(136, 136, 136, 0.842);
       padding: 0.5rem;
 
-      a {
+      a,
+      span {
         color: #fff;
+        cursor: pointer;
+      }
+      a:hover,
+      span:hover {
+        font-weight: bold;
+      }
+      a:hover {
+        color: rgb(239, 225, 26);
+      }
+      span:hover {
+        color: rgb(146, 246, 152);
       }
     }
 
@@ -39,7 +52,7 @@
       padding: 0.4rem;
       margin-bottom: 0;
 
-      del {
+      small {
         color: rgba(128, 128, 128, 0.845);
       }
 
@@ -53,8 +66,9 @@
         color: gray;
         cursor: pointer;
       }
-      i:hover {
+      svg:hover {
         color: orange;
+        font-weight: bold;
       }
     }
 

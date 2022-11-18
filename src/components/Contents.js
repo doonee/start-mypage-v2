@@ -9,15 +9,6 @@ import Button from "react-bootstrap/Button";
 
 const Contents = () => {
   const [modalShow, setModalShow] = React.useState(false);
-  // var el = document.querySelectorAll("section div > p > svg");
-  // el.forEach((el) => {
-  //   el.addEventListener("click", function (e) {
-  //     e.preventDefault();
-  //     console.log(e.target);
-  //     e.target.parentElement.style.fontWeight = "bold";
-  //     setModalShow(true);
-  //   });
-  // });
 
   const showBookmarkModal = (e) => {
     // 애니메이션 적용안됨
@@ -65,7 +56,7 @@ const Contents = () => {
             <strong>자주 찾는 페이지</strong>
           </a>
           &nbsp;
-          <span className="text-white" style={{ cursor: "pointer" }}>
+          <span>
             (
             <FontAwesomeIcon
               icon={faPlus}

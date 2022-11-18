@@ -16,9 +16,36 @@ function BookmarkModal(props) {
       <Modal.Body>
         <h4>Centered Modal</h4>
         <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
+          Lorem LoremReprehenderit veniam ipsum aliqua cillum mollit duis
+          aliqua. Et eu ut consequat id tempor irure pariatur dolore. Incididunt
+          consequat sint veniam officia deserunt proident. In laboris do anim
+          veniam nulla do elit commodo laboris commodo dolore quis irure
+          commodo. Occaecat cillum consectetur cupidatat id. Consequat eiusmod
+          veniam ipsum tempor adipisicing consectetur c Lorem LoremReprehenderit
+          veniam ipsum aliqua cillum mollit duis aliqua. Et eu ut consequat id
+          tempor irure pariatur dolore. Incididunt consequat sint veniam officia
+          deserunt proident. In laboris do anim veniam nulla do elit commodo
+          laboris commodo dolore quis irure commodo. Occaecat cillum consectetur
+          cupidatat id. Consequat eiusmod veniam ipsum tempor adipisicing
+          consectetur cillum occaecat esse. Eu velit do culpa ullamco dolore
+          cillum dolore veniam laborum ea. Ipsum nostrud magna non dolor aliqua
+          mollit incididunt aute. Fugiat eu voluptate aute adipisicing ipsum do
+          laborum duis exercitation amet ut labore eu. Duis commodo velit
+          reprehenderit minim esse occaecat. Labore est mollit nulla et non
+          eiusmod nostrud adipisicing magna occaecat. Enim in consequat nostrud
+          in. Enim magna ad dolore sunt. Duis veniam ullamco ex adipisicing
+          exercitation nisi dolor qui quis. Quis amet dolore non exercitation
+          eiusmod consequat in. Anim magna aliqua anim cupidatat pariatur. Et
+          qui commodo eiusmod elit minim aliquip velit cillum voluptate est.
+          Consectetur reprehenderit qui cillum labore velit aliqua Lorem
+          proident culpa cillum nostrud cillum. Esse ipsum voluptate sunt duis
+          officia cupidatat cillum cillum ut velit dolore aliquip nostrud
+          eiusmod. Nisi pariatur veniam laboris est sunt tempor consectetur non
+          tempor cupidatat anim et deserunt deserunt. Nostrud in adipisicing
+          voluptate labore. Magna eiusmod qui excepteur eiusmod proident aliqua
+          esse. Cras mattis consectetur purus sit amet fermentum. Cras justo
+          odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus,
+          porta ac consectetur ac, vestibulum at eros.
         </p>
       </Modal.Body>
       <Modal.Footer>
