@@ -145,7 +145,7 @@ const Contents = () => {
   });
 
   return (
-    <section className="container-xl pt-2 pb-2">
+    <section className="container-xl py-2">
       <Masonry
         breakpointCols={myBreakpointsAndCols}
         className="my-masonry-grid"

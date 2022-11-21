@@ -39,19 +39,19 @@ const TopMenus = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="#">
+                <a className="nav-link active" href="/groups">
                   <FontAwesomeIcon icon={faObjectGroup} size={"lg"} />
                   <p>그룹</p>
                 </a>
               </li>
               <li className="nav-item" style={{ width: "65px" }}>
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/categories/123">
                   <FontAwesomeIcon icon={faChartPie} size={"lg"} />
                   <p>카테고리</p>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/bookmarks.html">
+                <a className="nav-link" href="/bookmarks/123/7890">
                   <FontAwesomeIcon icon={faBookmark} size={"lg"} />
                   <p>북마크</p>
                 </a>

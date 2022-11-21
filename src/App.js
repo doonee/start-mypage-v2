@@ -3,28 +3,45 @@ import "./css/main.css";
 import React from "react";
 import TopMenus from "./components/TopMenus";
 import CateLinks from "./components/CateLinks";
-import Contents from "./components/Contents";
 import Footer from "./components/Footer";
 import TopLink from "./components/TopLink";
+import { Outlet, Routes, Route } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import GroupsPage from "./pages/GroupsPage";
+import CategoriesPage from "./pages/CategoriesPage";
+import BookmarksPage from "./pages/BookmarksPage";
 
-// const TopLink = () => {
-//   return <a name="top"></a>;
-// };
-
-function App() {
+const Layout = () => {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <a name="top"></a> */}
         <TopLink />
         <TopMenus />
         <CateLinks />
-        <Contents />
+        <Outlet />
         <Footer />
         <TopLink />
       </header>
     </div>
   );
+};
+
+function App2() {
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainPage />} />
+          <Route path="groups" element={<GroupsPage />} />
+          <Route path="categories/:groudId" element={<CategoriesPage />} />
+          <Route
+            path="bookmarks/:groudId/:categoryId"
+            element={<BookmarksPage />}
+          />
+        </Route>
+      </Routes>
+    </>
+  );
 }
 
-export default App;
+export default App2;

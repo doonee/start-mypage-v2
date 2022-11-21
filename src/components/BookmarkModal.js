@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Row, Col, ButtonGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -13,7 +13,7 @@ function BookmarkModal(props) {
       <Modal.Body>
         <Form>
           <Form.Group className="mb-3" controlId="bookmarkGroup">
-            <Form.Label>북마크 그룹</Form.Label>
+            <Form.Label>그룹을 선택하세요.</Form.Label>
             <Form.Select>
               <option value="1">그룹1</option>
               <option value="2">그룹2</option>
@@ -22,7 +22,7 @@ function BookmarkModal(props) {
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3" controlId="bookmarkCategory">
-            <Form.Label>북마크 카테고리</Form.Label>
+            <Form.Label>카테고리를 선택하세요.</Form.Label>
             <Form.Select>
               <option value="1">카테고리1</option>
               <option value="2">카테고리2</option>
@@ -31,11 +31,9 @@ function BookmarkModal(props) {
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3" controlId="bookmarkUrl">
-            <Form.Label>북마크 URL</Form.Label>
             <Form.Control type="url" placeholder="북마크 URL을 입력하세요." />
           </Form.Group>
           <Form.Group className="mb-3" controlId="bookmarkName">
-            <Form.Label>북마크 명</Form.Label>
             <Form.Control type="text" placeholder="북마크 명을 입력하세요." />
             <ButtonGroup className="mt-2">
               <Form.Check inline label="중요" type="checkbox" id="11111" />
@@ -43,8 +41,11 @@ function BookmarkModal(props) {
             </ButtonGroup>
           </Form.Group>
           <Form.Group className="mb-3" controlId="bookmarkMemo">
-            <Form.Label>메모</Form.Label>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control
+              as="textarea"
+              rows={2}
+              placeholder="메모를 입력하세요.(선택)"
+            />
           </Form.Group>
         </Form>
       </Modal.Body>
