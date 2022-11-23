@@ -1,11 +1,9 @@
 import React from "react";
-//import bootstrap from "react-bootstrap";
 import * as Icon from "react-bootstrap-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Masonry from "react-masonry-css";
 import BookmarkModal from "./BookmarkModal";
-import Button from "react-bootstrap/Button";
 
 const Contents = () => {
   const [modalShow, setModalShow] = React.useState(false);
@@ -101,7 +99,7 @@ const Contents = () => {
             data-bookmark-no="7108">
             deseru Lorem, ipsum dolor.nt. Culpa, vitae veritatis.
             <br />
-            <small class="text-muted">- small small small small</small>
+            <small className="text-muted">- small small small small</small>
           </a>
         </p>
         <p>

@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Route, Link, Routes, useLocation } from "react-router-dom";
 import {
   faHome,
   faObjectGroup,
@@ -13,6 +14,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const TopMenus = () => {
+  const location = useLocation();
+  React.useState(() => {
+    // add active class to current menu
+    const curPath = location.pathname;
+    window.onload = () => {
+      const menuLinks = document.querySelectorAll("#navbarText > ul > li > a");
+      menuLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (curPath === link.getAttribute("href")) link.classList.add("active");
+      });
+    };
+  }, []);
   return (
     <header className="container-fluid bg-light">
       <a name="top"></a>
@@ -39,7 +52,7 @@ const TopMenus = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="/groups">
+                <a className="nav-link" href="/groups">
                   <FontAwesomeIcon icon={faObjectGroup} size={"lg"} />
                   <p>그룹</p>
                 </a>
@@ -57,31 +70,31 @@ const TopMenus = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/config">
                   <FontAwesomeIcon icon={faGears} size={"lg"} />
                   <p>설정</p>
                 </a>
               </li>
               <li className="nav-item" style={{ width: "65px" }}>
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/signup">
                   <FontAwesomeIcon icon={faUserPlus} size={"lg"} />
                   <p>회원가입</p>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/signin">
                   <FontAwesomeIcon icon={faRightToBracket} size={"lg"} />
                   <p>로그인</p>
                 </a>
               </li>
               <li className="nav-item d-none">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/myinfo">
                   <FontAwesomeIcon icon={faCircleInfo} size={"lg"} />
                   <p>내정보</p>
                 </a>
               </li>
               <li className="nav-item d-none" style={{ width: "65px" }}>
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/signout">
                   <FontAwesomeIcon icon={faPowerOff} size={"lg"} />
                   <p>로그아웃</p>
                 </a>
