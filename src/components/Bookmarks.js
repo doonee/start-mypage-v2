@@ -4,6 +4,7 @@ import * as Icon from "react-bootstrap-icons";
 export default function Bookmarks() {
   return (
     <section className="container-xl py-3">
+      <h2 className="h3 mb-3">북마크 관리</h2>
       <div className="row">
         <div className="col-12 col-sm-6 col-lg">
           <h2 className="h4">그룹</h2>

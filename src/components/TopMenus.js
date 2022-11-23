@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Route, Link, Routes, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   faHome,
   faObjectGroup,
@@ -16,7 +16,7 @@ import {
 const TopMenus = () => {
   const location = useLocation();
   React.useState(() => {
-    // add active class to current menu
+    // remove all and add active class on current menu
     const curPath = location.pathname;
     window.onload = () => {
       const menuLinks = document.querySelectorAll("#navbarText > ul > li > a");
