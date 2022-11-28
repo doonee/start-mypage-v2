@@ -73,7 +73,7 @@
       }
     }
 
-    p:nth-child(even) {
+    > p:nth-child(even) {
       background-color: rgb(215, 208, 208, 0.5);
     }
   }

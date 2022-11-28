@@ -144,6 +144,6 @@ header .navbar .navbar-nav .nav-item .nav-link > p {
   color: orange;
   font-weight: bold;
 }
-.my-masonry-grid_column div p:nth-child(even) {
+.my-masonry-grid_column div > p:nth-child(even) {
   background-color: rgba(215, 208, 208, 0.5);
 }/*# sourceMappingURL=main.css.map */

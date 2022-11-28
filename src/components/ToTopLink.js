@@ -1,4 +1,4 @@
-const TopLink = () => {
+const ToTopLink = () => {
   return (
     <div className="fixed-bottom m-4 text-end">
       <a href="#top" className="text-decoration-none link-secondary">
@@ -18,4 +18,4 @@ const TopLink = () => {
   );
 };
 
-export default TopLink;
+export default ToTopLink;

@@ -1,6 +1,5 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useLocation } from "react-router-dom";
 import {
   faHome,
   faObjectGroup,
@@ -13,19 +12,15 @@ import {
   faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
 
-const TopMenus = () => {
-  const location = useLocation();
-  React.useState(() => {
-    // remove all and add active class on current menu
-    const curPath = location.pathname;
-    window.onload = () => {
-      const menuLinks = document.querySelectorAll("#navbarText > ul > li > a");
-      menuLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (curPath === link.getAttribute("href")) link.classList.add("active");
-      });
-    };
-  }, []);
+const TopMenus = ({ curPath }) => {
+  setTimeout(() => {
+    const menuLinks = document.querySelectorAll("#ul-topmenu a.nav-link");
+    menuLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (curPath === link.getAttribute("href")) link.classList.add("active");
+    });
+  }, 0);
+
   return (
     <header className="container-fluid bg-light">
       <a name="top"></a>
@@ -43,8 +38,10 @@ const TopMenus = () => {
           </a>
           <div
             className="collapse navbar-collapse col-md-6 col-lg-5 col-xl-4 pt-3 pt-lg-1 overflow-auto"
-            id="navbarText">
-            <ul className="navbar-nav navbar-nav-scroll ms-auto mb-2 mb-lg-0 text-center">
+            id="navbarText2">
+            <ul
+              className="navbar-nav navbar-nav-scroll ms-auto mb-2 mb-lg-0 text-center"
+              id="ul-topmenu">
               <li className="nav-item">
                 <a className="nav-link" href="/">
                   <FontAwesomeIcon icon={faHome} size={"lg"} />

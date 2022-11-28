@@ -4,24 +4,39 @@ import React from "react";
 import TopMenus from "./components/TopMenus";
 import GroupLinks from "./components/GroupLinks";
 import Footer from "./components/Footer";
-import TopLink from "./components/TopLink";
+import ToTopLink from "./components/ToTopLink";
 import { Outlet, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import GroupsPage from "./pages/GroupsPage";
 import MyBookmarks from "./pages/GroupsPage/view";
 import CategoriesPage from "./pages/CategoriesPage";
 import BookmarksPage from "./pages/BookmarksPage";
+import { useLocation } from "react-router-dom";
 
 const Layout = () => {
+  const location = useLocation();
+  const curPath = location.pathname;
+  // React.useState(() => {
+  //   // remove all and add active class on current menu
+  //   window.onload = () => {
+  //     console.log(789);
+  //     // const menuLinks = document.querySelectorAll("#ul-topmenu a.nav-link");
+  //     // menuLinks.forEach((link) => {
+  //     //   link.classList.remove("active");
+  //     //   console.log(curPath, link.getAttribute("href"));
+  //     //   if (curPath === link.getAttribute("href")) link.classList.add("active");
+  //     // });
+  //   };
+  // });
+
   return (
     <div className="App">
       <header className="App-header">
-        <TopLink />
-        <TopMenus />
-        <GroupLinks />
+        <TopMenus curPath={curPath} />
+        <GroupLinks curPath={curPath} />
         <Outlet />
         <Footer />
-        <TopLink />
+        <ToTopLink />
       </header>
     </div>
   );

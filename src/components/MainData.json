@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "icon": "check",
+    "name": "최신 업데이트",
+    "content": [
+      "SMP 시즌2 오픈!",
+      "북마크 목록에서 신규북마크 추가 후 포커싱 안되는 현상 수정",
+      "북마크 목록에서 삭제 안되는 오류 수정"
+    ],
+    "link": "http://startmypage.com/html/dev_history.html",
+    "linkTitle": "자세히보기"
+  },
+  {
+    "id": 2,
+    "icon": "super",
+    "name": "언제든 어디서든 편리하게",
+    "content": [
+      "데스크탑, 스마트폰, 테블릿 등... 여러 브라우저에 흩어져 있는 북마크 모아서 한꺼번에 편리하게 관리하세요."
+    ],
+    "link": "",
+    "linkTitle": ""
+  },
+  {
+    "id": 3,
+    "icon": "safe",
+    "name": "안전하게",
+    "content": ["공용PC에 개인정보 흔적을 남기지 마세요."]
+  },
+  { "id": 4, "name": "4 Here is the Fourth" },
+  { "id": 5, "name": "5 High Five" },
+  {
+    "id": 6,
+    "name": "6 Ex sit in nostrud sit eiusmod quis nisi sunt nostrud quis mollit occaecat."
+  },
+  {
+    "id": 7,
+    "name": "7 Deserunt exercitation anim nostrud culpa occaecat deserunt non eiusmod et occaecat elit veniam."
+  },
+  { "id": 8, "name": "8 888" },
+  { "id": 9, "name": "9 abcdefghijk" },
+  {
+    "id": 10,
+    "name": "10 Nisi cillum aliqua nulla aliquip tempor deserunt cillum sint."
+  },
+  { "id": 11, "name": "11 11번째 카테고리" }
+]

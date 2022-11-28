@@ -1,26 +1,24 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-const GroupLinks = () => {
-  const location = useLocation();
-  React.useState(() => {
-    // remove all and add active class on current menu
-    const curPath = location.pathname;
-    window.onload = () => {
-      const menuLinks = document.querySelectorAll(
-        "header.container-fluid.sticky-top.border-bottom.bg-light > nav > div > ul > li > a"
-      );
-      menuLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (curPath === link.getAttribute("href")) link.classList.add("active");
-      });
-    };
-  }, []);
+const GroupLinks = ({ curPath }) => {
+  setTimeout(() => {
+    const menuLinks = document.querySelectorAll("#ul-group a.nav-link");
+    menuLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (curPath === link.getAttribute("href")) link.classList.add("active");
+    });
+  }, 0);
+
   return (
-    <header className="container-fluid sticky-top border-bottom bg-light">
+    <header
+      className="container-fluid sticky-top border-bottom bg-light"
+      id="group-link">
       <nav className="container-xl navbar navbar-expand-xl">
         <div className="container-fluid navbar-expand">
-          <ul className="nav nav-pills nav-fill text-nowrap flex-nowrap col-md-7 col-lg-8 list-group list-group-horizontal overflow-auto">
+          <ul
+            className="nav nav-pills nav-fill text-nowrap flex-nowrap col-md-7 col-lg-8 list-group list-group-horizontal overflow-auto"
+            id="ul-group">
             <li className="nav-item">
               <a href="/mybookmarks/7890" className="nav-link">
                 0001
