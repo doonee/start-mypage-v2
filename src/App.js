@@ -12,6 +12,7 @@ import MyBookmarks from "./pages/GroupsPage/view";
 import CategoriesPage from "./pages/CategoriesPage";
 import BookmarksPage from "./pages/BookmarksPage";
 import { useLocation } from "react-router-dom";
+import DevHistoryPage from "./pages/DevHistoryPage";
 
 const Layout = () => {
   const location = useLocation();
@@ -48,6 +49,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
+          <Route path="devHistory" element={<DevHistoryPage />} />
           <Route path="groups" element={<GroupsPage />} />
           <Route path="mybookmarks/:groupId" element={<MyBookmarks />} />
           <Route path="shareBookmarks/:groupId" element={<MyBookmarks />} />

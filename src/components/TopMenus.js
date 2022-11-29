@@ -23,18 +23,13 @@ const TopMenus = ({ curPath }) => {
 
   return (
     <header className="container-fluid bg-light">
-      <a name="top"></a>
+      <a name="top" />
       <nav className="container-xl navbar navbar-expand-xl">
         <div className="container-fluid navbar-expand">
           <a
             className="navbar-brand col-md-5 col-lg-6 col-xl-7 overflow-hidden"
             href="/">
-            <h1 className="h4">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore
-              ad facilis accusantium distinctio, magnam quia eius rerum? Impedit
-              maiores omnis doloribus aut? Dignissimos nobis temporibus sapiente
-              mollitia nisi quos sed.
-            </h1>
+            <h1 className="h4">편리한 북마크 무료관리툴 - StartMypage.com</h1>
           </a>
           <div
             className="collapse navbar-collapse col-md-6 col-lg-5 col-xl-4 pt-3 pt-lg-1 overflow-auto"
