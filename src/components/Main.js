@@ -6,6 +6,9 @@ import {
   faCheck,
   faCompress,
   faHelmetSafety,
+  faPlay,
+  faBookmark,
+  faSort,
 } from "@fortawesome/free-solid-svg-icons";
 import Masonry from "react-masonry-css";
 import MainData from "./MainData.json";
@@ -32,12 +35,33 @@ const Main = () => {
       case "safe":
         icon = <FontAwesomeIcon icon={faHelmetSafety} />;
         break;
+      case "play":
+        icon = <FontAwesomeIcon icon={faPlay} />;
+        break;
+      case "bookmark":
+        icon = <FontAwesomeIcon icon={faBookmark} />;
+        break;
+      case "expand":
+        icon = <Icon.ArrowsAngleExpand />;
+        break;
+      case "battery":
+        icon = <Icon.BatteryFull />;
+        break;
+      case "sort":
+        icon = <FontAwesomeIcon icon={faSort} />;
+        break;
+      case "cash":
+        icon = <Icon.CashCoin />;
+        break;
+      case "question":
+        icon = <Icon.QuestionCircle />;
+        break;
       default:
         break;
     }
     if (item.content && item.content.length) {
-      item.content.forEach((val) => {
-        contentHtml += `<p>* ${val}</p>`;
+      item.content.forEach((c) => {
+        contentHtml += `<p>${c}</p>`;
       });
     }
     if (item.link) {
