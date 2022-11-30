@@ -3,8 +3,8 @@ import * as Icon from "react-bootstrap-icons";
 
 export default function Bookmarks() {
   return (
-    <section className="container-xl py-3">
-      <h2 className="h3 mb-3">북마크 관리</h2>
+    <section className="container-xl">
+      <h2 className="h3">북마크 관리</h2>
       <div className="row">
         <div className="col-12 col-sm-6 col-lg">
           <h2 className="h4">그룹</h2>
@@ -35,6 +35,7 @@ export default function Bookmarks() {
               &nbsp;&nbsp;
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://music.youtube.com/"
                 data-bookmark-no="7108">
                 deseru Lorem, ipsum dolor.nt. Culpa, vitae veritatis.
@@ -48,6 +49,7 @@ export default function Bookmarks() {
               &nbsp;&nbsp;
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://music.youtube.com/"
                 data-bookmark-no="7108">
                 <strong>
@@ -62,6 +64,7 @@ export default function Bookmarks() {
               &nbsp;&nbsp;
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://music.youtube.com/"
                 data-bookmark-no="7108">
                 <del>
@@ -77,6 +80,7 @@ export default function Bookmarks() {
               &nbsp;&nbsp;
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://music.youtube.com/"
                 data-bookmark-no="7108">
                 deseru Lorem, ipsum dolor.nt. Culpa, vitae veritatis.

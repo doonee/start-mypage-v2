@@ -2,7 +2,7 @@ import React from "react";
 
 export default function DevHistory() {
   return (
-    <section className="container-xl py-3">
+    <section className="container-xl">
       <h2 className="h2 mb-4">개발 히스토리</h2>
       <div id="mainWrap">
         <div class="issue-item">

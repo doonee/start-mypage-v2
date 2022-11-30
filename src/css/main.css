@@ -78,6 +78,14 @@ header .navbar .navbar-nav .nav-item .nav-link > p {
   padding: 0;
   margin: 0;
 }
+header section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+header section h2 {
+  margin-bottom: 3rem;
+  text-align: center;
+}
 
 .my-masonry-grid { /* Not needed if autoprefixing */ /* Not needed if autoprefixing */
   display: flex;
