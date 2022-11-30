@@ -67,7 +67,7 @@ const Main = () => {
     if (item.link) {
       linkArrowIcon = <FontAwesomeIcon icon={faArrowCircleRight} />;
       const linkTitle = item.linkTitle ?? "링크";
-      const link = `<em><a target="_blank" href="${item.link}">${linkTitle}</a></em>`;
+      const link = `<em><a href="${item.link}">${linkTitle}</a></em>`;
       linkHtml = `<span>${link}</span>`;
     }
 

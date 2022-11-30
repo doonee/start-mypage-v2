@@ -12,7 +12,7 @@ const GroupLinks = ({ curPath }) => {
 
   return (
     <header
-      className="container-fluid sticky-top border-bottom bg-light"
+      className="container-fluid sticky-top border-bottom bg-light d-none"
       id="group-link">
       <nav className="container-xl navbar navbar-expand-xl">
         <div className="container-fluid navbar-expand">
