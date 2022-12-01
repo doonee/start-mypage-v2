@@ -1,7 +1,6 @@
 @charset "UTF-8";
 #mainWrap {
-  width: 100%;
-  text-align: center;
+  width: 70%;
   border: 0px solid red;
   margin: 0 auto;
   padding: 5px;
