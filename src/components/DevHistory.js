@@ -2,10 +2,10 @@ import React from "react";
 
 export default function DevHistory() {
   return (
-    <section className="container-xl">
-      <h2 className="h2 mb-4">개발 히스토리</h2>
-      <div id="mainWrap">
-        <div class="issue-item">
+    <section className="container">
+      <h2 className="h2">개발 히스토리</h2>
+      <div className="container col-lg-8">
+        <div>
           <h4>2023-01-01</h4>
           <p>시즌2 오픈</p>
           <ul>
@@ -14,7 +14,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2021-10-31</h4>
           <p>버그수정</p>
           <ul>
@@ -25,7 +25,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2021-09-18</h4>
           <p>버그수정</p>
           <ul>
@@ -33,7 +33,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2021-09-13</h4>
           <p>편의 기능 추가</p>
           <ul>
@@ -44,7 +44,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2021-09-12</h4>
           <p>버그 수정.</p>
           <ul>
@@ -54,7 +54,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2021-04-28</h4>
           <p>PC 에서 그룹리스트 마우스 드래그 가능</p>
           <ul>
@@ -65,7 +65,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2021-04-01</h4>
           <p>신규, 수정, 삭제기능 업데이트</p>
           <ul>
@@ -85,7 +85,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2021-03-06</h4>
           <p>카테고리, 그룹 삭제 정책 변경</p>
           <ul>
@@ -100,7 +100,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2021-02-22</h4>
           <p>상단 메뉴 고정으로 변경</p>
           <ul>
@@ -108,7 +108,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2021-02-18</h4>
           <p>북마크 추가/수정/삭제 모달팝업 으로 변경</p>
           <ul>
@@ -126,7 +126,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2021-01-11</h4>
           <p>취소선 기능 추가</p>
           <ul>
@@ -134,7 +134,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2020-12-07</h4>
           <p>레이어 툴팁팝업 수정</p>
           <ul>
@@ -148,7 +148,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2020-06-18</h4>
           <p>Dark 테마 기능 추가</p>
           <ul>
@@ -156,7 +156,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2020-06-07</h4>
           <p>북마크 박스 넓이 조절 기능 추가</p>
           <ul>
@@ -164,7 +164,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2020-04-19</h4>
           <p>
             그룹, 카테고리, 북마크 작성 중인 필드에서 Enter 누르면 바로 저장
@@ -172,7 +172,7 @@ export default function DevHistory() {
           </p>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2020-04-17</h4>
           <p>그룹, 카테고리, 북마크 순서 일괄변경 기능 추가</p>
           <ul>
@@ -187,7 +187,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2020-03-28</h4>
           <ul>
             <li>북마크 수정 페이지의 타이틀레이어 팝업 기능 추가</li>
@@ -199,7 +199,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2020-03-23</h4>
           <p>
             카테고리, 북마크 수정 페이지 접속 시 좌측 상단의 그룹 링크 선택표시
@@ -207,54 +207,54 @@ export default function DevHistory() {
           </p>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2018-05-12</h4>
           <p>로그인 시 알림메시지 생략</p>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2018-02-04</h4>
           <p>회원가입, 탈퇴시 버그 수정</p>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2018-02-03</h4>
           <p>전체 입력란에 (보안을 위협하지 않는)일부 특수문자 허용</p>
           <p>회원가입 간소화(전화번호 생략)</p>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2018-01-20</h4>
           <p>북마크 수정페이지 행간 간격조절</p>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2018-02-03</h4>
           <p>전체 입력란에 (보안을 위협하지 않는)일부 특수문자 허용</p>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2018-01-01</h4>
           <p>부자연스런 순서변경 드래그n드롭 개선</p>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2017-12-25</h4>
           <p>북마크에 마우스오버 시 긴 글 줄임없이 툴팁 출력</p>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2017-12-24</h4>
           <p>공유그룹, 공유카테고리 아이콘 클릭 시 해당 공유URL 접속 가능</p>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2017-12-23</h4>
           <p>공유그룹, 공유카테고리는 각각의 제목 앞에 공유아이콘 출력</p>
           <p>회원가입, 수정, 로그인, 설정 폰트크기 수정</p>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2017-12-17</h4>
           <p>비밀번호 강화</p>
           <ul>
@@ -262,7 +262,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2017-11-19</h4>
           <p>정식오픈</p>
           <ul>
@@ -273,7 +273,7 @@ export default function DevHistory() {
           </ul>
         </div>
 
-        <div class="issue-item">
+        <div>
           <h4>2017-11-01</h4>
           <p>베타오픈</p>
           <ul>

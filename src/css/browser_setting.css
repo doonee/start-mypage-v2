@@ -1,6 +1,5 @@
 @charset "UTF-8";
 #mainWrap {
-  width: 70%;
   border: 0px solid red;
   margin: 0 auto;
   padding: 5px;
@@ -8,13 +7,12 @@
   /* 850px 이하 */
 }
 #mainWrap h2 {
-  font-size: 30px;
-  font-weight: bolder;
   margin: 2.5rem auto;
 }
 #mainWrap #contentList li {
   border: 0px solid red;
   margin: 40px auto;
+  text-align: center;
 }
 #mainWrap #contentList li p {
   font-weight: bolder;

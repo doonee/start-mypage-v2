@@ -77,7 +77,7 @@ export default function BrowserSetting() {
 
         return (
             <>
-                <ul id="contentList" dangerouslySetInnerHTML={{ __html: htmlContent }}></ul>
+                <ul className="container" id="contentList" dangerouslySetInnerHTML={{ __html: htmlContent }}></ul>
             </>
         )
     }
