@@ -4,7 +4,7 @@ import React from "react";
 import TopMenus from "./components/TopMenus";
 import GroupLinks from "./components/GroupLinks";
 import Footer from "./components/Footer";
-import ToTopLink from "./components/ToTopLink";
+import GoToTopIcon from "./components/GoToTopIcon";
 import { Outlet, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import GroupsPage from "./pages/GroupsPage";
@@ -38,7 +38,7 @@ const Layout = () => {
         <GroupLinks curPath={curPath} />
         <Outlet />
         <Footer />
-        <ToTopLink />
+        <GoToTopIcon />
       </header>
     </div>
   );

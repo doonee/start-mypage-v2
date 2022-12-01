@@ -1,4 +1,4 @@
-const ToTopLink = () => {
+const GoToTopIcon = () => {
   return (
     <div className="fixed-bottom m-4 text-end">
       <a href="#top" className="text-decoration-none link-secondary">
@@ -18,4 +18,4 @@ const ToTopLink = () => {
   );
 };
 
-export default ToTopLink;
+export default GoToTopIcon;

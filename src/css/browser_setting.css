@@ -1,98 +1,81 @@
-#mainWrap{
-    width:100%;
-    text-align: center;
-    border:0px solid red;
-    margin:0 auto;
-    padding:5px;
-    box-sizing:border-box;
+@charset "UTF-8";
+#mainWrap {
+  width: 100%;
+  text-align: center;
+  border: 0px solid red;
+  margin: 0 auto;
+  padding: 5px;
+  box-sizing: border-box;
+  /* 850px 이하 */
 }
-
-h2{
-    font-size:30px;
-    font-weight:bolder;
-    margin:2.5rem auto;
+#mainWrap h2 {
+  font-size: 30px;
+  font-weight: bolder;
+  margin: 2.5rem auto;
 }
-
-#contentList li{
-    border:0px solid red;
-    margin:40px auto;
+#mainWrap #contentList li {
+  border: 0px solid red;
+  margin: 40px auto;
 }
-
-#contentList li img{
-    border:1px solid gray;
+#mainWrap #contentList li p {
+  font-weight: bolder;
+  font-size: 23px;
+  margin: 5px auto;
+  color: blue;
+  line-height: 160%;
 }
-
-#contentList li p{
-    font-weight: bolder;
-    font-size:23px;
-    margin:5px auto;
-    color:blue;
-    line-height: 160%;
+#mainWrap #contentList img {
+  border: 1px solid gray;
 }
-
-#menuLinks li{
-    list-style:none;
-    margin:5px;
-    display:inline-block;
-    background-color:orange;
-    padding:10px;
-    border-radius: 5px;
-    font-size:16px;
+#mainWrap #menuLinks li {
+  list-style: none;
+  margin: 5px;
+  display: inline-block;
+  background-color: orange;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
 }
-
-#menuLinks li a{
-    color:#fff;
-    text-decoration: none;
+#mainWrap #menuLinks li a {
+  color: #fff;
+  text-decoration: none;
 }
-
-#menuLinks li a:hover{
-    color:yellow;
+#mainWrap #menuLinks li a:hover {
+  font-weight: bold;
 }
-
-.active{
-    color:yellow !important;
-    font-weight: bolder;
+#mainWrap #bottomLink {
+  font-size: 16px;
+  background-color: rgba(255, 162, 0, 0.822);
+  border: 1px solid orange;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 15px;
+  font-weight: bolder;
+  margin-bottom: 80px;
 }
-
-#bottomLink{
-    font-size:16px;
-    background-color:rgba(255, 162, 0, 0.822);
-    border:1px solid orange;
-    border-radius:5px;
-    display: inline-block;
-    padding:15px;
-    font-weight:bolder;
-    margin-bottom:80px;
+#mainWrap #bottomLink a {
+  color: #fff;
+  text-decoration: none;
 }
-#bottomLink a{
-    color:#fff;
-    text-decoration: none;
+#mainWrap #bottomLink a:hover {
+  opacity: 0.8;
 }
-#bottomLink a:hover{
-    opacity:0.8;
-}
-
-/* 850px 이하 */
-@media (max-width:850px) {
-    h2{
-        font-size:20px;
-    }
-    
-    #contentList li{
-        margin:20px auto;
-    }
-    
-    #contentList li img{
-        max-width:90%;
-    }
-
-    #contentList li p{
-        font-size:15px;
-    }
-
-    #menuLinks li{
-        margin:5px auto;
-        padding:5px;
-        font-size:15px;
-    }
-}    
+@media (max-width: 850px) {
+  #mainWrap h2 {
+    font-size: 20px;
+  }
+  #mainWrap #contentList li {
+    margin: 20px auto;
+  }
+  #mainWrap #contentList li img {
+    max-width: 90%;
+  }
+  #mainWrap #contentList li p {
+    font-size: 15px;
+  }
+  #mainWrap #menuLinks li {
+    margin: 5px auto;
+    padding: 5px;
+    font-size: 15px;
+  }
+}/*# sourceMappingURL=browser_setting.css.map */

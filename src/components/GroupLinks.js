@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 const GroupLinks = ({ curPath }) => {
   setTimeout(() => {
@@ -12,7 +12,7 @@ const GroupLinks = ({ curPath }) => {
 
   return (
     <header
-      className="container-fluid sticky-top border-bottom bg-light d-none"
+      className="container-fluid sticky-top border-bottom bg-light"
       id="group-link">
       <nav className="container-xl navbar navbar-expand-xl">
         <div className="container-fluid navbar-expand">
