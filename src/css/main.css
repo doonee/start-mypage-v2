@@ -78,12 +78,14 @@ header .navbar .navbar-nav .nav-item .nav-link > p {
   padding: 0;
   margin: 0;
 }
-header section {
+
+#root > div > section {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
-header section h2 {
-  margin-bottom: 3rem;
+#root > div > section h2 {
+  font-weight: bolder;
+  margin-bottom: 2rem;
   text-align: center;
 }
 

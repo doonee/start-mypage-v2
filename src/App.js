@@ -33,13 +33,11 @@ const Layout = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <TopMenus curPath={curPath} />
-        <GroupLinks curPath={curPath} />
-        <Outlet />
-        <Footer />
-        <GoToTopIcon />
-      </header>
+      <TopMenus curPath={curPath} />
+      <GroupLinks curPath={curPath} />
+      <Outlet />
+      <Footer />
+      <GoToTopIcon />
     </div>
   );
 };

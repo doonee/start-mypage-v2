@@ -6,26 +6,28 @@ export default function Bookmarks() {
     <section className="container-xl">
       <h2 className="h2">북마크 관리</h2>
       <div className="row">
-        <div className="col-12 col-sm-6 col-lg">
-          <h2 className="h4">그룹</h2>
-          <select className="form-select">
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-            <option value="3">:: 그룹 관리 ::</option>
-          </select>
+        <div className="col-md">
+          <div className="col-sm-12 col-lg-12 mb-4">
+            <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">그룹</h3>
+            <select className="form-select">
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="3">:: 그룹 관리 ::</option>
+            </select>
+          </div>
+          <div className="col-sm-12 col-lg-12">
+            <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">카테고리</h3>
+            <select className="form-select">
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="3">:: 카테고리 관리 ::</option>
+            </select>
+          </div>
         </div>
-        <div className="col-12 col-sm-6 col-lg mt-4 mt-sm-0">
-          <h2 className="h4">카테고리</h2>
-          <select className="form-select">
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-            <option value="3">:: 카테고리 관리 ::</option>
-          </select>
-        </div>
-        <div className="col-12 col-lg-6 mt-4 mt-lg-0">
-          <h2 className="h4">북마크</h2>
+        <div className="col-md-7 mt-4 mt-md-0">
+          <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">북마크</h3>
           <p>* 드래그 해서 순서를 변경하세요.</p>
           <ul className="list-group">
             <li className="list-group-item text-truncate">
