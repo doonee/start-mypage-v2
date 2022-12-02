@@ -82,7 +82,7 @@ const MyBookmarks = () => {
           <Icon.InfoCircle onClick={(e) => showBookmarkModal(e)} />
           &nbsp;&nbsp;
           <a
-            target="_blank"
+            target="blank" rel="noreferrer"
             href="https://music.youtube.com/"
             data-bookmark-no="7108">
             deseru Lorem, ipsum dolor.nt. Culpa, vitae veritatis.
@@ -94,7 +94,7 @@ const MyBookmarks = () => {
           <Icon.InfoCircle onClick={(e) => showBookmarkModal(e)} />
           &nbsp;&nbsp;
           <a
-            target="_blank"
+            target="blank" rel="noreferrer"
             href="https://music.youtube.com/"
             data-bookmark-no="7108">
             deseru Lorem, ipsum dolor.nt. Culpa, vitae veritatis.
@@ -106,7 +106,7 @@ const MyBookmarks = () => {
           <Icon.InfoCircle onClick={(e) => showBookmarkModal(e)} />
           &nbsp;&nbsp;
           <a
-            target="_blank"
+            target="blank" rel="noreferrer"
             href="https://music.youtube.com/"
             data-bookmark-no="7108">
             <strong>Lorem ipsum dolor sit.</strong>
@@ -118,7 +118,7 @@ const MyBookmarks = () => {
           <Icon.InfoCircle onClick={(e) => showBookmarkModal(e)} />
           &nbsp;&nbsp;
           <a
-            target="_blank"
+            target="blank" rel="noreferrer"
             href="https://music.youtube.com/"
             data-bookmark-no="7108">
             <del>
@@ -132,7 +132,7 @@ const MyBookmarks = () => {
           <Icon.InfoCircle onClick={(e) => showBookmarkModal(e)} />
           &nbsp;&nbsp;
           <a
-            target="_blank"
+            target="blank" rel="noreferrer"
             href="https://music.youtube.com/"
             data-bookmark-no="7108">
             Lorem ipsum dolor sit amet.
