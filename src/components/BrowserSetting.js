@@ -1,3 +1,4 @@
+/* eslint-disable no-script-url */
 /* eslint-disable eqeqeq */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
@@ -24,11 +25,10 @@ export default function BrowserSetting() {
     const Title = () => {
         return (
             <>
-                <ul id="menuLinks">
+                <ul className='nav nav-pills nav-fill bg-light'>
                     {menus.map((m) => (
-                        <li key={m.id}>
-                            <a href="#"
-                                className={(m.id == curMenuId) ? "text-muted" : ""}
+                        <li key={m.id} className="nav-item">
+                            <a href="javascript:;" className={(m.id == curMenuId) ? "bg-warning text-secondary nav-link" : "nav-link"}
                                 onClick={handleMenuClick}
                                 menu-id={m.id}>
                                 {m.title}</a>
@@ -84,7 +84,7 @@ export default function BrowserSetting() {
 
     return (
         <section className="container-xl">
-            <div id="mainWrap">
+            <div className='col-lg-9' id="mainWrap">
                 <Title />
                 <Content />
             </div>
