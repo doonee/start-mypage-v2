@@ -19,8 +19,8 @@ export default function DevHistory() {
   const ContentItems = ({ item }) => {
     return (
       <div className="mb-5">
-        <h4>{item.date}</h4>
-        <p className="fw-bold fs-4">{item.title}</p>
+        <h4>{item.title}</h4>
+        <h6>{item.date}</h6>
         <ul>
           <ComtentLiItems content={item.content} />
         </ul>
@@ -37,15 +37,15 @@ export default function DevHistory() {
           ))
         }
         <div className="mb-5">
-          <h4 fs-6>2017-11-19</h4>
-          <p className="fw-bold fs-4">정식오픈</p>
+          <h4>정식오픈</h4>
+          <h6>2017-11-19</h6>
           <ul>
             <li>{GetDuration('2017-11-19')}</li>
           </ul>
         </div>
         <div className="mb-5">
-          <h4 fs-6>2017-11-01</h4>
-          <p className="fw-bold fs-4">베타오픈</p>
+          <h4>베타오픈</h4>
+          <h6>2017-11-01</h6>
           <ul>
             <li>{GetDuration('2017-11-01')}</li>
           </ul>
