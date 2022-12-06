@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 const Footer = () => {
   const curYear = new Date().getFullYear();
 
@@ -34,6 +37,7 @@ const Footer = () => {
             <a
               href="http://doonee.net"
               target="_blank"
+              rel="noreferrer"
               className="nav-link px-2 text-muted">
               개발자
             </a>
