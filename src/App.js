@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/main.css";
 import React from "react";
 import TopMenus from "./components/TopMenus";
-import GroupLinks from "./components/GroupLinks";
+import TopGroupLinks from "./components/TopGroupLinks";
 import Footer from "./components/Footer";
 import GoToTopIcon from "./components/GoToTopIcon";
 import { Outlet, Routes, Route } from "react-router-dom";
@@ -34,7 +34,7 @@ const Layout = () => {
   return (
     <div className="App">
       <TopMenus curPath={curPath} />
-      <GroupLinks curPath={curPath} />
+      <TopGroupLinks />
       <Outlet />
       <Footer />
       <GoToTopIcon />
@@ -49,7 +49,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
           <Route path="groups" element={<GroupsPage />} />
-          <Route path="mybookmarks/:groupId" element={<MyBookmarks />} />
+          <Route path="mybookmarks" element={<MyBookmarks />} />
           <Route path="shareBookmarks/:groupId" element={<MyBookmarks />} />
           <Route path="categories/:groudId" element={<CategoriesPage />} />
           <Route

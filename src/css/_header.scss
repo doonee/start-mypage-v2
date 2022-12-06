@@ -18,5 +18,16 @@ header {
         }
       }
     }
+    .container-fluid {
+      ul.nav {
+        li.nav-item {
+          cursor: pointer;
+          padding: 0.3rem;
+        }
+        li.active {
+          background-color: rgb(153, 198, 249);
+        }
+      }
+    }
   }
 }

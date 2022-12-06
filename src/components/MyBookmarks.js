@@ -33,11 +33,11 @@ const MyBookmarks = () => {
   };
 
   // 모듈 형태로 넣으면 정렬이 비정상적으로 되서 변수 활용함!
-  const Bookmarks = MyBookmarksData.map(function (item) {
+  const Bookmarks = MyBookmarksData.map(function (items) {
     return (
-      <div key={item.categoryNo}>
-        <MyBookmarksCategoryTitle item={item} showBookmarkModal={showBookmarkModal} />
-        <MyBookmarksByCategory bookmarks={item.bookmarks} showBookmarkModal={showBookmarkModal} />
+      <div key={items.categoryNo}>
+        <MyBookmarksCategoryTitle item={items} showBookmarkModal={showBookmarkModal} />
+        <MyBookmarksByCategory bookmarks={items.bookmarks} showBookmarkModal={showBookmarkModal} />
       </div>
     );
   });
