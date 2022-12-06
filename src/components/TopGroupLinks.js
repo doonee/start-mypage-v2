@@ -1,5 +1,6 @@
 import React from "react";
 import TopGroupLinksData from './TopGroupLinksData.json';
+import { useLocation } from 'react-router-dom';
 
 const TopGroupLinks = () => {
   // setTimeout(() => {
@@ -10,19 +11,40 @@ const TopGroupLinks = () => {
   //   });
   // }, 0);
 
+  const curUrl = useLocation().pathname;
+
+  const getParameter = (key) => {
+    if (new URLSearchParams(window.location.search).get(key)) {
+      return new URLSearchParams(window.location.search).get(key);
+    }
+    return '';
+  }
+
   const [startGroup, setStartGroup] = React.useState(() => {
-    // 시작페이지로 설정 된 그룹 가져와야 함!
-    return 3;
+    console.log(getParameter('group'));
+    if (curUrl.includes('/mybookmarks')) {
+      if (getParameter('group')) {
+        return getParameter('group');
+      } else {
+        // 파라미터 값이 없으면 시작페이지로 설정 된 그룹 가져와야 함!
+        const startGroupByDb = 3;
+        return startGroupByDb;
+      }
+    } else {
+      return 0;
+    }
   });
 
   const handleGrouplinkClick = (e) => {
     e.preventDefault();
     const selectedGroup = e.target.getAttribute('data-id');
-    console.log(selectedGroup);
-    // 선택 된 그룹의 북마크 리스트 가져와야 함!
-    // 성공 후
-    setStartGroup(selectedGroup);
-    selectedGroup.style.fontWeight = "bold";
+    if (curUrl.includes('/mybookmarks')) {
+      // 선택 된 그룹의 북마크 리스트 가져와야 함!
+      // 성공 후
+      setStartGroup(selectedGroup);
+    } else {
+      window.location.href = `/mybookmarks/?group=${selectedGroup}`;
+    }
   }
 
   // 그룹리스트 출력

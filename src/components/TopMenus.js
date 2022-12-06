@@ -32,7 +32,7 @@ const TopMenus = ({ curPath }) => {
         <div className="container-fluid navbar-expand">
           <a
             className="navbar-brand col-md-5 col-lg-6 col-xl-7 overflow-hidden"
-            href="/mybookmarks/1234" rel="noreferrer">
+            href="/mybookmarks" rel="noreferrer">
             <h1 className="h4">편리한 북마크 무료관리툴 - StartMypage.com</h1>
           </a>
           <div

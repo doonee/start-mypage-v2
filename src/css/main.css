@@ -52,6 +52,15 @@ a {
   overflow: hidden; /* 스크롤 처리 하지 않음*/
 }
 
+.oneline-wrap {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  text-align: left;
+  vertical-align: middle;
+}
+
 @media screen and (max-width: 280px) {
   html {
     width: 280px;
