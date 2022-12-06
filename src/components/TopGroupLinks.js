@@ -10,8 +10,8 @@ const TopGroupLinks = () => {
   //   });
   // }, 0);
 
-  // 시작페이지로 설정 된 그룹 가져와야 함!
   const [startGroup, setStartGroup] = React.useState(() => {
+    // 시작페이지로 설정 된 그룹 가져와야 함!
     return 3;
   });
 
@@ -20,6 +20,7 @@ const TopGroupLinks = () => {
     const selectedGroup = e.target.getAttribute('data-id');
     console.log(selectedGroup);
     // 선택 된 그룹의 북마크 리스트 가져와야 함!
+    // 성공 후
     setStartGroup(selectedGroup);
     selectedGroup.style.fontWeight = "bold";
   }
@@ -29,7 +30,9 @@ const TopGroupLinks = () => {
     // eslint-disable-next-line eqeqeq
     const isActive = item.groupNo == startGroup;
     return (
-      <li key={item.groupNo} className={isActive ? "nav-item active" : "nav-item"} onClick={handleGrouplinkClick} data-id={item.groupNo}>
+      <li key={item.groupNo}
+        className={isActive ? "nav-item short-title active" : "nav-item short-title"}
+        onClick={handleGrouplinkClick} data-id={item.groupNo}>
         {item.groupName}
       </li>
     )

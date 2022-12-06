@@ -45,6 +45,13 @@ a {
   border: none;
 }
 
+.short-title {
+  width: 100%; /* 가로 길이 고정*/
+  text-overflow: ellipsis; /* 생략 처리 ( ... )*/
+  white-space: nowrap; /* 줄바꿈 하지 않고 잘림*/
+  overflow: hidden; /* 스크롤 처리 하지 않음*/
+}
+
 @media screen and (max-width: 280px) {
   html {
     width: 280px;
@@ -80,10 +87,15 @@ header .navbar .navbar-nav .nav-item .nav-link > p {
 }
 header .navbar .container-fluid ul.nav li.nav-item {
   cursor: pointer;
-  padding: 0.3rem;
+  padding: 0.4rem;
+  min-width: 70px;
+  max-width: 100px;
+  overflow: hidden;
+  text-align: center;
 }
 header .navbar .container-fluid ul.nav li.active {
-  background-color: rgb(153, 198, 249);
+  background-color: rgba(230, 194, 85, 0.57);
+  border-radius: inherit;
 }
 
 #root > div > section {

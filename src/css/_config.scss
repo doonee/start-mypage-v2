@@ -54,6 +54,13 @@ a {
   border: none;
 }
 
+.short-title {
+  width: 100%; /* 가로 길이 고정*/
+  text-overflow: ellipsis; /* 생략 처리 ( ... )*/
+  white-space: nowrap; /* 줄바꿈 하지 않고 잘림*/
+  overflow: hidden; /* 스크롤 처리 하지 않음*/
+}
+
 // 갤럭시 폴더
 @media screen and (max-width: 280px) {
   html {
