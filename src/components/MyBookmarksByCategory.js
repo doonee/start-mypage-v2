@@ -7,7 +7,7 @@ export default function MyBookmarksByCategory({ bookmarks, showBookmarkModal }) 
             let name = item.bookmarkName, nameDesc = item.bookmarkName;
             const desc = item.bookmarkDesc;
             if (item.isImportant) name = `<strong>${name}</strong>`;
-            if (desc) nameDesc = `${name}<br /><small>- ${desc}</small>`;
+            if (desc) nameDesc = `${name}<br /><small class="text-secondary">- ${desc}</small>`;
             if (item.isLinethrough) nameDesc = `<del>${nameDesc}</del>`;
             return (
                 <p key={item.bookmarkNo} style={{ lineHeight: '1.7rem' }}>

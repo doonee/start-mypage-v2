@@ -34,9 +34,17 @@
         "bookmarkNo": 3,
         "bookmarkName": "msn",
         "bookmarkDesc": "자극적인 뉴스 전문 msn",
-        "bookmarkUrl": "https://msn.co.kr",
+        "bookmarkUrl": "https://www.msn.com/ko-kr",
         "isImportant": false,
         "isLinethrough": true
+      },
+      {
+        "bookmarkNo": 5,
+        "bookmarkName": "StartMypage",
+        "bookmarkDesc": "내가 꾸미는 나만의 시작페이지",
+        "bookmarkUrl": "http://startmypage.com",
+        "isImportant": true,
+        "isLinethrough": false
       }
     ]
   },
