@@ -1,7 +1,27 @@
 import React from "react";
 import * as Icon from "react-bootstrap-icons";
+import BookmarkModal from "./BookmarkModal";
 
 export default function Bookmarks() {
+  const [modalShow, setModalShow] = React.useState(false);
+
+  const showBookmarkModal = (e) => {
+    // 애니메이션 적용안됨
+    // var groupModal = new bootstrap.Modal(
+    //   document.getElementById("newModal"),
+    //   {}
+    // );
+    // document
+    //   .getElementById("newModal")
+    //   .classList.add("animate__animated", "animate__pulse");
+    // groupModal.show();
+    if (e) {
+      e.preventDefault();
+      e.target.closest("li").style.fontWeight = "bold";
+    }
+    setModalShow(true);
+  };
+
   return (
     <section className="container-xl">
       <h2 className="h2">북마크 관리</h2>
@@ -28,12 +48,13 @@ export default function Bookmarks() {
         </div>
         <div className="col-md-7 mt-4 mt-md-0">
           <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">북마크</h3>
-          <p>* 드래그 해서 순서를 변경하세요.</p>
           <ul className="list-group">
             <li className="list-group-item text-truncate">
-              <Icon.GripHorizontal />
+              <input className="form-check-input" type="radio"
+                name="exampleRadios" id="exampleRadios1" value="option1" defaultChecked />
               &nbsp;&nbsp;
-              <Icon.InfoCircle />
+              <Icon.PencilSquare onClick={(e) => showBookmarkModal(e)}
+                className="align-middle" title="북마크 수정" />
               &nbsp;&nbsp;
               <a
                 target="_blank"
@@ -45,9 +66,10 @@ export default function Bookmarks() {
               </a>
             </li>
             <li className="list-group-item text-truncate">
-              <Icon.GripHorizontal />
+              <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
               &nbsp;&nbsp;
-              <Icon.InfoCircle />
+              <Icon.PencilSquare onClick={(e) => showBookmarkModal(e)}
+                className="align-middle" title="북마크 수정" />
               &nbsp;&nbsp;
               <a
                 target="_blank"
@@ -60,9 +82,10 @@ export default function Bookmarks() {
               </a>
             </li>
             <li className="list-group-item text-truncate">
-              <Icon.GripHorizontal />
+              <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" />
               &nbsp;&nbsp;
-              <Icon.InfoCircle />
+              <Icon.PencilSquare onClick={(e) => showBookmarkModal(e)}
+                className="align-middle" title="북마크 수정" />
               &nbsp;&nbsp;
               <a
                 target="_blank"
@@ -76,9 +99,10 @@ export default function Bookmarks() {
               </a>
             </li>
             <li className="list-group-item text-truncate">
-              <Icon.GripHorizontal />
+              <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" />
               &nbsp;&nbsp;
-              <Icon.InfoCircle />
+              <Icon.PencilSquare onClick={(e) => showBookmarkModal(e)}
+                className="align-middle" title="북마크 수정" />
               &nbsp;&nbsp;
               <a
                 target="_blank"
@@ -89,8 +113,20 @@ export default function Bookmarks() {
               </a>
             </li>
           </ul>
+          <div className="btn-group col-12 mt-2">
+            <button type="button" className="col btn btn-outline-secondary"><Icon.ChevronDoubleUp /></button>
+            <button type="button" className="col btn btn-outline-secondary"><Icon.ChevronUp /></button>
+            <button type="button" className="col btn btn-outline-secondary"><Icon.ChevronDown /></button>
+            <button type="button" className="col btn btn-outline-secondary"><Icon.ChevronDoubleDown /></button>
+          </div>
+          <div className="btn-group col-12 mt-2">
+            <button type="button" className="col btn btn-outline-danger">삭제</button>
+            <button type="button" className="col btn btn-outline-primary">저장</button>
+          </div>
         </div>
       </div>
+
+      <BookmarkModal show={modalShow} onHide={() => setModalShow(false)} />
     </section>
   );
 }

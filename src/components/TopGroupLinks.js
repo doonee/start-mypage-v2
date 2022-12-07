@@ -20,8 +20,7 @@ const TopGroupLinks = () => {
     return '';
   }
 
-  const [startGroup, setStartGroup] = React.useState(() => {
-    console.log(getParameter('group'));
+  const [selectedGroup, setSelectedGroup] = React.useState(() => {
     if (curUrl.includes('/mybookmarks')) {
       if (getParameter('group')) {
         return getParameter('group');
@@ -41,7 +40,7 @@ const TopGroupLinks = () => {
     if (curUrl.includes('/mybookmarks')) {
       // 선택 된 그룹의 북마크 리스트 가져와야 함!
       // 성공 후
-      setStartGroup(selectedGroup);
+      setSelectedGroup(selectedGroup);
     } else {
       window.location.href = `/mybookmarks/?group=${selectedGroup}`;
     }
@@ -50,11 +49,12 @@ const TopGroupLinks = () => {
   // 그룹리스트 출력
   const groupMenus = TopGroupLinksData.map((item) => {
     // eslint-disable-next-line eqeqeq
-    const isActive = item.groupNo == startGroup;
+    const isActive = item.groupNo == selectedGroup;
     return (
       <li key={item.groupNo}
         className={isActive ? "nav-item short-title active" : "nav-item short-title"}
-        onClick={handleGrouplinkClick} data-id={item.groupNo}>
+        onClick={handleGrouplinkClick} data-id={item.groupNo}
+        title={item.groupName}>
         {item.groupName}
       </li>
     )

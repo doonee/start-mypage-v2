@@ -116,6 +116,9 @@ header .navbar .container-fluid ul.nav li.active {
   margin-bottom: 2rem;
   text-align: center;
 }
+#root > div > section div > div > ul > li > svg {
+  cursor: pointer;
+}
 
 .my-masonry-grid { /* Not needed if autoprefixing */ /* Not needed if autoprefixing */
   display: flex;
