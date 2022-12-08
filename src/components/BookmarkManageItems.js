@@ -4,21 +4,18 @@ import BookmarkManageData from '../datas/BookmarkManageData.json'
 
 export default function BookmarkManage({ showBookmarkModal }) {
   const resetBackground = (e) => {
-    console.log(e.target.closest('ul').querySelectorAll('li'));
+    e.target.closest('ul').querySelectorAll('li').forEach(element => {
+      element.style.backgroundColor = 'transparent';
+    });
   }
+
   const handleRadioChecked = (e) => {
     resetBackground(e);
-    const target = e.target;
-    console.log(target)
-    target.closest('li').style.backgroundColor = 'yellow';
+    e.target.closest('li').style.backgroundColor = 'yellow';
   }
 
   const handleBookmarkRowClick = (e) => {
-    if (e.target.querySelector('input[type=radio]')) {
-      resetBackground(e);
-      e.target.querySelector('input[type=radio]').checked = true;
-      e.target.style.backgroundColor = 'yellow';
-    }
+    e.target.closest('li').querySelector('input[type=radio]').click();
   }
 
   return (
@@ -39,10 +36,14 @@ export default function BookmarkManage({ showBookmarkModal }) {
             value={item.bookmarkId}
             onChange={handleRadioChecked} />
           &nbsp;&nbsp;
-          <Icon.PencilSquare onClick={(e) => showBookmarkModal(e)}
+          <Icon.PencilSquare onClick={(e) => {
+            showBookmarkModal(e);
+            handleBookmarkRowClick(e);
+          }}
             className="align-middle" title="북마크 수정" />
           &nbsp;&nbsp;
           <a
+            onClick={handleBookmarkRowClick}
             target="_blank"
             rel="noreferrer"
             href={item.bookmarkUrl}
