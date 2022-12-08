@@ -1,5 +1,5 @@
 import React from "react";
-import HistoryData from './DevHistoryData.json';
+import HistoryData from '../datas/DevHistoryData.json';
 import Moment from 'react-moment';
 import 'moment/locale/ko';
 

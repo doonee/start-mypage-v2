@@ -1,5 +1,5 @@
 import React from "react";
-import TopGroupLinksData from './TopGroupLinksData.json';
+import TopGroupLinksData from '../datas/TopGroupLinksData.json';
 import { useLocation } from 'react-router-dom';
 
 const TopGroupLinks = () => {
