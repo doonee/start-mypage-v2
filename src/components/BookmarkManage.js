@@ -53,11 +53,26 @@ export default function BookmarkManage({ showBookmarkModal }) {
   }
 
   const handleSortSave = () => {
-    const arrBookmark = [];
-    document.querySelectorAll('#ul-list-group li').forEach((li) => {
+    const arrBookmark = [],
+      group = document.getElementById('sel-group'),
+      category = document.getElementById('sel-category'),
+      arrLi = document.querySelectorAll('#ul-list-group li');
+    if (!arrLi.length) {
+      alert('저장할 북마크가 없습니다.');
+      return;
+    }
+    arrLi.forEach((li) => {
       arrBookmark.push(li.getAttribute('data-id'));
     });
-    alert(arrBookmark);
+    const data = {
+      group: group.value,
+      category: category.value,
+      arrBookmark: arrBookmark
+    }
+    console.log('data => ', data);
+    setTimeout(() => {
+      window.location.replace(`/bookmarks/${data.group}/${data.category}`);
+    }, 3000);
   }
 
   return (
