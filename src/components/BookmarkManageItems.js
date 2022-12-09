@@ -11,7 +11,7 @@ export default function BookmarkManage({ showBookmarkModal }) {
 
   const handleRadioChecked = (e) => {
     resetBackground(e);
-    e.target.closest('li').style.backgroundColor = 'yellow';
+    e.target.closest('li').style.backgroundColor = '#f8f9e1';
   }
 
   const handleBookmarkRowClick = (e) => {
