@@ -1,0 +1,30 @@
+[
+  {
+    "groupNo": 1,
+    "groupName": "두니넷",
+    "groupDesc": "두니넷 설명",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 2,
+    "groupName": "니이버",
+    "groupDesc": "",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 3,
+    "groupName": "msn",
+    "groupDesc": "자극적인 뉴스 전문 msn",
+    "isImportant": false,
+    "isLinethrough": true
+  },
+  {
+    "groupNo": 5,
+    "groupName": "StartMypage",
+    "groupDesc": "내가 꾸미는 나만의 시작페이지",
+    "isImportant": true,
+    "isLinethrough": false
+  }
+]
