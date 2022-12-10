@@ -43,7 +43,6 @@ export default function Bookmarks() {
           <BookmarkManage showBookmarkModal={showBookmarkModal} />
         </div>
       </div>
-
       <BookmarkModal show={modalShow} onHide={() => setModalShow(false)} />
     </section>
   );

@@ -1,0 +1,30 @@
+[
+  {
+    "categoryNo": 1,
+    "categoryName": "두니넷",
+    "categoryDesc": "두니넷 설명",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "categoryNo": 2,
+    "categoryName": "니이버",
+    "categoryDesc": "",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "categoryNo": 3,
+    "categoryName": "msn",
+    "categoryDesc": "자극적인 뉴스 전문 msn",
+    "isImportant": false,
+    "isLinethrough": true
+  },
+  {
+    "categoryNo": 5,
+    "categoryName": "StartMypage",
+    "categoryDesc": "내가 꾸미는 나만의 시작페이지",
+    "isImportant": true,
+    "isLinethrough": false
+  }
+]

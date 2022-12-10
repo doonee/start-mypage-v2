@@ -1,8 +1,8 @@
 import React from 'react'
 import * as Icon from "react-bootstrap-icons";
-import BookmarkManageData from '../datas/BookmarkManageData.json'
+import CategoryManageData from '../datas/CategoryManageData.json'
 
-export default function BookmarkManage({ showBookmarkModal }) {
+export default function CategoryManage({ showCategoryModal }) {
   const [selectedLi, setSelectedLi] = React.useState(null);
 
   const handleRadioChecked = (e) => {
@@ -13,13 +13,13 @@ export default function BookmarkManage({ showBookmarkModal }) {
     setSelectedLi(e.target.closest('li'));
   }
 
-  const handleBookmarkRowClick = (e) => {
+  const handleCategoryRowClick = (e) => {
     e.target.closest('li').querySelector('input[type=radio]').click();
   }
 
   const moveTo = (e) => {
     if (!selectedLi) {
-      alert('북마크를 선택하세요.');
+      alert('카테고리를 선택하세요.');
       return;
     }
     const ul = document.getElementById('ul-list-group');
@@ -49,30 +49,28 @@ export default function BookmarkManage({ showBookmarkModal }) {
         selectedItem = li.getAttribute('data-id');
       }
     });
-    alert(`${selectedItem}번 북마크 삭제.`);
+    alert(`${selectedItem}번 카테고리 삭제.`);
   }
 
   const handleSortSave = () => {
-    const arrBookmark = [],
+    const arrCategory = [],
       group = document.getElementById('sel-group'),
-      category = document.getElementById('sel-category'),
       arrLi = document.querySelectorAll('#ul-list-group li');
     if (!arrLi.length) {
-      alert('저장할 북마크가 없습니다.');
+      alert('저장할 카테고리가 없습니다.');
       return;
     }
     arrLi.forEach((li) => {
-      arrBookmark.push(li.getAttribute('data-id'));
+      arrCategory.push(li.getAttribute('data-id'));
     });
     const data = {
       group: group.value,
-      category: category.value,
-      arrBookmark: arrBookmark
+      arrCategory: arrCategory
     }
     console.log('data => ', data);
     setTimeout(() => {
-      alert('북마크가 저장되었습니다.');
-      window.location.replace(`/bookmarks/${data.group}/${data.category}`);
+      alert('카테고리가 저장되었습니다.');
+      window.location.replace(`/categories/${data.group}`);
     }, 2000);
   }
 
@@ -80,38 +78,37 @@ export default function BookmarkManage({ showBookmarkModal }) {
     <>
       <ul className="list-group" id='ul-list-group'>
         {
-          BookmarkManageData.map((item) => {
-            let outerName = item.bookmarkName;
+          CategoryManageData.map((item) => {
+            let outerName = item.categoryName;
             if (item.isImportant) outerName = `<strong>${outerName}</strong>`;
             if (item.isLinethrough) outerName = `<del>${outerName}</del>`;
-            if (item.bookmarkDesc) outerName = `${outerName} <small>- ${item.bookmarkDesc}</small>`;
+            if (item.CategoryDesc) outerName = `${outerName} <small>- ${item.categoryDesc}</small>`;
             return (
-              <li key={item.bookmarkNo}
+              <li key={item.categoryNo}
                 className="list-group-item text-truncate"
-                data-id={item.bookmarkNo}
-                onClick={handleBookmarkRowClick}>
+                data-id={item.categoryNo}
+                onClick={handleCategoryRowClick}>
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="bookmarkRadios"
-                  id={`bookmark-${item.bookmarkNo}`}
-                  value={item.bookmarkId}
+                  name="categoryRadios"
+                  id={`category-${item.categoryNo}`}
+                  value={item.categoryId}
                   onChange={handleRadioChecked} />
                 &nbsp;&nbsp;
-                <Icon.PencilSquare onClick={(e) => {
-                  showBookmarkModal(e);
-                  handleBookmarkRowClick(e);
-                }}
-                  className="align-middle" title="북마크 수정" />
+                <Icon.PencilSquare
+                  onClick={(e) => {
+                    showCategoryModal(e);
+                    handleCategoryRowClick(e);
+                  }}
+                  className="align-middle"
+                  title="카테고리 수정" />
                 &nbsp;&nbsp;
-                <a
-                  onClick={handleBookmarkRowClick}
-                  target="_blank"
-                  rel="noreferrer"
-                  href={item.bookmarkUrl}
-                  data-bookmark-id={item.bookmarkId}
+                <span
+                  onClick={handleCategoryRowClick}
+                  data-category-id={item.categoryId}
                   dangerouslySetInnerHTML={{ __html: outerName }}>
-                </a>
+                </span>
               </li>
             )
           })

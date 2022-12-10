@@ -14,15 +14,6 @@ function CategoryModal(props) {
     } else txtNewGroup.parentElement.classList.add('d-none');
   }
 
-  const handleCategoryChanged = (e) => {
-    const txtNewCategory = document.querySelector('#newCategoryname');
-    const target = e.target, value = target.value;
-    if (value === 'newCategory') {
-      txtNewCategory.parentElement.classList.remove('d-none');
-      txtNewCategory.focus();
-    } else txtNewCategory.parentElement.classList.add('d-none');
-  }
-
   const handleFormSubmit = () => {
     const objFormValue = {
       group: document.querySelector('#bookmarkGroup').value,
@@ -66,7 +57,7 @@ function CategoryModal(props) {
   return (
     <Modal {...props} centered>
       <Modal.Header closeButton>
-        <Modal.Title>북마크 관리</Modal.Title>
+        <Modal.Title>카테고리 관리</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleFormSubmit}>
@@ -83,24 +74,12 @@ function CategoryModal(props) {
             <Form.Control type="text" placeholder="새 그룹명을 입력하세요."
               onBlur={handleGroupnameBlur} />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="bookmarkCategory">
-            <Form.Label>카테고리를 선택하세요.</Form.Label>
-            <Form.Select onChange={handleCategoryChanged}>
-              <option value="1">카테고리1</option>
-              <option value="2">카테고리2</option>
-              <option value="3">카테고리3</option>
-              <option value="newCategory">:: 새 카테고리 ::</option>
-            </Form.Select>
-          </Form.Group>
           <Form.Group className="mb-3 d-none" controlId="newCategoryname">
             <Form.Control type="text" placeholder="새 카테고리명을 입력하세요."
               onBlur={handleCategorynameBlur} />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="bookmarkUrl">
-            <Form.Control type="url" placeholder="북마크 URL을 입력하세요." />
-          </Form.Group>
           <Form.Group className="mb-3" controlId="bookmarkName">
-            <Form.Control type="text" placeholder="북마크 명을 입력하세요." />
+            <Form.Control type="text" placeholder="카테고리 명을 입력하세요." />
             <ButtonGroup className="mt-2">
               <Form.Check inline label="중요" type="checkbox" id="chkImportant" />
               <Form.Check inline label="취소선" type="checkbox" id="chkLinethrough" />
