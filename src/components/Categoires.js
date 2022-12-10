@@ -1,5 +1,4 @@
 import React from "react";
-// import * as Icon from "react-bootstrap-icons";
 import CategoryManage from "./CategoryManage";
 import GroupSel from "./GroupSel";
 import CategoryModal from "./CategoryModal";
@@ -26,8 +25,8 @@ export default function Categories() {
 
   return (
     <section className="container-xl">
-      <h2 className="h2">카테고리 관리</h2>
       <div className="row">
+        <h2 className="h2">카테고리 관리</h2>
         <div className="col-md">
           <div className="col-sm-12 col-lg-12 mb-4">
             <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">그룹</h3>

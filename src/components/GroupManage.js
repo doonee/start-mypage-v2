@@ -1,8 +1,8 @@
 import React from 'react'
 import * as Icon from "react-bootstrap-icons";
-import BookmarkManageData from '../datas/BookmarkManageData.json'
+import GroupManageData from '../datas/GroupManageData.json'
 
-export default function BookmarkManage({ showBookmarkModal }) {
+export default function GroupManage({ showGroupModal }) {
   const [selectedLi, setSelectedLi] = React.useState(null);
 
   const handleRadioChecked = (e) => {
@@ -13,13 +13,13 @@ export default function BookmarkManage({ showBookmarkModal }) {
     setSelectedLi(e.target.closest('li'));
   }
 
-  const handleBookmarkRowClick = (e) => {
+  const handleGroupRowClick = (e) => {
     e.target.closest('li').querySelector('input[type=radio]').click();
   }
 
   const moveTo = (e) => {
     if (!selectedLi) {
-      alert('북마크를 선택하세요.');
+      alert('그룹를 선택하세요.');
       return;
     }
     const ul = document.getElementById('ul-list-group');
@@ -49,30 +49,26 @@ export default function BookmarkManage({ showBookmarkModal }) {
         selectedItem = li.getAttribute('data-id');
       }
     });
-    alert(`${selectedItem}번 북마크 삭제.`);
+    alert(`${selectedItem}번 그룹 삭제.`);
   }
 
   const handleSortSave = () => {
-    const arrBookmark = [],
-      group = document.getElementById('sel-group'),
-      category = document.getElementById('sel-category'),
+    const arrGroup = [],
       arrLi = document.querySelectorAll('#ul-list-group li');
     if (!arrLi.length) {
-      alert('저장할 북마크가 없습니다.');
+      alert('저장할 그룹이 없습니다.');
       return;
     }
     arrLi.forEach((li) => {
-      arrBookmark.push(li.getAttribute('data-id'));
+      arrGroup.push(li.getAttribute('data-id'));
     });
     const data = {
-      group: group.value,
-      category: category.value,
-      arrBookmark: arrBookmark
+      arrGroup: arrGroup
     }
     console.log('data => ', data);
     setTimeout(() => {
-      alert('북마크 순서가 저장되었습니다.');
-      window.location.replace(`/bookmarks/${data.group}/${data.category}`);
+      alert('그룹순서가 저장되었습니다.');
+      window.location.replace(`/groups`);
     }, 2000);
   }
 
@@ -80,38 +76,37 @@ export default function BookmarkManage({ showBookmarkModal }) {
     <>
       <ul className="list-group" id='ul-list-group'>
         {
-          BookmarkManageData.map((item) => {
-            let outerName = item.bookmarkName;
+          GroupManageData.map((item) => {
+            let outerName = item.groupName;
             if (item.isImportant) outerName = `<strong>${outerName}</strong>`;
             if (item.isLinethrough) outerName = `<del>${outerName}</del>`;
-            if (item.bookmarkDesc) outerName = `${outerName} <small>- ${item.bookmarkDesc}</small>`;
+            if (item.groupDesc) outerName = `${outerName} <small>- ${item.groupDesc}</small>`;
             return (
-              <li key={item.bookmarkNo}
+              <li key={item.groupNo}
                 className="list-group-item text-truncate"
-                data-id={item.bookmarkNo}
-                onClick={handleBookmarkRowClick}>
+                data-id={item.groupNo}
+                onClick={handleGroupRowClick}>
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="bookmarkRadios"
-                  id={`bookmark-${item.bookmarkNo}`}
-                  value={item.bookmarkId}
+                  name="groupRadios"
+                  id={`group-${item.groupNo}`}
+                  value={item.groupId}
                   onChange={handleRadioChecked} />
                 &nbsp;&nbsp;
-                <Icon.PencilSquare onClick={(e) => {
-                  showBookmarkModal(e);
-                  handleBookmarkRowClick(e);
-                }}
-                  className="align-middle" title="북마크 수정" />
+                <Icon.PencilSquare
+                  onClick={(e) => {
+                    showGroupModal(e);
+                    handleGroupRowClick(e);
+                  }}
+                  className="align-middle"
+                  title="그룹 수정" />
                 &nbsp;&nbsp;
-                <a
-                  onClick={handleBookmarkRowClick}
-                  target="_blank"
-                  rel="noreferrer"
-                  href={item.bookmarkUrl}
-                  data-bookmark-id={item.bookmarkId}
+                <span
+                  onClick={handleGroupRowClick}
+                  data-group-id={item.groupId}
                   dangerouslySetInnerHTML={{ __html: outerName }}>
-                </a>
+                </span>
               </li>
             )
           })

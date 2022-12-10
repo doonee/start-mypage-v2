@@ -26,8 +26,8 @@ export default function Bookmarks() {
 
   return (
     <section className="container-xl">
-      <h2 className="h2">북마크 관리</h2>
       <div className="row">
+        <h2 className="h2">북마크 관리</h2>
         <div className="col-md">
           <div className="col-sm-12 col-lg-12 mb-4">
             <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">그룹</h3>

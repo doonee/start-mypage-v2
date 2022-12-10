@@ -69,7 +69,7 @@ export default function CategoryManage({ showCategoryModal }) {
     }
     console.log('data => ', data);
     setTimeout(() => {
-      alert('카테고리가 저장되었습니다.');
+      alert('카테고리 순서가 저장되었습니다.');
       window.location.replace(`/categories/${data.group}`);
     }, 2000);
   }
