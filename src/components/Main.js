@@ -11,7 +11,7 @@ import {
   faSort,
 } from "@fortawesome/free-solid-svg-icons";
 import Masonry from "react-masonry-css";
-import MainData from "./MainData.json";
+import MainData from "../datas/MainData.json";
 
 const Main = () => {
   const myBreakpointsAndCols = {
