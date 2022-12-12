@@ -1,0 +1,30 @@
+#social-links {
+  button {
+    width: 7rem;
+    height: 5.5rem;
+    margin: 0.3rem;
+    margin-bottom: 1rem;
+    background-color: aliceblue;
+    img {
+      width: 50px;
+    }
+  }
+  button:hover {
+    font-weight: bold;
+  }
+  .naver {
+    background-color: rgb(3 196 97 / 16%);
+  }
+  .kakao {
+    background-color: rgb(203 184 3 / 16%);
+  }
+  .google {
+    background-color: bisque;
+  }
+  .mata {
+    background-color: rgb(44 67 126 / 16%);
+  }
+  .twitter {
+    background-color: rgb(63 113 178 / 16%);
+  }
+}

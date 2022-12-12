@@ -27,7 +27,7 @@ export default function ConfigManage() {
     <div className="col-12 mt-2">
       <Form onSubmit={handleSave}>
         <Form.Group className="mb-3" controlId="appTitle">
-          <Form.Control type="text" className='fs-4' placeholder="페이지 타이틀을 작성하세요." />
+          <Form.Control type="text" className='fs-4' placeholder="앱 타이틀을 작성하세요." />
         </Form.Group>
         <Form.Group className="mb-3" controlId="startGroup">
           <Form.Label>시작그룹을 선택하세요.</Form.Label>

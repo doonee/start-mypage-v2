@@ -1,0 +1,28 @@
+#social-links button {
+  width: 7rem;
+  height: 5.5rem;
+  margin: 0.3rem;
+  margin-bottom: 1rem;
+  background-color: aliceblue;
+}
+#social-links button img {
+  width: 50px;
+}
+#social-links button:hover {
+  font-weight: bold;
+}
+#social-links .naver {
+  background-color: rgba(3, 196, 97, 0.16);
+}
+#social-links .kakao {
+  background-color: rgba(203, 184, 3, 0.16);
+}
+#social-links .google {
+  background-color: bisque;
+}
+#social-links .mata {
+  background-color: rgba(44, 67, 126, 0.16);
+}
+#social-links .twitter {
+  background-color: rgba(63, 113, 178, 0.16);
+}/*# sourceMappingURL=social.css.map */

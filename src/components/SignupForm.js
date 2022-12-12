@@ -50,16 +50,12 @@ export default function Signup() {
     <Form onSubmit={handleSave}>
       <Form.Group className="mb-3" controlId="userId">
         <Form.Label>로그인 아이디</Form.Label>
-        <Form.Control type="text" placeholder="사용할 아이디를 입력하세요." />
-        <Form.Text className="text-muted">
-          영문, 숫자 혼용해서 4자이상 30자이하로 입력하세요.
-        </Form.Text>
+        <Form.Control type="text" placeholder="영문, 숫자 혼용해서 4자이상 30자이하로 입력하세요." />
       </Form.Group>
       <Form.Group className="mb-3" controlId="password">
         <Form.Label>비밀번호</Form.Label>
-        <Form.Control type="password" placeholder="비밀번호를 입력하세요." />
+        <Form.Control type="password" placeholder="영문, 숫자, 특수문자 혼용해서 4자이상 30자이하로 입력하세요." />
         <Form.Text className="text-muted">
-          영문, 숫자, 특수문자 혼용해서 4자이상 30자이하로 입력하세요.<br />
           비밀번호는 단방향 암호화 되서 관리되므로 관리자도 알 수 없습니다.
         </Form.Text>
       </Form.Group>
