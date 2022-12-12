@@ -16,22 +16,11 @@ import DevHistoryPage from "./pages/DevHistoryPage";
 import BrowserSettingPage from "./pages/BrowserSettingPage";
 import ConfigPage from "./pages/ConfigPage";
 import SignupPage from "./pages/UserPage/signup";
+import SigninPage from "./pages/UserPage/signin";
 
 const Layout = () => {
   const location = useLocation();
   const curPath = location.pathname;
-  // React.useState(() => {
-  //   // remove all and add active class on current menu
-  //   window.onload = () => {
-  //     console.log(789);
-  //     // const menuLinks = document.querySelectorAll("#ul-topmenu a.nav-link");
-  //     // menuLinks.forEach((link) => {
-  //     //   link.classList.remove("active");
-  //     //   console.log(curPath, link.getAttribute("href"));
-  //     //   if (curPath === link.getAttribute("href")) link.classList.add("active");
-  //     // });
-  //   };
-  // });
 
   return (
     <div className="App">
@@ -53,6 +42,7 @@ function App() {
           <Route path="groups" element={<GroupsPage />} />
           <Route path="config" element={<ConfigPage />} />
           <Route path="signup" element={<SignupPage />} />
+          <Route path="signin" element={<SigninPage />} />
           <Route path="mybookmarks" element={<MyBookmarks />} />
           <Route path="shareBookmarks/:groupId" element={<MyBookmarks />} />
           <Route path="categories/:groudId" element={<CategoriesPage />} />

@@ -2,7 +2,7 @@ import React from 'react'
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export default function Signup() {
+export default function SignupForm() {
   const handleSave = (e) => {
     e.preventDefault();
     const userId = document.getElementById('userId'),
@@ -56,7 +56,7 @@ export default function Signup() {
         <Form.Label>비밀번호</Form.Label>
         <Form.Control type="password" placeholder="영문, 숫자, 특수문자 혼용해서 4자이상 30자이하로 입력하세요." />
         <Form.Text className="text-muted">
-          비밀번호는 단방향 암호화 되서 관리되므로 관리자도 알 수 없습니다.
+          * 비밀번호는 단방향 암호화 되서 관리되므로 관리자도 알 수 없습니다.
         </Form.Text>
       </Form.Group>
       <Form.Group className="mb-3" controlId="passwordConfirm">
