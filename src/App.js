@@ -17,6 +17,8 @@ import BrowserSettingPage from "./pages/BrowserSettingPage";
 import ConfigPage from "./pages/ConfigPage";
 import SignupPage from "./pages/UserPage/signup";
 import SigninPage from "./pages/UserPage/signin";
+import MyInfoPage from "./pages/UserPage/myinfo";
+import NotFound from "./pages/NotFound";
 
 const Layout = () => {
   const location = useLocation();
@@ -43,6 +45,7 @@ function App() {
           <Route path="config" element={<ConfigPage />} />
           <Route path="signup" element={<SignupPage />} />
           <Route path="signin" element={<SigninPage />} />
+          <Route path="myinfo" element={<MyInfoPage />} />
           <Route path="mybookmarks" element={<MyBookmarks />} />
           <Route path="shareBookmarks/:groupId" element={<MyBookmarks />} />
           <Route path="categories/:groudId" element={<CategoriesPage />} />
@@ -52,6 +55,7 @@ function App() {
           />
           <Route path="devHistory" element={<DevHistoryPage />} />
           <Route path="browserSetting" element={<BrowserSettingPage />} />
+          <Route path="/*" element={<NotFound />} />
         </Route>
       </Routes>
     </>

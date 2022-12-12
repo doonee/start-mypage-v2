@@ -83,13 +83,13 @@ const TopMenus = ({ curPath }) => {
                   <p>로그인</p>
                 </a>
               </li>
-              <li className="nav-item d-none">
+              <li className="nav-item d-block">
                 <a className="nav-link" href="/myinfo">
                   <FontAwesomeIcon icon={faCircleInfo} size={"lg"} />
                   <p>내정보</p>
                 </a>
               </li>
-              <li className="nav-item d-none" style={{ width: "65px" }}>
+              <li className="nav-item d-block" style={{ width: "65px" }}>
                 <a className="nav-link" href="/signout">
                   <FontAwesomeIcon icon={faPowerOff} size={"lg"} />
                   <p>로그아웃</p>

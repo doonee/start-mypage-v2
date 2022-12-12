@@ -14,14 +14,15 @@ export default function Signup() {
         <h2 className="h2">회원가입</h2>
         <div className="col-md-7 mt-md-0">
           <article className='text-center mb-4' id="social-links">
+            <h4>소셜로 가입</h4>
             <Naver />
             <Kakao />
             <Google />
             <Meta />
             <Twitter />
           </article>
-          <p className="text-muted text-center"><small>* 소셜을 통한 가입과 일반가입 중 선택할 수 있습니다.</small></p>
-          <div className="col-12 mt-2">
+          <div className="col-12 mt-3">
+            <h4 className='text-center'>직접 가입</h4>
             <SignupForm />
           </div >
         </div>
