@@ -7,11 +7,12 @@ import TopGroupLinks from "./components/TopGroupLinks";
 import Footer from "./components/Footer";
 import GoToTopIcon from "./components/GoToTopIcon";
 import MainPage from "./pages/MainPage";
-import GroupsPage from "./pages/GroupsPage";
-import MyBookmarks from "./pages/BookmarksPage/viewByGroup";
-import SearchBookmarks from "./pages/BookmarksPage/viewBySearch";
-import CategoriesPage from "./pages/CategoriesPage";
-import BookmarksPage from "./pages/BookmarksPage";
+import GroupManagePage from "./pages/GroupsPage/GroupManagePage";
+import BookmarkManagePage from "./pages/BookmarksPage/BookmarkManagePage";
+import CategoryManagePage from "./pages/CategoriesPage/CategoryManagePage";
+import MyBookmarksPage from "./pages/BookmarksPage/MyBookmarksPage";
+import ShareBookmarksPage from "./pages/BookmarksPage/ShareBookmarksPage";
+import SearchBookmarksPage from "./pages/BookmarksPage/SearchBookmarksPage";
 import DevHistoryPage from "./pages/DevHistoryPage";
 import BrowserSettingPage from "./pages/BrowserSettingPage";
 import ConfigPage from "./pages/ConfigPage";
@@ -42,20 +43,20 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
-          <Route path="groups" element={<GroupsPage />} />
+          <Route path="groupManage" element={<GroupManagePage />} />
+          <Route path="categoryManage/:groudId" element={<CategoryManagePage />} />
+          <Route
+            path="bookmarkManage/:groudId/:categoryId"
+            element={<BookmarkManagePage />}
+          />
           <Route path="config" element={<ConfigPage />} />
           <Route path="signup" element={<SignupPage />} />
           <Route path="signin" element={<SigninPage />} />
           <Route path="myinfo" element={<MyInfoPage />} />
           <Route path="signout" element={<SignoutPage />} />
-          <Route path="myBookmarks" element={<MyBookmarks />} />
-          <Route path="searchBookmarks" element={<SearchBookmarks />} />
-          <Route path="shareBookmarks/:groupId" element={<MyBookmarks />} />
-          <Route path="categories/:groudId" element={<CategoriesPage />} />
-          <Route
-            path="bookmarks/:groudId/:categoryId"
-            element={<BookmarksPage />}
-          />
+          <Route path="myBookmarks" element={<MyBookmarksPage />} />
+          <Route path="searchBookmarks" element={<SearchBookmarksPage />} />
+          <Route path="shareBookmarks/:groupId/:categoryId" element={<ShareBookmarksPage />} />
           <Route path="devHistory" element={<DevHistoryPage />} />
           <Route path="browserSetting" element={<BrowserSettingPage />} />
           <Route path="/*" element={<NotFound />} />

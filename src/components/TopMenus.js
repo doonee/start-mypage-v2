@@ -32,7 +32,7 @@ const TopMenus = ({ curPath }) => {
         <div className="container-fluid navbar-expand">
           <a
             className="navbar-brand col-md-5 col-lg-6 col-xl-7 overflow-hidden"
-            href="/mybookmarks" rel="noreferrer">
+            href="/myBookmarks" rel="noreferrer">
             <h1 className="h4">편리한 북마크 무료관리툴 - StartMypage.com</h1>
           </a>
           <div
@@ -48,19 +48,19 @@ const TopMenus = ({ curPath }) => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/groups">
+                <a className="nav-link" href="/groupManage">
                   <FontAwesomeIcon icon={faObjectGroup} size={"lg"} />
                   <p>그룹</p>
                 </a>
               </li>
               <li className="nav-item" style={{ width: "65px" }}>
-                <a className="nav-link" href="/categories/123">
+                <a className="nav-link" href="/categoryManage/123">
                   <FontAwesomeIcon icon={faChartPie} size={"lg"} />
                   <p>카테고리</p>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/bookmarks/123/7890">
+                <a className="nav-link" href="/bookmarkManage/123/7890">
                   <FontAwesomeIcon icon={faBookmark} size={"lg"} />
                   <p>북마크</p>
                 </a>

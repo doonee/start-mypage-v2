@@ -1,132 +1,49 @@
-import React from 'react'
-import * as Icon from "react-bootstrap-icons";
-import BookmarkManageData from '../../datas/BookmarkManageData.json'
+import React from "react";
+import BookmarkItemManage from "./BookmarkItemManage";
+import BookmarkModal from "./BookmarkModal";
+import CategorySel from "../categories/CategorySel";
+import GroupSel from "../groups/GroupSel";
 
-export default function BookmarkManage({ showBookmarkModal }) {
-  const [selectedLi, setSelectedLi] = React.useState(null);
+export default function BookmarkManage() {
+  const [modalShow, setModalShow] = React.useState(false);
 
-  const handleRadioChecked = (e) => {
-    e.target.closest('ul').querySelectorAll('li').forEach(element => {
-      element.style.backgroundColor = 'transparent';
-    });
-    e.target.closest('li').style.backgroundColor = '#f8f9e1';
-    setSelectedLi(e.target.closest('li'));
-  }
-
-  const handleBookmarkRowClick = (e) => {
-    e.target.closest('li').querySelector('input[type=radio]').click();
-  }
-
-  const moveTo = (e) => {
-    if (!selectedLi) {
-      alert('북마크를 선택하세요.');
-      return;
+  const showBookmarkModal = (e) => {
+    // 애니메이션 적용안됨
+    // var groupModal = new bootstrap.Modal(
+    //   document.getElementById("newModal"),
+    //   {}
+    // );
+    // document
+    //   .getElementById("newModal")
+    //   .classList.add("animate__animated", "animate__pulse");
+    // groupModal.show();
+    if (e) {
+      e.preventDefault();
+      e.target.closest("li").style.fontWeight = "bold";
     }
-    const ul = document.getElementById('ul-list-group');
-    const direction = e.target.closest('button').getAttribute('data-direction');
-    if (direction === 'top') {
-      ul.insertBefore(selectedLi, ul.firstChild);
-    }
-    else if (direction === 'up') {
-      const wrapperParent = selectedLi.parentNode;
-      const wrapperPervious = selectedLi.previousElementSibling;
-      if (wrapperPervious) wrapperParent.insertBefore(selectedLi, wrapperPervious);
-    }
-    else if (direction === 'down') {
-      const wrapperParent = selectedLi.parentNode;
-      const wrapperNext = selectedLi.nextElementSibling;
-      if (wrapperNext) wrapperParent.insertBefore(wrapperNext, selectedLi);
-    }
-    else if (direction === 'bottom') {
-      ul.insertBefore(selectedLi, null);
-    }
-  }
-
-  const handleSelectedDelete = () => {
-    let selectedItem = null;
-    document.querySelectorAll('#ul-list-group li').forEach((li) => {
-      if (li.querySelector('input[type=radio]').checked) {
-        selectedItem = li.getAttribute('data-id');
-      }
-    });
-    alert(`${selectedItem}번 북마크 삭제.`);
-  }
-
-  const handleSortSave = () => {
-    const arrBookmark = [],
-      group = document.getElementById('sel-group'),
-      category = document.getElementById('sel-category'),
-      arrLi = document.querySelectorAll('#ul-list-group li');
-    if (!arrLi.length) {
-      alert('저장할 북마크가 없습니다.');
-      return;
-    }
-    arrLi.forEach((li) => {
-      arrBookmark.push(li.getAttribute('data-id'));
-    });
-    const data = {
-      group: group.value,
-      category: category.value,
-      arrBookmark: arrBookmark
-    }
-    console.log('data => ', data);
-    setTimeout(() => {
-      alert('북마크 순서가 저장되었습니다.');
-      window.location.replace(`/bookmarks/${data.group}/${data.category}`);
-    }, 2000);
-  }
+    setModalShow(true);
+  };
 
   return (
-    <>
-      <ul className="list-group" id='ul-list-group'>
-        {
-          BookmarkManageData.map((item) => {
-            let outerName = item.bookmarkName;
-            if (item.isImportant) outerName = `<strong>${outerName}</strong>`;
-            if (item.isLinethrough) outerName = `<del>${outerName}</del>`;
-            if (item.bookmarkDesc) outerName = `${outerName} <small>- ${item.bookmarkDesc}</small>`;
-            return (
-              <li key={item.bookmarkNo}
-                className="list-group-item text-truncate"
-                data-id={item.bookmarkNo}
-                onClick={handleBookmarkRowClick}>
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="bookmarkRadios"
-                  id={`bookmark-${item.bookmarkNo}`}
-                  value={item.bookmarkId}
-                  onChange={handleRadioChecked} />
-                &nbsp;&nbsp;
-                <Icon.PencilSquare onClick={(e) => {
-                  showBookmarkModal(e);
-                  handleBookmarkRowClick(e);
-                }}
-                  className="align-middle" title="북마크 수정" />
-                &nbsp;&nbsp;
-                <a
-                  onClick={handleBookmarkRowClick}
-                  target="_blank"
-                  rel="noreferrer"
-                  href={item.bookmarkUrl}
-                  data-bookmark-id={item.bookmarkId}
-                  dangerouslySetInnerHTML={{ __html: outerName }}>
-                </a>
-              </li>
-            )
-          })
-        }
-      </ul>
-      <div className="btn-group col-12 mt-2">
-        <button type="button" className="col btn btn-outline-secondary" onClick={moveTo} data-direction="top"><Icon.ChevronDoubleUp /></button>
-        <button type="button" className="col btn btn-outline-secondary" onClick={moveTo} data-direction="up"><Icon.ChevronUp /></button>
-        <button type="button" className="col btn btn-outline-secondary" onClick={moveTo} data-direction="down"><Icon.ChevronDown /></button>
-        <button type="button" className="col btn btn-outline-secondary" onClick={moveTo} data-direction="bottom"><Icon.ChevronDoubleDown /></button>
+    <section className="container-xl">
+      <div className="row">
+        <h2 className="h2">북마크 관리</h2>
+        <div className="col-md">
+          <div className="col-sm-12 col-lg-12 mb-4">
+            <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">그룹</h3>
+            <GroupSel />
+          </div>
+          <div className="col-sm-12 col-lg-12">
+            <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">카테고리</h3>
+            <CategorySel />
+          </div>
+        </div>
+        <div className="col-md-7 mt-4 mt-md-0">
+          <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">북마크</h3>
+          <BookmarkItemManage showBookmarkModal={showBookmarkModal} />
+        </div>
       </div>
-      <div className="btn-group col-12 mt-2">
-        <button type="button" className="col btn btn-outline-danger" onClick={handleSelectedDelete}>선택 삭제</button>
-        <button type="button" className="col btn btn-outline-primary" onClick={handleSortSave}>순서 저장</button>
-      </div>
-    </>
-  )
+      <BookmarkModal show={modalShow} onHide={() => setModalShow(false)} />
+    </section>
+  );
 }

@@ -21,7 +21,7 @@ const TopGroupLinks = () => {
   }
 
   const [selectedGroup, setSelectedGroup] = React.useState(() => {
-    if (curUrl.includes('/mybookmarks')) {
+    if (curUrl.includes('/myBookmarks')) {
       if (getParameter('group')) {
         return getParameter('group');
       } else {
@@ -37,12 +37,12 @@ const TopGroupLinks = () => {
   const handleGrouplinkClick = (e) => {
     e.preventDefault();
     const selectedGroup = e.target.getAttribute('data-id');
-    if (curUrl.includes('/mybookmarks')) {
+    if (curUrl.includes('/myBookmarks')) {
       // 선택 된 그룹의 북마크 리스트 가져와야 함!
       // 성공 후
       setSelectedGroup(selectedGroup);
     } else {
-      window.location.href = `/mybookmarks/?group=${selectedGroup}`;
+      window.location.href = `/myBookmarks/?group=${selectedGroup}`;
     }
   }
 
