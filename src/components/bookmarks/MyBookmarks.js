@@ -1,12 +1,14 @@
 import React from "react";
 import Masonry from "react-masonry-css";
 import BookmarkModal from "./BookmarkModal";
-import MyBookmarksData from "../../datas/BookmarkData.json";
+// import MyBookmarksData from "../../datas/BookmarkData.json";
 import MyBookmarksByCategory from './MyBookmarksByCategory';
 import MyBookmarksCategoryTitle from './MyBookmarksCategoryTitle';
+import axios from 'axios'
 
 const MyBookmarks = () => {
   const [modalShow, setModalShow] = React.useState(false);
+  const [arrBookmark, setArrBookmark] = React.useState([]);
 
   const showBookmarkModal = (e) => {
     // 애니메이션 적용안됨
@@ -32,8 +34,25 @@ const MyBookmarks = () => {
     500: 1,
   };
 
+  const setInitialArrBookmark = async (cNo) => {
+    try {
+      const res = await axios.get('/datas/BookmarkData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        // eslint-disable-next-line eqeqeq
+        const arr = res.data.filter(b => b.categoryNo == cNo);
+        if (arr && arr.length) setArrBookmark(arr[0].bookmarks);
+      }
+    } catch (err) {
+      console.log('err >> ', err);
+    }
+  }
+
+  React.useEffect(() => {
+    setInitialArrBookmark();
+  }, []);
+
   // 모듈 형태로 넣으면 정렬이 비정상적으로 되서 변수 활용함!
-  const BookmarkManage = MyBookmarksData.map(function (items) {
+  const BookmarkManage = arrBookmark.map(function (items) {
     return (
       <div key={items.categoryNo}>
         <MyBookmarksCategoryTitle item={items} showBookmarkModal={showBookmarkModal} />

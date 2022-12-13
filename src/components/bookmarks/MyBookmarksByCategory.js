@@ -15,7 +15,8 @@ export default function MyBookmarksByCategory({ bookmarks, showBookmarkModal }) 
                         className="align-middle" title="북마크 수정" />
                     &nbsp;&nbsp;
                     <a
-                        target="blank" rel="noreferrer"
+                        target="blank"
+                        rel="noreferrer"
                         className="align-middle"
                         href={item.bookmarkUrl}
                         data-bookmark-no={item.bookmarkNo}

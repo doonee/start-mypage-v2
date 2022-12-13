@@ -1,15 +1,22 @@
 import React from 'react'
 import * as Icon from "react-bootstrap-icons";
-import BookmarkData from '../../datas/BookmarkData.json'
+import axios from 'axios'
 
 export default function BookmarkItemManage({ showBookmarkModal, categoryId }) {
   const [selectedLi, setSelectedLi] = React.useState(null);
   const [arrBookmark, setArrBookmark] = React.useState([]);
 
-  const setInitialArrBookmark = (cNo) => {
-    // eslint-disable-next-line eqeqeq
-    const arr = BookmarkData.filter(b => b.categoryNo == cNo);
-    if (arr && arr.length) setArrBookmark(arr[0].bookmarks);
+  const setInitialArrBookmark = async (cNo) => {
+    try {
+      const res = await axios.get('/datas/BookmarkData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        // eslint-disable-next-line eqeqeq
+        const arr = res.data.filter(b => b.categoryNo == cNo);
+        if (arr && arr.length) setArrBookmark(arr[0].bookmarks);
+      }
+    } catch (err) {
+      console.log('err >> ', err);
+    }
   }
 
   React.useEffect(() => {

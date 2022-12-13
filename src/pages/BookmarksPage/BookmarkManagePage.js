@@ -4,5 +4,5 @@ import BookmarkManage from "../../components/bookmarks/BookmarkManage";
 
 export default function BookmarkManagePage() {
   const params = useParams();
-  return <BookmarkManage groudId={params.groudId} categoryId={params.categoryId} />;
+  return <BookmarkManage groupId={params.groupId} categoryId={params.categoryId} />;
 }

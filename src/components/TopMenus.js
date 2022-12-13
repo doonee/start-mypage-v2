@@ -60,7 +60,7 @@ const TopMenus = ({ curPath }) => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/bookmarkManage/123/7890">
+                <a className="nav-link" href="/bookmarkManage/12/3">
                   <FontAwesomeIcon icon={faBookmark} size={"lg"} />
                   <p>북마크</p>
                 </a>
