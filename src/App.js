@@ -8,7 +8,8 @@ import Footer from "./components/Footer";
 import GoToTopIcon from "./components/GoToTopIcon";
 import MainPage from "./pages/MainPage";
 import GroupsPage from "./pages/GroupsPage";
-import MyBookmarks from "./pages/GroupsPage/view";
+import MyBookmarks from "./pages/BookmarksPage/viewByGroup";
+import SearchBookmarks from "./pages/BookmarksPage/viewBySearch";
 import CategoriesPage from "./pages/CategoriesPage";
 import BookmarksPage from "./pages/BookmarksPage";
 import DevHistoryPage from "./pages/DevHistoryPage";
@@ -47,7 +48,8 @@ function App() {
           <Route path="signin" element={<SigninPage />} />
           <Route path="myinfo" element={<MyInfoPage />} />
           <Route path="signout" element={<SignoutPage />} />
-          <Route path="mybookmarks" element={<MyBookmarks />} />
+          <Route path="myBookmarks" element={<MyBookmarks />} />
+          <Route path="searchBookmarks" element={<SearchBookmarks />} />
           <Route path="shareBookmarks/:groupId" element={<MyBookmarks />} />
           <Route path="categories/:groudId" element={<CategoriesPage />} />
           <Route

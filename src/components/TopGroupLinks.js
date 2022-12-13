@@ -74,7 +74,7 @@ const TopGroupLinks = () => {
           <div
             className="collapse navbar-collapse col-md-4 col-lg-3 pt-3 pt-md-0 overflow-hidden"
             id="navbarText">
-            <form className="d-flex ms-auto" role="search">
+            <form className="d-flex ms-auto" role="search" action="/searchBookmarks">
               <input
                 className="form-control me-2"
                 type="search"
