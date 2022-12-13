@@ -17,6 +17,7 @@ import BrowserSettingPage from "./pages/BrowserSettingPage";
 import ConfigPage from "./pages/ConfigPage";
 import SignupPage from "./pages/UserPage/signup";
 import SigninPage from "./pages/UserPage/signin";
+import SignoutPage from "./pages/UserPage/signout";
 import MyInfoPage from "./pages/UserPage/myinfo";
 import NotFound from "./pages/NotFound";
 
@@ -46,6 +47,7 @@ function App() {
           <Route path="signup" element={<SignupPage />} />
           <Route path="signin" element={<SigninPage />} />
           <Route path="myinfo" element={<MyInfoPage />} />
+          <Route path="signout" element={<SignoutPage />} />
           <Route path="mybookmarks" element={<MyBookmarks />} />
           <Route path="shareBookmarks/:groupId" element={<MyBookmarks />} />
           <Route path="categories/:groudId" element={<CategoriesPage />} />
