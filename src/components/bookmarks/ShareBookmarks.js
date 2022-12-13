@@ -1,30 +1,7 @@
 import React from "react";
-import * as Icon from "react-bootstrap-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Masonry from "react-masonry-css";
-import BookmarkModal from "./BookmarkModal";
 
 const ShareBookmarks = () => {
-  const [modalShow, setModalShow] = React.useState(false);
-
-  const showBookmarkModal = (e) => {
-    // 애니메이션 적용안됨
-    // var groupModal = new bootstrap.Modal(
-    //   document.getElementById("newModal"),
-    //   {}
-    // );
-    // document
-    //   .getElementById("newModal")
-    //   .classList.add("animate__animated", "animate__pulse");
-    // groupModal.show();
-    if (e) {
-      e.preventDefault();
-      e.target.closest("p").style.fontWeight = "bold";
-    }
-    setModalShow(true);
-  };
-
   const myBreakpointsAndCols = {
     default: 4,
     1100: 3,
@@ -65,22 +42,11 @@ const ShareBookmarks = () => {
     return (
       <div key={item.id}>
         <h6>
-          <a href="/bookmarks/2/1223" data-category="1223">
+          <a href="/shareBookmarks/2/1223" data-category="1223">
             <strong>{item.name}</strong>
           </a>
-          &nbsp;
-          <span>
-            (
-            <FontAwesomeIcon
-              icon={faPlus}
-              onClick={(e) => showBookmarkModal(null)}
-            />
-            )
-          </span>
         </h6>
         <p>
-          <Icon.InfoCircle onClick={(e) => showBookmarkModal(e)} />
-          &nbsp;&nbsp;
           <a
             target="_blank"
             rel="noreferrer"
@@ -92,8 +58,6 @@ const ShareBookmarks = () => {
           </a>
         </p>
         <p>
-          <Icon.InfoCircle onClick={(e) => showBookmarkModal(e)} />
-          &nbsp;&nbsp;
           <a
             target="_blank"
             rel="noreferrer"
@@ -105,8 +69,6 @@ const ShareBookmarks = () => {
           </a>
         </p>
         <p>
-          <Icon.InfoCircle onClick={(e) => showBookmarkModal(e)} />
-          &nbsp;&nbsp;
           <a
             target="_blank"
             rel="noreferrer"
@@ -118,8 +80,6 @@ const ShareBookmarks = () => {
           </a>
         </p>
         <p>
-          <Icon.InfoCircle onClick={(e) => showBookmarkModal(e)} />
-          &nbsp;&nbsp;
           <a
             target="_blank"
             rel="noreferrer"
@@ -133,8 +93,6 @@ const ShareBookmarks = () => {
           </a>
         </p>
         <p>
-          <Icon.InfoCircle onClick={(e) => showBookmarkModal(e)} />
-          &nbsp;&nbsp;
           <a
             target="_blank"
             rel="noreferrer"
@@ -155,8 +113,6 @@ const ShareBookmarks = () => {
         columnClassName="my-masonry-grid_column">
         {items}
       </Masonry>
-
-      <BookmarkModal show={modalShow} onHide={() => setModalShow(false)} />
     </section>
   );
 };

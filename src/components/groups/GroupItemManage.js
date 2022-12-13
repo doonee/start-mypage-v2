@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Icon from "react-bootstrap-icons";
-import GroupItemManageData from '../../datas/GroupItemManageData.json'
+import GroupData from '../../datas/GroupData.json'
 
 export default function GroupItemManage({ showGroupModal }) {
   const [selectedLi, setSelectedLi] = React.useState(null);
@@ -76,7 +76,7 @@ export default function GroupItemManage({ showGroupModal }) {
     <>
       <ul className="list-group" id='ul-list-group'>
         {
-          GroupItemManageData.map((item) => {
+          GroupData.map((item) => {
             let outerName = item.groupName;
             if (item.isImportant) outerName = `<strong>${outerName}</strong>`;
             if (item.isLinethrough) outerName = `<del>${outerName}</del>`;

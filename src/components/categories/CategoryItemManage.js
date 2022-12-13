@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Icon from "react-bootstrap-icons";
-import CategoryItemManageData from '../../datas/CategoryItemManageData.json'
+import CategoryData from '../../datas/CategoryData.json'
 
 export default function CategoryItemManage({ showCategoryModal }) {
   const [selectedLi, setSelectedLi] = React.useState(null);
@@ -78,7 +78,7 @@ export default function CategoryItemManage({ showCategoryModal }) {
     <>
       <ul className="list-group" id='ul-list-group'>
         {
-          CategoryItemManageData.map((item) => {
+          CategoryData.map((item) => {
             let outerName = item.categoryName;
             if (item.isImportant) outerName = `<strong>${outerName}</strong>`;
             if (item.isLinethrough) outerName = `<del>${outerName}</del>`;

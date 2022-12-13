@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Icon from "react-bootstrap-icons";
-import BookmarkItemManageData from '../../datas/BookmarkItemManageData.json'
+import BookmarkData from '../../datas/BookmarkData.json'
 
 export default function BookmarkItemManage({ showBookmarkModal }) {
   const [selectedLi, setSelectedLi] = React.useState(null);
@@ -80,7 +80,7 @@ export default function BookmarkItemManage({ showBookmarkModal }) {
     <>
       <ul className="list-group" id='ul-list-group'>
         {
-          BookmarkItemManageData.map((item) => {
+          BookmarkData.map((item) => {
             let outerName = item.bookmarkName;
             if (item.isImportant) outerName = `<strong>${outerName}</strong>`;
             if (item.isLinethrough) outerName = `<del>${outerName}</del>`;

@@ -5,7 +5,7 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 export default function MyBookmarksByCategory({ item, showBookmarkModal }) {
   return (
     <h6 style={{ lineHeight: '1.7rem' }}>
-      <a href="/myBookmarks" data-category="1223" title="북마크 관리">
+      <a href="/bookmarkManage/123/7890" data-category="1223" title="북마크 관리">
         <strong>{item.categoryName}</strong>
       </a>
       &nbsp;&nbsp;
