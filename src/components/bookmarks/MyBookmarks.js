@@ -1,7 +1,7 @@
 import React from "react";
 import Masonry from "react-masonry-css";
 import BookmarkModal from "./BookmarkModal";
-import MyBookmarksData from "../../datas/MyBookmarksData.json";
+import MyBookmarksData from "../../datas/BookmarkData.json";
 import MyBookmarksByCategory from './MyBookmarksByCategory';
 import MyBookmarksCategoryTitle from './MyBookmarksCategoryTitle';
 

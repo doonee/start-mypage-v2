@@ -4,6 +4,14 @@ import BookmarkData from '../../datas/BookmarkData.json'
 
 export default function BookmarkItemManage({ showBookmarkModal }) {
   const [selectedLi, setSelectedLi] = React.useState(null);
+  const [arrBookmark, setArrBookmark] = React.useState(() => {
+    const arr = BookmarkData.filter(b => b.categoryNo === 3);
+    if (arr && arr.length) {
+      return arr[0].bookmarks;
+    } else {
+      return [];
+    }
+  });
 
   const handleRadioChecked = (e) => {
     e.target.closest('ul').querySelectorAll('li').forEach(element => {
@@ -80,7 +88,8 @@ export default function BookmarkItemManage({ showBookmarkModal }) {
     <>
       <ul className="list-group" id='ul-list-group'>
         {
-          BookmarkData.map((item) => {
+          arrBookmark.map((item) => {
+            console.log(item);
             let outerName = item.bookmarkName;
             if (item.isImportant) outerName = `<strong>${outerName}</strong>`;
             if (item.isLinethrough) outerName = `<del>${outerName}</del>`;
