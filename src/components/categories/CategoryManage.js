@@ -1,8 +1,8 @@
 import React from 'react'
 import * as Icon from "react-bootstrap-icons";
-import GroupManageData from '../datas/GroupManageData.json'
+import CategoryManageData from '../../datas/CategoryManageData.json'
 
-export default function GroupManage({ showGroupModal }) {
+export default function CategoryManage({ showCategoryModal }) {
   const [selectedLi, setSelectedLi] = React.useState(null);
 
   const handleRadioChecked = (e) => {
@@ -13,13 +13,13 @@ export default function GroupManage({ showGroupModal }) {
     setSelectedLi(e.target.closest('li'));
   }
 
-  const handleGroupRowClick = (e) => {
+  const handleCategoryRowClick = (e) => {
     e.target.closest('li').querySelector('input[type=radio]').click();
   }
 
   const moveTo = (e) => {
     if (!selectedLi) {
-      alert('그룹를 선택하세요.');
+      alert('카테고리를 선택하세요.');
       return;
     }
     const ul = document.getElementById('ul-list-group');
@@ -49,26 +49,28 @@ export default function GroupManage({ showGroupModal }) {
         selectedItem = li.getAttribute('data-id');
       }
     });
-    alert(`${selectedItem}번 그룹 삭제.`);
+    alert(`${selectedItem}번 카테고리 삭제.`);
   }
 
   const handleSortSave = () => {
-    const arrGroup = [],
+    const arrCategory = [],
+      group = document.getElementById('sel-group'),
       arrLi = document.querySelectorAll('#ul-list-group li');
     if (!arrLi.length) {
-      alert('저장할 그룹이 없습니다.');
+      alert('저장할 카테고리가 없습니다.');
       return;
     }
     arrLi.forEach((li) => {
-      arrGroup.push(li.getAttribute('data-id'));
+      arrCategory.push(li.getAttribute('data-id'));
     });
     const data = {
-      arrGroup: arrGroup
+      group: group.value,
+      arrCategory: arrCategory
     }
     console.log('data => ', data);
     setTimeout(() => {
-      alert('그룹순서가 저장되었습니다.');
-      window.location.replace(`/groups`);
+      alert('카테고리 순서가 저장되었습니다.');
+      window.location.replace(`/categories/${data.group}`);
     }, 2000);
   }
 
@@ -76,35 +78,35 @@ export default function GroupManage({ showGroupModal }) {
     <>
       <ul className="list-group" id='ul-list-group'>
         {
-          GroupManageData.map((item) => {
-            let outerName = item.groupName;
+          CategoryManageData.map((item) => {
+            let outerName = item.categoryName;
             if (item.isImportant) outerName = `<strong>${outerName}</strong>`;
             if (item.isLinethrough) outerName = `<del>${outerName}</del>`;
-            if (item.groupDesc) outerName = `${outerName} <small>- ${item.groupDesc}</small>`;
+            if (item.CategoryDesc) outerName = `${outerName} <small>- ${item.categoryDesc}</small>`;
             return (
-              <li key={item.groupNo}
+              <li key={item.categoryNo}
                 className="list-group-item text-truncate"
-                data-id={item.groupNo}
-                onClick={handleGroupRowClick}>
+                data-id={item.categoryNo}
+                onClick={handleCategoryRowClick}>
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="groupRadios"
-                  id={`group-${item.groupNo}`}
-                  value={item.groupId}
+                  name="categoryRadios"
+                  id={`category-${item.categoryNo}`}
+                  value={item.categoryId}
                   onChange={handleRadioChecked} />
                 &nbsp;&nbsp;
                 <Icon.PencilSquare
                   onClick={(e) => {
-                    showGroupModal(e);
-                    handleGroupRowClick(e);
+                    showCategoryModal(e);
+                    handleCategoryRowClick(e);
                   }}
                   className="align-middle"
-                  title="그룹 수정" />
+                  title="카테고리 수정" />
                 &nbsp;&nbsp;
                 <span
-                  onClick={handleGroupRowClick}
-                  data-group-id={item.groupId}
+                  onClick={handleCategoryRowClick}
+                  data-category-id={item.categoryId}
                   dangerouslySetInnerHTML={{ __html: outerName }}>
                 </span>
               </li>

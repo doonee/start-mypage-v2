@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryManage from "./CategoryManage";
-import GroupSel from "./GroupSel";
+import GroupSel from "../groups/GroupSel";
 import CategoryModal from "./CategoryModal";
 
 export default function Categories() {

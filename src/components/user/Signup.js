@@ -1,11 +1,11 @@
 import React from 'react'
 import SignupForm from './SignupForm';
-import Google from '../components/socials/Google'
-import Meta from '../components/socials/Meta'
-import Naver from '../components/socials/Naver'
-import Kakao from '../components/socials/Kakao'
-import Twitter from '../components/socials/Twitter'
-import '../css/social.css'
+import Google from '../socials/Google'
+import Meta from '../socials/Meta'
+import Naver from '../socials/Naver'
+import Kakao from '../socials/Kakao'
+import Twitter from '../socials/Twitter'
+import '../../css/social.css'
 
 export default function Signup() {
   return (

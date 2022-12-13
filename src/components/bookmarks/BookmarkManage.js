@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Icon from "react-bootstrap-icons";
-import BookmarkManageData from '../datas/BookmarkManageData.json'
+import BookmarkManageData from '../../datas/BookmarkManageData.json'
 
 export default function BookmarkManage({ showBookmarkModal }) {
   const [selectedLi, setSelectedLi] = React.useState(null);

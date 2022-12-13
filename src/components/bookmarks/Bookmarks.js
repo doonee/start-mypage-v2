@@ -1,8 +1,8 @@
 import React from "react";
 import BookmarkManage from "./BookmarkManage";
 import BookmarkModal from "./BookmarkModal";
-import CategorySel from "./CategorySel";
-import GroupSel from "./GroupSel";
+import CategorySel from "../categories/CategorySel";
+import GroupSel from "../groups/GroupSel";
 
 export default function Bookmarks() {
   const [modalShow, setModalShow] = React.useState(false);

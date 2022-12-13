@@ -1,9 +1,9 @@
 import React from "react";
 import Masonry from "react-masonry-css";
 import BookmarkModal from "./BookmarkModal";
-import MyBookmarksData from "../datas/MyBookmarksData.json";
+import MyBookmarksData from "../../datas/MyBookmarksData.json";
 import MyBookmarksByCategory from './MyBookmarksByCategory';
-import MyBookmarksCategoryTitle from './MyBookmarksCategoryTitle';
+import MyBookmarksCategoryTitle from './MyBookmarksByCategory';
 
 const MyBookmarks = () => {
   const [modalShow, setModalShow] = React.useState(false);

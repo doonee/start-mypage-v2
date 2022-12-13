@@ -83,6 +83,7 @@ const ShareBookmarks = () => {
           &nbsp;&nbsp;
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://music.youtube.com/"
             data-bookmark-no="7108">
             deseru Lorem, ipsum dolor.nt. Culpa, vitae veritatis.
@@ -95,6 +96,7 @@ const ShareBookmarks = () => {
           &nbsp;&nbsp;
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://music.youtube.com/"
             data-bookmark-no="7108">
             deseru Lorem, ipsum dolor.nt. Culpa, vitae veritatis.
@@ -107,6 +109,7 @@ const ShareBookmarks = () => {
           &nbsp;&nbsp;
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://music.youtube.com/"
             data-bookmark-no="7108">
             <strong>Lorem ipsum dolor sit.</strong>
@@ -119,6 +122,7 @@ const ShareBookmarks = () => {
           &nbsp;&nbsp;
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://music.youtube.com/"
             data-bookmark-no="7108">
             <del>
@@ -133,6 +137,7 @@ const ShareBookmarks = () => {
           &nbsp;&nbsp;
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://music.youtube.com/"
             data-bookmark-no="7108">
             Lorem ipsum dolor sit amet.

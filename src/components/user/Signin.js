@@ -1,11 +1,11 @@
 import React from 'react'
 import SigninForm from './SigninForm';
-import Google from './socials/Google'
-import Meta from './socials/Meta'
-import Naver from './socials/Naver'
-import Kakao from './socials/Kakao'
-import Twitter from './socials/Twitter'
-import '../css/social.css'
+import Google from '../socials/Google'
+import Meta from '../socials/Meta'
+import Naver from '../socials/Naver'
+import Kakao from '../socials/Kakao'
+import Twitter from '../socials/Twitter'
+import '../../css/social.css'
 
 export default function Signin() {
   return (
