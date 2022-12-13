@@ -4,7 +4,7 @@ import BookmarkModal from "./BookmarkModal";
 import CategorySel from "../categories/CategorySel";
 import GroupSel from "../groups/GroupSel";
 
-export default function BookmarkManage() {
+export default function BookmarkManage({ groudId, categoryId }) {
   const [modalShow, setModalShow] = React.useState(false);
 
   const showBookmarkModal = (e) => {
@@ -40,7 +40,7 @@ export default function BookmarkManage() {
         </div>
         <div className="col-md-7 mt-4 mt-md-0">
           <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">북마크</h3>
-          <BookmarkItemManage showBookmarkModal={showBookmarkModal} />
+          <BookmarkItemManage showBookmarkModal={showBookmarkModal} categoryId={categoryId} />
         </div>
       </div>
       <BookmarkModal show={modalShow} onHide={() => setModalShow(false)} />

@@ -2,16 +2,19 @@ import React from 'react'
 import * as Icon from "react-bootstrap-icons";
 import BookmarkData from '../../datas/BookmarkData.json'
 
-export default function BookmarkItemManage({ showBookmarkModal }) {
+export default function BookmarkItemManage({ showBookmarkModal, categoryId }) {
   const [selectedLi, setSelectedLi] = React.useState(null);
-  const [arrBookmark, setArrBookmark] = React.useState(() => {
-    const arr = BookmarkData.filter(b => b.categoryNo === 3);
-    if (arr && arr.length) {
-      return arr[0].bookmarks;
-    } else {
-      return [];
-    }
-  });
+  const [arrBookmark, setArrBookmark] = React.useState([]);
+
+  const setInitialArrBookmark = (cNo) => {
+    // eslint-disable-next-line eqeqeq
+    const arr = BookmarkData.filter(b => b.categoryNo == cNo);
+    if (arr && arr.length) setArrBookmark(arr[0].bookmarks);
+  }
+
+  React.useEffect(() => {
+    setInitialArrBookmark(categoryId);
+  }, [categoryId]);
 
   const handleRadioChecked = (e) => {
     e.target.closest('ul').querySelectorAll('li').forEach(element => {
