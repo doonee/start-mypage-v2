@@ -3,16 +3,7 @@ import TopGroupLinksData from '../datas/TopGroupLinksData.json';
 import { useLocation } from 'react-router-dom';
 
 const TopGroupLinks = () => {
-  // setTimeout(() => {
-  //   const menuLinks = document.querySelectorAll("#ul-group a.nav-link");
-  //   menuLinks.forEach((link) => {
-  //     link.classList.remove("active");
-  //     if (curPath === link.getAttribute("href")) link.classList.add("active");
-  //   });
-  // }, 0);
-
   const curUrl = useLocation().pathname;
-
   const getParameter = (key) => {
     if (new URLSearchParams(window.location.search).get(key)) {
       return new URLSearchParams(window.location.search).get(key);
@@ -21,12 +12,12 @@ const TopGroupLinks = () => {
   }
 
   const [selectedGroup, setSelectedGroup] = React.useState(() => {
-    if (curUrl.includes('/myBookmarks')) {
+    if (curUrl.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
       if (getParameter('group')) {
         return getParameter('group');
       } else {
         // 파라미터 값이 없으면 시작페이지로 설정 된 그룹 가져와야 함!
-        const startGroupByDb = 3;
+        const startGroupByDb = 2;
         return startGroupByDb;
       }
     } else {
@@ -37,9 +28,7 @@ const TopGroupLinks = () => {
   const handleGrouplinkClick = (e) => {
     e.preventDefault();
     const selectedGroup = e.target.getAttribute('data-id');
-    if (curUrl.includes('/myBookmarks')) {
-      // 선택 된 그룹의 북마크 리스트 가져와야 함!
-      // 성공 후
+    if (curUrl.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
       setSelectedGroup(selectedGroup);
     } else {
       window.location.href = `/myBookmarks/?group=${selectedGroup}`;
@@ -53,7 +42,8 @@ const TopGroupLinks = () => {
     return (
       <li key={item.groupNo}
         className={isActive ? "nav-item short-title active" : "nav-item short-title"}
-        onClick={handleGrouplinkClick} data-id={item.groupNo}
+        onClick={handleGrouplinkClick}
+        data-id={item.groupNo}
         title={item.groupName}>
         {item.groupName}
       </li>

@@ -4,7 +4,6 @@ import * as Icon from "react-bootstrap-icons";
 export default function MyBookmarksByCategory({ bookmarks, showBookmarkModal }) {
     return (
         bookmarks.map(function (item) {
-            console.log('item => ', item);
             let name = item.bookmarkName, nameDesc = item.bookmarkName;
             const desc = item.bookmarkDesc;
             if (item.isImportant) name = `<strong>${name}</strong>`;

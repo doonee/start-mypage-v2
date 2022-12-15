@@ -8,19 +8,42 @@ import axios from 'axios'
 const MyBookmarks = ({ groupId }) => {
   const [modalShow, setModalShow] = useState(false);
   const [arrsameGroupCategory, setArrSameGroupCategory] = useState([]);
+  const [selectedGroup, setSelectedGroup] = useState(() => {
+    if (groupId) return groupId;
+    else {
+      const groups = document.querySelectorAll('#ul-group > li.nav-item.short-title');
+      groups.forEach(function (g) {
+        if (g.classList.contains('active')) {
+          return (g.getAttribute('data-id'));
+        }
+      });
+    }
+  });
 
   useEffect(() => {
-    setInitialArrBookmark(groupId);
-  }, [groupId]);
+    const groups = document.querySelectorAll('#ul-group > li.nav-item.short-title');
+    groups.forEach(function (g) {
+      if (g.classList.contains('active')) {
+        setSelectedGroup(g.getAttribute('data-id'));
+      }
+      g.addEventListener('click', (e) => {
+        setSelectedGroup(e.target.getAttribute('data-id'))
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    setInitialArrBookmark(selectedGroup);
+  }, [selectedGroup]);
 
   const setInitialArrBookmark = async (gid) => {
     try {
       const res = await axios.get('/datas/BookmarkData.json');
       if (res && res.status === 200 && res.data && res.data.length) {
         // eslint-disable-next-line eqeqeq
-        const sameGroupCategory = res.data.filter(b => b.groupNo == gid);
+        const sameGroupCategory = await res.data.filter(b => b.groupNo == gid);
         if (sameGroupCategory && sameGroupCategory.length)
-          setArrSameGroupCategory(sameGroupCategory);
+          await setArrSameGroupCategory(sameGroupCategory);
       }
     } catch (err) {
       console.log('err => ', err);
@@ -56,7 +79,6 @@ const MyBookmarks = ({ groupId }) => {
     const bookmarks = sameGroupCategory.bookmarks;
     if (bookmarks && bookmarks.length) {
       const validCategory = sameGroupCategory;
-      console.log('validCategory => ', validCategory)
       return (
         <div key={validCategory.categoryNo}>
           <MyBookmarksCategoryTitle
