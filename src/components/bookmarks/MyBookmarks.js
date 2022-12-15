@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Masonry from "react-masonry-css";
 import BookmarkModal from "./BookmarkModal";
-// import MyBookmarksData from "../../datas/BookmarkData.json";
 import MyBookmarksByCategory from './MyBookmarksByCategory';
 import MyBookmarksCategoryTitle from './MyBookmarksCategoryTitle';
 import axios from 'axios'
 
-const MyBookmarks = () => {
-  const [modalShow, setModalShow] = React.useState(false);
-  const [arrBookmark, setArrBookmark] = React.useState([]);
+const MyBookmarks = ({ groupId }) => {
+  const [modalShow, setModalShow] = useState(false);
+  const [arrsameGroupCategory, setArrSameGroupCategory] = useState([]);
+
+  useEffect(() => {
+    setInitialArrBookmark(groupId);
+  }, [groupId]);
+
+  const setInitialArrBookmark = async (gid) => {
+    try {
+      const res = await axios.get('/datas/BookmarkData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        // eslint-disable-next-line eqeqeq
+        const sameGroupCategory = res.data.filter(b => b.groupNo == gid);
+        if (sameGroupCategory && sameGroupCategory.length)
+          setArrSameGroupCategory(sameGroupCategory);
+      }
+    } catch (err) {
+      console.log('err => ', err);
+    }
+  }
 
   const showBookmarkModal = (e) => {
     // 애니메이션 적용안됨
@@ -34,31 +51,24 @@ const MyBookmarks = () => {
     500: 1,
   };
 
-  const setInitialArrBookmark = async (cNo) => {
-    try {
-      const res = await axios.get('/datas/BookmarkData.json');
-      if (res && res.status === 200 && res.data && res.data.length) {
-        // eslint-disable-next-line eqeqeq
-        const arr = res.data.filter(b => b.categoryNo == cNo);
-        if (arr && arr.length) setArrBookmark(arr[0].bookmarks);
-      }
-    } catch (err) {
-      console.log('err >> ', err);
-    }
-  }
-
-  React.useEffect(() => {
-    setInitialArrBookmark();
-  }, []);
-
   // 모듈 형태로 넣으면 정렬이 비정상적으로 되서 변수 활용함!
-  const BookmarkManage = arrBookmark.map(function (items) {
-    return (
-      <div key={items.categoryNo}>
-        <MyBookmarksCategoryTitle item={items} showBookmarkModal={showBookmarkModal} />
-        <MyBookmarksByCategory bookmarks={items.bookmarks} showBookmarkModal={showBookmarkModal} />
-      </div>
-    );
+  const BookItems = arrsameGroupCategory.map(function (sameGroupCategory) {
+    const bookmarks = sameGroupCategory.bookmarks;
+    if (bookmarks && bookmarks.length) {
+      const validCategory = sameGroupCategory;
+      console.log('validCategory => ', validCategory)
+      return (
+        <div key={validCategory.categoryNo}>
+          <MyBookmarksCategoryTitle
+            group={validCategory}
+            showBookmarkModal={showBookmarkModal} />
+          <MyBookmarksByCategory
+            bookmarks={validCategory.bookmarks}
+            showBookmarkModal={showBookmarkModal} />
+        </div>
+      );
+    }
+    return "";
   });
 
   return (
@@ -67,7 +77,7 @@ const MyBookmarks = () => {
         breakpointCols={myBreakpointsAndCols}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column">
-        {BookmarkManage}
+        {BookItems}
       </Masonry>
 
       <BookmarkModal show={modalShow} onHide={() => setModalShow(false)} />

@@ -8,6 +8,7 @@ import axios from 'axios'
 
 const SearchBookmarks = () => {
   const [modalShow, setModalShow] = React.useState(false);
+  const [arrBookmark, setArrBookmark] = React.useState([]);
 
   const showBookmarkModal = (e) => {
     // 애니메이션 적용안됨
@@ -32,7 +33,6 @@ const SearchBookmarks = () => {
     700: 2,
     500: 1,
   };
-  const [arrBookmark, setArrBookmark] = React.useState([]);
 
   const setInitialArrBookmark = async (cNo) => {
     try {
