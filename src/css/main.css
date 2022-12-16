@@ -61,6 +61,24 @@ a {
   vertical-align: middle;
 }
 
+#loading-image {
+  background: transparent url(../../public/img/loading.gif) no-repeat center center;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  z-index: 9999992;
+}
+
+.show-loading {
+  display: block !important;
+}
+
+.hide-loading {
+  display: none !important;
+}
+
 @media screen and (max-width: 280px) {
   html {
     width: 280px;

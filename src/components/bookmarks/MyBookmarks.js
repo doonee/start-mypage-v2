@@ -4,8 +4,10 @@ import BookmarkModal from "./BookmarkModal";
 import MyBookmarksByCategory from './MyBookmarksByCategory';
 import MyBookmarksCategoryTitle from './MyBookmarksCategoryTitle';
 import axios from 'axios'
+import Loading from '.././Loading'
 
 const MyBookmarks = ({ groupId }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [arrsameGroupCategory, setArrSameGroupCategory] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState(() => {
@@ -33,11 +35,12 @@ const MyBookmarks = ({ groupId }) => {
   }, []);
 
   useEffect(() => {
-    setInitialArrBookmark(selectedGroup);
+    setContents(selectedGroup);
   }, [selectedGroup]);
 
-  const setInitialArrBookmark = async (gid) => {
+  const setContents = async (gid) => {
     try {
+      await setIsLoading(true);
       const res = await axios.get('/datas/BookmarkData.json');
       if (res && res.status === 200 && res.data && res.data.length) {
         // eslint-disable-next-line eqeqeq
@@ -47,6 +50,8 @@ const MyBookmarks = ({ groupId }) => {
       }
     } catch (err) {
       console.log('err => ', err);
+    } finally {
+      await setIsLoading(false);
     }
   }
 
@@ -103,6 +108,8 @@ const MyBookmarks = ({ groupId }) => {
       </Masonry>
 
       <BookmarkModal show={modalShow} onHide={() => setModalShow(false)} />
+
+      <Loading isLoading={isLoading} />
     </section>
   );
 };

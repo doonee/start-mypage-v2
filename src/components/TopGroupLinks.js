@@ -20,9 +20,8 @@ const TopGroupLinks = () => {
         const startGroupByDb = 2;
         return startGroupByDb;
       }
-    } else {
-      return 0;
     }
+    return 0;
   });
 
   const handleGrouplinkClick = (e) => {

@@ -72,6 +72,25 @@ a {
   vertical-align: middle;
 }
 
+#loading-image {
+  background: transparent url(../../public/img/loading.gif) no-repeat center
+    center;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: calc(100vh / 2);
+  left: calc(100% / 2);
+  z-index: 9999992;
+}
+
+.show-loading {
+  display: block !important;
+}
+
+.hide-loading {
+  display: none !important;
+}
+
 // 갤럭시 폴더
 @media screen and (max-width: 280px) {
   html {
