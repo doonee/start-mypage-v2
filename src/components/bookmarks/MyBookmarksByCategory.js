@@ -1,7 +1,10 @@
 import React from 'react'
 import * as Icon from "react-bootstrap-icons";
+import { jsonLocalStorage } from '../Common'
 
 export default function MyBookmarksByCategory({ bookmarks, showBookmarkModal }) {
+    const aTarget = jsonLocalStorage.getItem('config').bookmarkTarget || '_blank';
+
     return (
         bookmarks.map(function (item) {
             let name = item.bookmarkName, nameDesc = item.bookmarkName;
@@ -15,7 +18,7 @@ export default function MyBookmarksByCategory({ bookmarks, showBookmarkModal }) 
                         className="align-middle" title="북마크 수정" />
                     &nbsp;&nbsp;
                     <a
-                        target="blank"
+                        target={aTarget}
                         rel="noreferrer"
                         className="align-middle"
                         href={item.bookmarkUrl}

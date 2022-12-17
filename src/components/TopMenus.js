@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
-import React from "react";
+/**
+ * '편리한 북마크 무료관리툴 - StartMypage.com' DB에 저장해서 사용하기
+ */
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -14,8 +16,16 @@ import {
   faCircleInfo,
   faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
+import { jsonLocalStorage } from "./Common";
 
 const TopMenus = ({ curPath }) => {
+  const [appTitle, setAppTitle] = useState('');
+
+  useEffect(() => {
+    setAppTitle(jsonLocalStorage.getItem('config').appTitle ||
+      '편리한 북마크 무료관리툴 - StartMypage.com')
+  }, [])
+
   setTimeout(() => {
     const menuLinks = document.querySelectorAll("#ul-topmenu a.nav-link");
     menuLinks.forEach((link) => {
@@ -33,7 +43,7 @@ const TopMenus = ({ curPath }) => {
           <a
             className="navbar-brand col-md-5 col-lg-6 col-xl-7 overflow-hidden"
             href="/myBookmarks" rel="noreferrer">
-            <h1 className="h4">편리한 북마크 무료관리툴 - StartMypage.com</h1>
+            <h1 className="h4">{appTitle}</h1>
           </a>
           <div
             className="collapse navbar-collapse col-md-6 col-lg-5 col-xl-4 pt-3 pt-lg-1 overflow-auto"

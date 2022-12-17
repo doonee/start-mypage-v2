@@ -1,6 +1,7 @@
 import React from "react";
 import TopGroupLinksData from '../datas/TopGroupLinksData.json';
 import { useLocation } from 'react-router-dom';
+import { jsonLocalStorage } from "./Common";
 
 const TopGroupLinks = () => {
   const curUrl = useLocation().pathname;
@@ -16,9 +17,8 @@ const TopGroupLinks = () => {
       if (getParameter('group')) {
         return getParameter('group');
       } else {
-        // 파라미터 값이 없으면 시작페이지로 설정 된 그룹 가져와야 함!
-        const startGroupByDb = 2;
-        return startGroupByDb;
+        // 파라미터 값이 없으면 시작페이지로 설정 된 그룹
+        return jsonLocalStorage.getItem('config').startGroup;
       }
     }
     return 0;

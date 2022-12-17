@@ -1,7 +1,7 @@
 import React from "react";
 import ConfigManage from "./ConfigManage";
 
-export default function BookmarkManage() {
+export default function Config() {
   return (
     <section className="container-xl">
       <div className="row d-flex justify-content-center">
