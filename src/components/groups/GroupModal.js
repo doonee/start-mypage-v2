@@ -5,14 +5,14 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
 function GroupModal(props) {
-  const handleGroupChanged = (e) => {
-    const txtNewGroup = document.querySelector('#newGroupname');
-    const target = e.target, value = target.value;
-    if (value === 'newGroup') {
-      txtNewGroup.parentElement.classList.remove('d-none');
-      txtNewGroup.focus();
-    } else txtNewGroup.parentElement.classList.add('d-none');
-  }
+  // const handleGroupChanged = (e) => {
+  //   const txtNewGroup = document.querySelector('#newGroupname');
+  //   const target = e.target, value = target.value;
+  //   if (value === 'newGroup') {
+  //     txtNewGroup.parentElement.classList.remove('d-none');
+  //     txtNewGroup.focus();
+  //   } else txtNewGroup.parentElement.classList.add('d-none');
+  // }
 
   const handleFormSubmit = () => {
     const objFormValue = {
