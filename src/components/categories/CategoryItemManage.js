@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as Icon from "react-bootstrap-icons";
-import CategoryData from '../../datas/CategoryData.json'
 
-export default function CategoryItemManage({ showCategoryModal }) {
-  const [selectedLi, setSelectedLi] = React.useState(null);
+export default function CategoryItemManage({ showCategoryModal, groupId, categoryData }) {
+  const [selectedLi, setSelectedLi] = useState(null);
 
   const handleRadioChecked = (e) => {
     e.target.closest('ul').querySelectorAll('li').forEach(element => {
@@ -78,11 +77,13 @@ export default function CategoryItemManage({ showCategoryModal }) {
     <>
       <ul className="list-group" id='ul-list-group'>
         {
-          CategoryData.map((item) => {
-            let outerName = item.categoryName;
+          categoryData.map((item) => {
+            const groupNo = item.groupNo;
+            const categoryNo = item.categoryNo;
+            let outerName = `<a href="/bookmarkManage/?group=${groupNo}&category=${categoryNo}">${item.categoryName}</a>`;
             if (item.isImportant) outerName = `<strong>${outerName}</strong>`;
             if (item.isLinethrough) outerName = `<del>${outerName}</del>`;
-            if (item.CategoryDesc) outerName = `${outerName} <small>- ${item.categoryDesc}</small>`;
+            if (item.categoryDesc) outerName = `${outerName} <small>- ${item.categoryDesc}</small>`;
             return (
               <li key={item.categoryNo}
                 className="list-group-item text-truncate"

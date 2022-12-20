@@ -1,30 +1,171 @@
 [
   {
+    "groupNo": 1,
+    "categoryDesc": "그룹설명 1",
+    "categories": [],
     "categoryNo": 1,
-    "categoryName": "두니넷",
-    "categoryDesc": "두니넷 설명",
+    "categoryName": "1 My First Item",
     "isImportant": null,
     "isLinethrough": ""
   },
   {
+    "groupNo": 2,
+    "categoryDesc": "Deserunt est quis anim excepteur et do.",
     "categoryNo": 2,
-    "categoryName": "니이버",
-    "categoryDesc": "",
+    "categoryName": "2 Ipsum  exercitation.",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 13,
+    "categoryDesc": "Lorem Lorem do cillum officia sit incididunt est et.",
+    "categoryNo": 3,
+    "categoryName": "3 In nod deidatat cupidatat sunt magna.",
     "isImportant": true,
     "isLinethrough": false
   },
   {
-    "categoryNo": 3,
-    "categoryName": "msn",
-    "categoryDesc": "자극적인 뉴스 전문 msn",
+    "groupNo": 13,
+    "categoryDesc": "Lorem Lorem do cillum officia sit incididunt est et.",
+    "categoryNo": 14,
+    "categoryName": "Aliquip enim ullamco adipisicing minim exercitation non laborum qui in.",
     "isImportant": false,
     "isLinethrough": true
   },
   {
-    "categoryNo": 5,
-    "categoryName": "StartMypage",
-    "categoryDesc": "내가 꾸미는 나만의 시작페이지",
+    "groupNo": 13,
+    "categoryDesc": "Lorem Lorem do cillum officia sit incididunt est et.",
+    "categoryNo": 16,
+    "categoryName": "Pariatur mollit consequat dolor ut occaecat.",
     "isImportant": true,
     "isLinethrough": false
+  },
+  {
+    "groupNo": 3,
+    "categoryDesc": "Quis eu amet sit aute non irure incididunt sunt qui laboris exercitation.",
+    "categoryNo": 4,
+    "categoryName": "4 Here is the Fourth",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 3,
+    "categoryDesc": "Quis eu amet sit aute non irure incididunt sunt qui laboris exercitation.",
+    "categoryNo": 41,
+    "categoryName": "Incididunt amet al",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 4,
+    "categoryDesc": "Laborum adipisicing nostrud eiusmod magna consectetur sit excepteur sit ad elit consequat adipisicing.",
+    "categoryNo": 5,
+    "categoryName": "5 High Five",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 4,
+    "categoryDesc": "Laborum adipisicing nostrud eiusmod magna consectetur sit excepteur sit ad elit consequat adipisicing.",
+    "categoryNo": 51,
+    "categoryName": "Sit adipisicing sunt ",
+    "isImportant": false,
+    "isLinethrough": true
+  },
+  {
+    "groupNo": 4,
+    "categoryDesc": "Laborum adipisicing nostrud eiusmod magna consectetur sit excepteur sit ad elit consequat adipisicing.",
+    "categoryNo": 52,
+    "categoryName": "Proident ad aliquip",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 4,
+    "categoryDesc": "Laborum adipisicing nostrud eiusmod magna consectetur sit excepteur sit ad elit consequat adipisicing.",
+    "categoryNo": 55,
+    "categoryName": "Proident adipisicing et amet mollit dolore duis.",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 5,
+    "categoryDesc": "Ex occaecat tempor et enim elit.",
+    "categoryNo": 6,
+    "categoryName": "6 Ex sit in nostrud sit eiusmod quis nisi sunt nostrud quis mollit occaecat.",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 5,
+    "categoryDesc": "Ex occaecat tempor et enim elit.",
+    "categoryNo": 61,
+    "categoryName": "Proident deserunt aliquip non i",
+    "isImportant": false,
+    "isLinethrough": true
+  },
+  {
+    "groupNo": 5,
+    "categoryDesc": "Ex occaecat tempor et enim elit.",
+    "categoryNo": 62,
+    "categoryName": "Exercitation ea",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 6,
+    "categoryDesc": "Dolore in tempor duis aute excepteur deserunt consectetur magna anim elit nostrud laborum pariatur tempor.",
+    "categoryNo": 7,
+    "categoryName": "7 Deserunecat elit veniam.",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 7,
+    "categoryDesc": "Qui est ex esse ad sit esse.",
+    "categoryNo": 8,
+    "categoryName": "8 888",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 7,
+    "categoryDesc": "Veniam ea ut est exercitation.",
+    "categoryNo": 81,
+    "categoryName": "8 888",
+    "isImportant": false,
+    "isLinethrough": true
+  },
+  {
+    "groupNo": 7,
+    "categoryDesc": "QNisi in eu eiusmod eiusmod consectetur minim aliqua fugiat ex ullamco ex aliqua eu in.",
+    "categoryNo": 82,
+    "categoryName": "8 888",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 8,
+    "categoryDesc": "Velit ex ullamco laboris do.",
+    "categoryNo": 9,
+    "categoryName": "9 abcdefghijk",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 9,
+    "categoryDesc": "Nostrud in pariatur aliqua magna commodo in officia.",
+    "categoryNo": 10,
+    "categoryName": "10 Nisi cillum aliqua nulla aliquip tempor deserunt cillum sint.",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 10,
+    "categoryDesc": "Labore reprehenderit consectetur consectetur sit reprehenderit sunt incididunt aute commodo laborum non id labore.",
+    "categoryNo": 11,
+    "categoryName": "11 11번째 카테고리",
+    "isImportant": null,
+    "isLinethrough": ""
   }
 ]

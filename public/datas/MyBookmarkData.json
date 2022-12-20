@@ -1,0 +1,282 @@
+[
+  {
+    "groupNo": 1,
+    "groupName": "첫번째 그룹",
+    "groupDesc": "그룹설명 1",
+    "categories": [],
+    "categoryNo": 1,
+    "categoryName": "1 My First Item",
+    "bookmarkNo": 1,
+    "bookmarkName": "두니넷",
+    "bookmarkDesc": "두니넷 설명",
+    "bookmarkUrl": "http://doonee.net",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 2,
+    "groupName": "두번째 그룹",
+    "groupDesc": "Deserunt est quis anim excepteur et do.",
+    "categoryNo": 2,
+    "categoryName": "2 Ipsum  exercitation.",
+    "bookmarkNo": 1,
+    "bookmarkName": "두니넷222",
+    "bookmarkDesc": "두니넷 설명222",
+    "bookmarkUrl": "http://doonee.net",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 13,
+    "groupName": "열세번째 그룹",
+    "groupDesc": "Lorem Lorem do cillum officia sit incididunt est et.",
+    "categoryNo": 3,
+    "categoryName": "3 In nod deidatat cupidatat sunt magna.",
+    "isImportant": true,
+    "isLinethrough": false,
+    "bookmarks": [
+      {
+        "bookmarkNo": 2,
+        "bookmarkName": "니이버",
+        "bookmarkDesc": "",
+        "bookmarkUrl": "https://naver.com",
+        "isImportant": true,
+        "isLinethrough": false
+      },
+      {
+        "bookmarkNo": 3,
+        "bookmarkName": "msn",
+        "bookmarkDesc": "자극적인 뉴스 전문 msn",
+        "bookmarkUrl": "https://www.msn.com/ko-kr",
+        "isImportant": false,
+        "isLinethrough": true
+      },
+      {
+        "bookmarkNo": 5,
+        "bookmarkName": "StartMypage",
+        "bookmarkDesc": "내가 꾸미는 나만의 시작페이지",
+        "bookmarkUrl": "http://startmypage.com",
+        "isImportant": true,
+        "isLinethrough": false
+      }
+    ]
+  },
+  {
+    "groupNo": 3,
+    "groupName": "세번째 그룹",
+    "groupDesc": "Quis eu amet sit aute non irure incididunt sunt qui laboris exercitation.",
+    "categoryNo": 4,
+    "categoryName": "4 Here is the Fourth",
+    "isImportant": true,
+    "isLinethrough": false,
+    "bookmarks": [
+      {
+        "bookmarkNo": 4,
+        "bookmarkName": "니이버",
+        "bookmarkDesc": "",
+        "bookmarkUrl": "https://naver.com",
+        "isImportant": true,
+        "isLinethrough": false
+      },
+      {
+        "bookmarkNo": 7,
+        "bookmarkName": "StartMypage",
+        "bookmarkDesc": "내가 꾸미는 나만의 시작페이지",
+        "bookmarkUrl": "http://startmypage.com",
+        "isImportant": true,
+        "isLinethrough": false
+      }
+    ]
+  },
+  {
+    "groupNo": 4,
+    "groupName": "네번째 그룹",
+    "groupDesc": "Laborum adipisicing nostrud eiusmod magna consectetur sit excepteur sit ad elit consequat adipisicing.",
+    "categoryNo": 5,
+    "categoryName": "5 High Five",
+    "isImportant": true,
+    "isLinethrough": false,
+    "bookmarks": [
+      {
+        "bookmarkNo": 8,
+        "bookmarkName": "니이버",
+        "bookmarkDesc": "",
+        "bookmarkUrl": "https://naver.com",
+        "isImportant": true,
+        "isLinethrough": false
+      },
+      {
+        "bookmarkNo": 9,
+        "bookmarkName": "msn",
+        "bookmarkDesc": "자극적인 뉴스 전문 msn",
+        "bookmarkUrl": "https://www.msn.com/ko-kr",
+        "isImportant": false,
+        "isLinethrough": true
+      },
+      {
+        "bookmarkNo": 917,
+        "bookmarkName": "msn",
+        "bookmarkDesc": "자극적인 뉴스 전문 msn",
+        "bookmarkUrl": "https://www.msn.com/ko-kr",
+        "isImportant": true,
+        "isLinethrough": false
+      },
+      {
+        "bookmarkNo": 10,
+        "bookmarkName": "StartMypage",
+        "bookmarkDesc": "내가 꾸미는 나만의 시작페이지",
+        "bookmarkUrl": "http://startmypage.com",
+        "isImportant": true,
+        "isLinethrough": false
+      }
+    ]
+  },
+  {
+    "groupNo": 4,
+    "groupName": "네번째 그룹",
+    "groupDesc": "Laborum adipisicing nostrud eiusmod magna consectetur sit excepteur sit ad elit consequat adipisicing.",
+    "categoryNo": 51,
+    "categoryName": "6 High Six",
+    "bookmarkNo": 100,
+    "bookmarkName": "StartMypage2222",
+    "bookmarkDesc": "22222내가 꾸미는 나만의 시작페이지",
+    "bookmarkUrl": "http://startmypage.com",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 4,
+    "groupName": "네번째 그룹",
+    "groupDesc": "Laborum adipisicing nostrud eiusmod magna consectetur sit excepteur sit ad elit consequat adipisicing.",
+    "categoryNo": 51,
+    "categoryName": "Amet dolore cillum nostrud cupidatat.",
+    "bookmarkNo": 105,
+    "bookmarkName": "Proident aliquip minim do dolore cupidatat.",
+    "bookmarkDesc": "Eu eiusmod nisi cillum reprehenderit laboris consequat voluptate.",
+    "bookmarkUrl": "http://doonee.net",
+    "isImportant": false,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 5,
+    "groupName": "다섯번째 그룹",
+    "groupDesc": "Ex occaecat tempor et enim elit.",
+    "categoryNo": 6,
+    "isImportant": false,
+    "isLinethrough": true,
+    "categoryName": "6 Ex sit in nostrud sit eiusmod quis nisi sunt nostrud quis mollit occaecat.",
+    "bookmarks": [
+      {
+        "bookmarkNo": 12,
+        "bookmarkName": "msn",
+        "bookmarkDesc": "자극적인 뉴스 전문 msn",
+        "bookmarkUrl": "https://www.msn.com/ko-kr",
+        "isImportant": false,
+        "isLinethrough": true
+      },
+      {
+        "bookmarkNo": 11,
+        "bookmarkName": "니이버",
+        "bookmarkDesc": "",
+        "bookmarkUrl": "https://naver.com",
+        "isImportant": true,
+        "isLinethrough": false
+      },
+      {
+        "bookmarkNo": 13,
+        "bookmarkName": "StartMypage",
+        "bookmarkDesc": "내가 꾸미는 나만의 시작페이지",
+        "bookmarkUrl": "http://startmypage.com",
+        "isImportant": true,
+        "isLinethrough": false
+      }
+    ]
+  },
+  {
+    "groupNo": 6,
+    "groupName": "여섯번째 그룹",
+    "groupDesc": "Dolore in tempor duis aute excepteur deserunt consectetur magna anim elit nostrud laborum pariatur tempor.",
+    "categoryNo": 7,
+    "categoryName": "7 Deserunecat elit veniam.",
+    "bookmarkNo": "",
+    "bookmarkName": "",
+    "bookmarkDesc": "",
+    "bookmarkUrl": "",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 7,
+    "groupName": "일곱번째 그룹",
+    "groupDesc": "Qui est ex esse ad sit esse.",
+    "categoryNo": 8,
+    "categoryName": "8 888",
+    "isImportant": false,
+    "isLinethrough": true,
+    "bookmarks": [
+      {
+        "bookmarkNo": 14,
+        "bookmarkName": "니이버",
+        "bookmarkDesc": "",
+        "bookmarkUrl": "https://naver.com",
+        "isImportant": true,
+        "isLinethrough": false
+      },
+      {
+        "bookmarkNo": 15,
+        "bookmarkName": "msn",
+        "bookmarkDesc": "자극적인 뉴스 전문 msn",
+        "bookmarkUrl": "https://www.msn.com/ko-kr",
+        "isImportant": false,
+        "isLinethrough": true
+      },
+      {
+        "bookmarkNo": 16,
+        "bookmarkName": "StartMypage",
+        "bookmarkDesc": "내가 꾸미는 나만의 시작페이지",
+        "bookmarkUrl": "http://startmypage.com",
+        "isImportant": true,
+        "isLinethrough": false
+      }
+    ]
+  },
+  {
+    "groupNo": 8,
+    "groupName": "여덟번째 그룹",
+    "groupDesc": "Velit ex ullamco laboris do.",
+    "categoryNo": 9,
+    "categoryName": "9 abcdefghijk",
+    "bookmarkNo": "",
+    "bookmarkName": "",
+    "bookmarkDesc": "",
+    "bookmarkUrl": "",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 9,
+    "groupName": "아홉번째 그룹",
+    "groupDesc": "Nostrud in pariatur aliqua magna commodo in officia.",
+    "categoryNo": 10,
+    "categoryName": "10 Nisi cillum aliqua nulla aliquip tempor deserunt cillum sint.",
+    "bookmarkNo": "",
+    "bookmarkName": "",
+    "bookmarkDesc": "",
+    "bookmarkUrl": "",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 10,
+    "groupName": "열번째 그룹",
+    "groupDesc": "Labore reprehenderit consectetur consectetur sit reprehenderit sunt incididunt aute commodo laborum non id labore.",
+    "categoryNo": 11,
+    "categoryName": "11 11번째 카테고리",
+    "bookmarkNo": "",
+    "bookmarkName": "",
+    "bookmarkDesc": "",
+    "bookmarkUrl": "",
+    "isImportant": null,
+    "isLinethrough": ""
+  }
+]

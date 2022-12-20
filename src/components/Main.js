@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as Icon from "react-bootstrap-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,16 +11,32 @@ import {
   faSort,
 } from "@fortawesome/free-solid-svg-icons";
 import Masonry from "react-masonry-css";
-import MainData from "../datas/MainData.json";
+import axios from "axios";
 
 const Main = () => {
+  const [mainData, setMainData] = useState([]);
+
+  useEffect(() => {
+    initData();
+  }, []);
+
+  const initData = async () => {
+    try {
+      const md = await axios.get('/datas/MainData.json');
+      await setMainData(md.data || []);
+    } catch (error) {
+      console.log('error => ', error)
+    }
+  }
+
   const myBreakpointsAndCols = {
     default: 4,
     1100: 3,
     700: 2,
     500: 1,
   };
-  let items = MainData.map(function (item) {
+
+  let items = mainData.map(function (item) {
     let contentHtml = "",
       linkHtml = "",
       linkArrowIcon = "";
@@ -70,7 +86,6 @@ const Main = () => {
       const link = `<em><a href="${item.link}">${linkTitle}</a></em>`;
       linkHtml = `<span>${link}</span>`;
     }
-
     return (
       <div key={item.id}>
         <h4

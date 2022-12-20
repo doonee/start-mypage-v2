@@ -23,20 +23,20 @@ const TopMenus = ({ curPath }) => {
 
   useEffect(() => {
     setAppTitle(jsonLocalStorage.getItem('config').appTitle ||
-      '편리한 북마크 무료관리툴 - StartMypage.com')
-  }, [])
+      '편리한 북마크 무료관리툴 - StartMypage.com');
+  }, []);
 
-  setTimeout(() => {
+  useEffect(() => {
     const menuLinks = document.querySelectorAll("#ul-topmenu a.nav-link");
     menuLinks.forEach((link) => {
       link.classList.remove("active");
-      if (curPath === link.getAttribute("href")) link.classList.add("active");
+      if (curPath.replaceAll('/', '') === link.getAttribute("href").replaceAll('/', ''))
+        link.classList.add("active");
     });
-  }, 0);
+  }, [curPath]);
 
   return (
     <header className="container-fluid bg-light">
-
       <a name="top" />
       <nav className="container-xl navbar navbar-expand-xl">
         <div className="container-fluid navbar-expand">
@@ -64,13 +64,13 @@ const TopMenus = ({ curPath }) => {
                 </a>
               </li>
               <li className="nav-item" style={{ width: "65px" }}>
-                <a className="nav-link" href="/categoryManage/123">
+                <a className="nav-link" href="/categoryManage">
                   <FontAwesomeIcon icon={faChartPie} size={"lg"} />
                   <p>카테고리</p>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/bookmarkManage/12/3">
+                <a className="nav-link" href="/bookmarkManage">
                   <FontAwesomeIcon icon={faBookmark} size={"lg"} />
                   <p>북마크</p>
                 </a>

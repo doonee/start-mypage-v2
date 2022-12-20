@@ -1,7 +1,7 @@
-import React from "react";
-import TopGroupLinksData from '../datas/TopGroupLinksData.json';
+import React, { useEffect, useState } from "react";
 import { useLocation } from 'react-router-dom';
 import { jsonLocalStorage } from "./Common";
+import axios from "axios";
 
 const TopGroupLinks = () => {
   const curUrl = useLocation().pathname;
@@ -11,18 +11,34 @@ const TopGroupLinks = () => {
     }
     return '';
   }
-
+  const [topGroupLinksData, setTopGroupLinksData] = useState([]);
   const [selectedGroup, setSelectedGroup] = React.useState(() => {
     if (curUrl.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
       if (getParameter('group')) {
-        return getParameter('group');
+        return (getParameter('group'));
       } else {
         // 파라미터 값이 없으면 시작페이지로 설정 된 그룹
-        return jsonLocalStorage.getItem('config').startGroup;
+        return (jsonLocalStorage.getItem('config').startGroup);
       }
     }
-    return 0;
   });
+
+  useEffect(() => {
+    initData();
+  }, [topGroupLinksData]);
+
+  const initData = async () => {
+    try {
+      const res = await axios.get('/datas/GroupData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        // eslint-disable-next-line eqeqeq
+        const arr = res.data;
+        if (arr && arr.length) await setTopGroupLinksData(arr);
+      }
+    } catch (err) {
+      console.log('err => ', err);
+    }
+  }
 
   const handleGrouplinkClick = (e) => {
     e.preventDefault();
@@ -35,7 +51,7 @@ const TopGroupLinks = () => {
   }
 
   // 그룹리스트 출력
-  const groupMenus = TopGroupLinksData.map((item) => {
+  const groupMenus = topGroupLinksData.map((item) => {
     // eslint-disable-next-line eqeqeq
     const isActive = item.groupNo == selectedGroup;
     return (

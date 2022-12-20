@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import * as Icon from "react-bootstrap-icons";
-import GroupData from '../../datas/GroupData.json'
+import axios from 'axios';
 
 export default function GroupItemManage({ showGroupModal }) {
-  const [selectedLi, setSelectedLi] = React.useState(null);
+  const [selectedLi, setSelectedLi] = useState(null);
+  const [groupData, setGroupData] = useState([]);
+
+  const initialGroupData = async () => {
+    try {
+      const res = await axios.get('/datas/GroupData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        const arr = res.data;
+        if (arr && arr.length) await setGroupData(arr);
+      }
+    } catch (err) {
+      console.log('err => ', err);
+    }
+  }
+
+  useEffect(() => {
+    initialGroupData();
+  }, [])
 
   const handleRadioChecked = (e) => {
     e.target.closest('ul').querySelectorAll('li').forEach(element => {
@@ -76,21 +93,22 @@ export default function GroupItemManage({ showGroupModal }) {
     <>
       <ul className="list-group" id='ul-list-group'>
         {
-          GroupData.map((item) => {
-            let outerName = item.groupName;
+          groupData.map((item) => {
+            const groupNo = item.groupNo;
+            let outerName = `<a href="/categoryManage/?group=${groupNo}">${item.groupName}</a>`;
             if (item.isImportant) outerName = `<strong>${outerName}</strong>`;
             if (item.isLinethrough) outerName = `<del>${outerName}</del>`;
             if (item.groupDesc) outerName = `${outerName} <small>- ${item.groupDesc}</small>`;
             return (
-              <li key={item.groupNo}
+              <li key={groupNo}
                 className="list-group-item text-truncate"
-                data-id={item.groupNo}
+                data-id={groupNo}
                 onClick={handleGroupRowClick}>
                 <input
                   className="form-check-input"
                   type="radio"
                   name="groupRadios"
-                  id={`group-${item.groupNo}`}
+                  id={`group-${groupNo}`}
                   value={item.groupId}
                   onChange={handleRadioChecked} />
                 &nbsp;&nbsp;

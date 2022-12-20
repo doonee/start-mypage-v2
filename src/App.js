@@ -44,11 +44,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
           <Route path="groupManage" element={<GroupManagePage />} />
-          <Route path="categoryManage/:groudId" element={<CategoryManagePage />} />
-          <Route
-            path="bookmarkManage/:groupId/:categoryId"
-            element={<BookmarkManagePage />}
-          />
+          <Route path="categoryManage" element={<CategoryManagePage />} />
+          <Route path="bookmarkManage" element={<BookmarkManagePage />} />
           <Route path="config" element={<ConfigPage />} />
           <Route path="signup" element={<SignupPage />} />
           <Route path="signin" element={<SigninPage />} />

@@ -10,38 +10,47 @@ const MyBookmarks = ({ groupId }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [arrsameGroupCategory, setArrSameGroupCategory] = useState([]);
-  const [selectedGroup, setSelectedGroup] = useState(() => {
-    if (groupId) return groupId;
-    else {
-      const groups = document.querySelectorAll('#ul-group > li.nav-item.short-title');
-      groups.forEach(function (g) {
-        if (g.classList.contains('active')) {
-          return (g.getAttribute('data-id'));
-        }
-      });
-    }
-  });
+  const [selGroup, setSelGroup] = useState(() => { return groupId });
 
   useEffect(() => {
-    const groups = document.querySelectorAll('#ul-group > li.nav-item.short-title');
-    groups.forEach(function (g) {
-      if (g.classList.contains('active')) {
-        setSelectedGroup(g.getAttribute('data-id'));
-      }
-      g.addEventListener('click', (e) => {
-        setSelectedGroup(e.target.getAttribute('data-id'))
-      });
-    });
+    const onPageLoad = () => {
+      setGroupClickStyle();
+    };
+
+    // Check if the page has already loaded
+    if (document.readyState === 'complete') {
+      onPageLoad();
+    } else {
+      window.addEventListener('load', onPageLoad);
+      // Remove the event listener when component unmounts
+      return () => window.removeEventListener('load', onPageLoad);
+    }
   }, []);
 
   useEffect(() => {
-    setContents(selectedGroup);
-  }, [selectedGroup]);
+    setContents(selGroup);
+  }, [selGroup]);
+
+  const setGroupClickStyle = async () => {
+    try {
+      const groups = document.querySelectorAll('#ul-group > li.nav-item.short-title');
+      groups.forEach(function (g) {
+        if (g.classList.contains('active')) {
+          setSelGroup(g.getAttribute('data-id'));
+        }
+        g.addEventListener('click', (e) => {
+          setSelGroup(e.target.getAttribute('data-id'))
+        });
+      });
+    } catch (error) {
+      console.log('error => ', error);
+    }
+  }
 
   const setContents = async (gid) => {
     try {
       await setIsLoading(true);
-      const res = await axios.get('/datas/BookmarkData.json');
+      const res = await axios.get('/datas/MyBookmarkData.json');
       if (res && res.status === 200 && res.data && res.data.length) {
         // eslint-disable-next-line eqeqeq
         const sameGroupCategory = await res.data.filter(b => b.groupNo == gid);
@@ -80,22 +89,17 @@ const MyBookmarks = ({ groupId }) => {
   };
 
   // 모듈 형태로 넣으면 정렬이 비정상적으로 되서 변수 활용함!
-  const BookItems = arrsameGroupCategory.map(function (sameGroupCategory) {
-    const bookmarks = sameGroupCategory.bookmarks;
-    if (bookmarks && bookmarks.length) {
-      const validCategory = sameGroupCategory;
-      return (
-        <div key={validCategory.categoryNo}>
-          <MyBookmarksCategoryTitle
-            group={validCategory}
-            showBookmarkModal={showBookmarkModal} />
-          <MyBookmarksByCategory
-            bookmarks={validCategory.bookmarks}
-            showBookmarkModal={showBookmarkModal} />
-        </div>
-      );
-    }
-    return "";
+  const BookItems = arrsameGroupCategory.map(function (item) {
+    return (
+      <div key={item.categoryNo}>
+        <MyBookmarksCategoryTitle
+          item={item}
+          showBookmarkModal={showBookmarkModal} />
+        {/* <MyBookmarksByCategory
+            bookmarks={item}
+            showBookmarkModal={showBookmarkModal} /> */}
+      </div>
+    );
   });
 
   return (

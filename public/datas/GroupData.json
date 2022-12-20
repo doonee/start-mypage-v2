@@ -1,30 +1,79 @@
 [
   {
     "groupNo": 1,
-    "groupName": "두니넷",
-    "groupDesc": "두니넷 설명",
+    "groupName": "첫번째 그룹",
+    "groupDesc": "그룹설명 1",
     "isImportant": null,
     "isLinethrough": ""
   },
   {
     "groupNo": 2,
-    "groupName": "니이버",
-    "groupDesc": "",
+    "groupName": "두번째 그룹",
+    "groupDesc": "Deserunt est quis anim excepteur et do.",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 13,
+    "groupName": "열세번째 그룹",
+    "groupDesc": "Lorem Lorem do cillum officia sit incididunt est et.",
     "isImportant": true,
     "isLinethrough": false
   },
   {
     "groupNo": 3,
-    "groupName": "msn",
-    "groupDesc": "자극적인 뉴스 전문 msn",
-    "isImportant": false,
-    "isLinethrough": true
+    "groupName": "세번째 그룹",
+    "groupDesc": "Quis eu amet sit aute non irure incididunt sunt qui laboris exercitation.",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 4,
+    "groupName": "네번째 그룹",
+    "groupDesc": "Laborum adipisicing nostrud eiusmod magna consectetur sit excepteur sit ad elit consequat adipisicing.",
+    "isImportant": true,
+    "isLinethrough": false
   },
   {
     "groupNo": 5,
-    "groupName": "StartMypage",
-    "groupDesc": "내가 꾸미는 나만의 시작페이지",
+    "groupName": "다섯번째 그룹",
+    "groupDesc": "Ex occaecat tempor et enim elit.",
     "isImportant": true,
     "isLinethrough": false
+  },
+  {
+    "groupNo": 6,
+    "groupName": "여섯번째 그룹",
+    "groupDesc": "Dolore in tempor duis aute excepteur deserunt consectetur magna anim elit nostrud laborum pariatur tempor.",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 7,
+    "groupName": "일곱번째 그룹",
+    "groupDesc": "Qui est ex esse ad sit esse.",
+    "isImportant": true,
+    "isLinethrough": false
+  },
+  {
+    "groupNo": 8,
+    "groupName": "여덟번째 그룹",
+    "groupDesc": "Velit ex ullamco laboris do.",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 9,
+    "groupName": "아홉번째 그룹",
+    "groupDesc": "Nostrud in pariatur aliqua magna commodo in officia.",
+    "isImportant": null,
+    "isLinethrough": ""
+  },
+  {
+    "groupNo": 10,
+    "groupName": "열번째 그룹",
+    "groupDesc": "Labore reprehenderit consectetur consectetur sit reprehenderit sunt incididunt aute commodo laborum non id labore.",
+    "isImportant": null,
+    "isLinethrough": ""
   }
 ]

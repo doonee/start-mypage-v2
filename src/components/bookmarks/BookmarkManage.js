@@ -1,11 +1,75 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BookmarkItemManage from "./BookmarkItemManage";
 import BookmarkModal from "./BookmarkModal";
 import CategorySel from "../categories/CategorySel";
 import GroupSel from "../groups/GroupSel";
+import axios from 'axios';
 
 export default function BookmarkManage({ groupId, categoryId }) {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [gid, setGid] = useState(() => { return groupId });
+  const [cid, setCid] = useState(() => { return categoryId });
+  const [groupData, setGroupData] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
+  const [bookmarkData, setBookmarkData] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
+
+  useEffect(() => {
+    async function init() {
+      await setInitialGroup(gid);
+      await setInitialCategory(gid);
+    };
+    init();
+  }, [gid]);
+
+  useEffect(() => {
+    async function init() {
+      await setInitialBookmark(cid);
+    };
+    init();
+  }, [cid]);
+
+  const setInitialGroup = async (g) => {
+    try {
+      const group = await axios.get('/datas/GroupData.json');
+      if (group && group.status === 200 && group.data && group.data.length) {
+        await setGroupData(group.data || []);
+        if (!g) await setGid(group.data[0].groupNo);
+      }
+    } catch (err) {
+      console.log('err => ', err);
+    }
+  }
+
+  const setInitialCategory = async (g) => {
+    try {
+      if (g) {
+        await setGid(g);
+        const category = await axios.get('/datas/CategoryData.json');
+        if (category && category.status === 200 && category.data && category.data.length) {
+          // eslint-disable-next-line eqeqeq
+          await setCategoryData(category.data.filter(d => d.groupNo == g) || []);
+          // eslint-disable-next-line eqeqeq
+          await setCid(category.data.filter(c => c.groupNo == g)[0].categoryNo || []);
+        }
+      }
+    } catch (err) {
+      console.log('err => ', err);
+    }
+  }
+
+  const setInitialBookmark = async (c) => {
+    try {
+      if (c) {
+        const bookmark = await axios.get('/datas/BookmarkData.json');
+        if (bookmark && bookmark.status === 200 && bookmark.data && bookmark.data.length) {
+          // eslint-disable-next-line eqeqeq
+          await setBookmarkData(bookmark.data.filter(b => b.categoryNo == c) || []);
+        }
+      }
+    } catch (err) {
+      console.log('err => ', err);
+    }
+  }
 
   const showBookmarkModal = (e) => {
     // 애니메이션 적용안됨
@@ -31,16 +95,28 @@ export default function BookmarkManage({ groupId, categoryId }) {
         <div className="col-md">
           <div className="col-sm-12 col-lg-12 mb-4">
             <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">그룹</h3>
-            <GroupSel groupId={groupId} />
+            <GroupSel
+              groupId={gid}
+              groupData={groupData}
+              setInitialCategory={setInitialCategory}
+              setInitialBookmark={setInitialBookmark} />
           </div>
           <div className="col-sm-12 col-lg-12">
             <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">카테고리</h3>
-            <CategorySel categoryId={categoryId} />
+            <CategorySel
+              groupId={gid}
+              categoryData={categoryData}
+              setInitialCategory={setInitialCategory}
+              setInitialBookmark={setInitialBookmark} />
           </div>
         </div>
         <div className="col-md-7 mt-4 mt-md-0">
           <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">북마크</h3>
-          <BookmarkItemManage showBookmarkModal={showBookmarkModal} categoryId={categoryId} />
+          <BookmarkItemManage
+            showBookmarkModal={showBookmarkModal}
+            categoryId={categoryId}
+            bookmarkData={bookmarkData}
+            setInitialBookmark={setInitialBookmark} />
         </div>
       </div>
       <BookmarkModal show={modalShow} onHide={() => setModalShow(false)} />

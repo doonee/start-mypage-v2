@@ -1,10 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CategoryItemManage from "./CategoryItemManage";
 import GroupSel from "../groups/GroupSel";
 import CategoryModal from "./CategoryModal";
+import axios from 'axios';
 
-export default function CategoryManage() {
-  const [modalShow, setModalShow] = React.useState(false);
+export default function CategoryManage({ groupId }) {
+  const [gid, setGid] = useState(() => { return groupId });
+  const [groupData, setGroupData] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
+
+  useEffect(() => {
+    async function init() {
+      await setInitialGroup(gid);
+      await setInitialCategory(gid);
+    };
+    init();
+  }, [gid]);
+
+  const setInitialGroup = async (g) => {
+    try {
+      const group = await axios.get('/datas/GroupData.json');
+      if (group && group.status === 200 && group.data && group.data.length) {
+        await setGroupData(group.data || []);
+
+        if (!g) await setGid(group.data[0].groupNo);
+      }
+    } catch (err) {
+      console.log('err => ', err);
+    }
+  }
+
+  const setInitialCategory = async (g) => {
+    try {
+      if (g) {
+        await setGid(g);
+        const category = await axios.get('/datas/CategoryData.json');
+        if (category && category.status === 200 && category.data && category.data.length) {
+          // eslint-disable-next-line eqeqeq
+          await setCategoryData(category.data.filter(d => d.groupNo == g));
+        }
+      }
+    } catch (err) {
+      console.log('err => ', err);
+    }
+  }
 
   const showCategoryModal = (e) => {
     // 애니메이션 적용안됨
@@ -30,12 +70,18 @@ export default function CategoryManage() {
         <div className="col-md">
           <div className="col-sm-12 col-lg-12 mb-4">
             <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">그룹</h3>
-            <GroupSel />
+            <GroupSel
+              groupId={gid}
+              groupData={groupData}
+              setInitialCategory={setInitialCategory} />
           </div>
         </div>
         <div className="col-md-7 mt-4 mt-md-0">
           <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">카테고리</h3>
-          <CategoryItemManage showCategoryModal={showCategoryModal} />
+          <CategoryItemManage
+            showCategoryModal={showCategoryModal}
+            groupId={gid}
+            categoryData={categoryData} />
         </div>
       </div>
       <CategoryModal show={modalShow} onHide={() => setModalShow(false)} />

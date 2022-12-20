@@ -1,27 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as Icon from "react-bootstrap-icons";
-import axios from 'axios'
 
-export default function BookmarkItemManage({ showBookmarkModal, categoryId }) {
-  const [selectedLi, setSelectedLi] = React.useState(null);
-  const [arrBookmark, setArrBookmark] = React.useState([]);
-
-  const setInitialArrBookmark = async (cNo) => {
-    try {
-      const res = await axios.get('/datas/BookmarkData.json');
-      if (res && res.status === 200 && res.data && res.data.length) {
-        // eslint-disable-next-line eqeqeq
-        const arr = res.data.filter(b => b.categoryNo == cNo);
-        if (arr && arr.length) setArrBookmark(arr[0].bookmarks);
-      }
-    } catch (err) {
-      console.log('err >> ', err);
-    }
-  }
-
-  React.useEffect(() => {
-    setInitialArrBookmark(categoryId);
-  }, [categoryId]);
+export default function BookmarkItemManage({ showBookmarkModal, categoryId, bookmarkData, setInitialBookmark }) {
+  const [selectedLi, setSelectedLi] = useState(null);
 
   const handleRadioChecked = (e) => {
     e.target.closest('ul').querySelectorAll('li').forEach(element => {
@@ -87,7 +68,6 @@ export default function BookmarkItemManage({ showBookmarkModal, categoryId }) {
       category: category.value,
       arrBookmark: arrBookmark
     }
-    console.log('data => ', data);
     setTimeout(() => {
       alert('북마크 순서가 저장되었습니다.');
       window.location.replace(`/bookmarks/${data.group}/${data.category}`);
@@ -98,8 +78,7 @@ export default function BookmarkItemManage({ showBookmarkModal, categoryId }) {
     <>
       <ul className="list-group" id='ul-list-group'>
         {
-          arrBookmark.map((item) => {
-            console.log(item);
+          bookmarkData.map((item) => {
             let outerName = item.bookmarkName;
             if (item.isImportant) outerName = `<strong>${outerName}</strong>`;
             if (item.isLinethrough) outerName = `<del>${outerName}</del>`;

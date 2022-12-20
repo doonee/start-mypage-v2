@@ -1,9 +1,25 @@
-import React from "react";
-import HistoryData from '../datas/DevHistoryData.json';
+import React, { useEffect, useState } from "react";
+// import HistoryData from '../datas/DevHistoryData.json';
 import Moment from 'react-moment';
 import 'moment/locale/ko';
+import axios from "axios";
 
 export default function DevHistory() {
+  const [historyData, setHistoryData] = useState([]);
+
+  useEffect(() => {
+    initData();
+  }, [])
+
+  const initData = async () => {
+    try {
+      const hd = await axios.get('/datas/DevHistoryData.json');
+      await setHistoryData(hd.data || []);
+    } catch (error) {
+      console.log('error => ', error)
+    }
+  }
+
   function GetDuration(dt) {
     return <Moment durationFromNow>{dt}</Moment>
   }
@@ -57,7 +73,7 @@ export default function DevHistory() {
   return (
     <section className="container">
       <h2 className="h2">개발 히스토리</h2>
-      <Conents data={HistoryData} />
+      <Conents data={historyData} />
     </section>
   );
 }
