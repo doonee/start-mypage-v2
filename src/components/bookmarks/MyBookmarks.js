@@ -14,7 +14,9 @@ const MyBookmarks = ({ groupId }) => {
 
   useEffect(() => {
     const onPageLoad = () => {
-      setGroupClickStyle();
+      setTimeout(() => {
+        setGroupClickStyle();
+      }, 1000);
     };
 
     // Check if the page has already loaded

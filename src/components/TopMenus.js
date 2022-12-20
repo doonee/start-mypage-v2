@@ -22,8 +22,8 @@ const TopMenus = ({ curPath }) => {
   const [appTitle, setAppTitle] = useState('');
 
   useEffect(() => {
-    setAppTitle(jsonLocalStorage.getItem('config').appTitle ||
-      '편리한 북마크 무료관리툴 - StartMypage.com');
+    if (jsonLocalStorage.getItem('config')) setAppTitle(jsonLocalStorage.getItem('config').appTitle);
+    else setAppTitle('편리한 북마크 무료관리툴 - StartMypage.com');
   }, []);
 
   useEffect(() => {

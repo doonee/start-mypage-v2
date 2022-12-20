@@ -13,19 +13,15 @@ const TopGroupLinks = () => {
   }
   const [topGroupLinksData, setTopGroupLinksData] = useState([]);
   const [selectedGroup, setSelectedGroup] = React.useState(() => {
-    if (curUrl.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
-      if (getParameter('group')) {
-        return (getParameter('group'));
-      } else {
-        // 파라미터 값이 없으면 시작페이지로 설정 된 그룹
-        return (jsonLocalStorage.getItem('config').startGroup);
-      }
-    }
   });
 
   useEffect(() => {
     initData();
   }, [topGroupLinksData]);
+
+  useEffect(() => {
+    intiConfig();
+  }, []);
 
   const initData = async () => {
     try {
@@ -37,6 +33,47 @@ const TopGroupLinks = () => {
       }
     } catch (err) {
       console.log('err => ', err);
+    }
+  }
+
+  const onPageLoad = async () => {
+    if (getParameter('group')) {
+      await setSelectedGroup(getParameter('group'));
+    } else {
+      const el = document.querySelector('#ul-group > li:nth-child(1)');
+      //el.classList.add('active');
+      await setSelectedGroup(el.getAttribute('data-id'));
+    }
+  };
+
+  const intiConfig = async () => {
+    if (curUrl.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
+      // Check if the page has already loaded
+      if (document.readyState === 'complete') {
+        await onPageLoad();
+      } else {
+        window.addEventListener('load', onPageLoad);
+        // Remove the event listener when component unmounts
+        return () => window.removeEventListener('load', onPageLoad);
+      }
+
+      if (getParameter('group')) {
+        await setSelectedGroup(getParameter('group'));
+      } else {
+        // 파라미터 값이 없으면 시작페이지로 설정 된 그룹
+        if (jsonLocalStorage.getItem('config')) {
+          await setSelectedGroup(jsonLocalStorage.getItem('config').startGroup);
+        } else {
+          // Check if the page has already loaded
+          if (document.readyState === 'complete') {
+            await onPageLoad();
+          } else {
+            window.addEventListener('load', onPageLoad);
+            // Remove the event listener when component unmounts
+            return () => window.removeEventListener('load', onPageLoad);
+          }
+        }
+      }
     }
   }
 

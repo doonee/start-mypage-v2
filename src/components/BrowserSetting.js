@@ -28,7 +28,7 @@ export default function BrowserSetting() {
                 <ul className='nav nav-pills nav-fill bg-light'>
                     {menus.map((m) => (
                         <li key={m.id} className="nav-item">
-                            <a href="javascript:;" className={(m.id == curMenuId) ? "bg-warning text-secondary nav-link" : "nav-link"}
+                            <a href="#" className={(m.id == curMenuId) ? "bg-warning text-secondary nav-link" : "nav-link"}
                                 onClick={handleMenuClick}
                                 menu-id={m.id}>
                                 {m.title}</a>

@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
 ::-webkit-scrollbar {
   background: transparent; /* optional: just make scrollbar invisible */
   height: 5px; /* 가로 스크롤바 넓이 */
@@ -11,7 +10,7 @@
 
 *,
 body {
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: "sans-serif";
 }
 
 body {
