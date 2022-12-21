@@ -25,16 +25,19 @@ export default function ConfigManage() {
   ]
 
   const handleSave = (e) => {
-    e.preventDefault();
-    const data = {
-      appTitle: document.getElementById('appTitle').value,
-      startGroup: document.getElementById('startGroup').value,
-      theme: themeValue,
-      bookmarkTarget: targetValue,
+    try {
+      e.preventDefault();
+      const data = {
+        appTitle: document.getElementById('appTitle').value,
+        startGroup: document.getElementById('startGroup').value,
+        theme: themeValue,
+        bookmarkTarget: targetValue,
+      }
+      jsonLocalStorage.setItem('config', data);
+      window.location.href = '/config';
+    } catch (error) {
+      console.log(error);
     }
-    console.log(data);
-    jsonLocalStorage.setItem('config', data);
-    jsonLocalStorage.getItem('cofig');
   }
 
   return (

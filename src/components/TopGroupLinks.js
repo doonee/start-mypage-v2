@@ -12,16 +12,46 @@ const TopGroupLinks = () => {
     return '';
   }
   const [topGroupLinksData, setTopGroupLinksData] = useState([]);
-  const [selectedGroup, setSelectedGroup] = React.useState(() => {
-  });
+  const [selectedGroup, setSelectedGroup] = React.useState(null);
+
+  useEffect(() => {
+    intiConfig();
+  }, []);
 
   useEffect(() => {
     initData();
   }, [topGroupLinksData]);
 
-  useEffect(() => {
-    intiConfig();
-  }, []);
+  const intiConfig = () => {
+    if (curUrl.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
+      // Check if the page has already loaded
+      if (document.readyState === 'complete') {
+        onPageLoad();
+      } else {
+        window.addEventListener('load', onPageLoad);
+        // Remove the event listener when component unmounts
+        return () => window.removeEventListener('load', onPageLoad);
+      }
+
+      if (getParameter('group')) {
+        setSelectedGroup(getParameter('group'));
+      } else {
+        // 파라미터 값이 없으면 시작페이지로 설정 된 그룹
+        if (jsonLocalStorage.getItem('config')) {
+          setSelectedGroup(jsonLocalStorage.getItem('config').startGroup);
+        } else {
+          // Check if the page has already loaded
+          if (document.readyState === 'complete') {
+            onPageLoad();
+          } else {
+            window.addEventListener('load', onPageLoad);
+            // Remove the event listener when component unmounts
+            return () => window.removeEventListener('load', onPageLoad);
+          }
+        }
+      }
+    }
+  }
 
   const initData = async () => {
     try {
@@ -45,37 +75,6 @@ const TopGroupLinks = () => {
       await setSelectedGroup(el.getAttribute('data-id'));
     }
   };
-
-  const intiConfig = async () => {
-    if (curUrl.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
-      // Check if the page has already loaded
-      if (document.readyState === 'complete') {
-        await onPageLoad();
-      } else {
-        window.addEventListener('load', onPageLoad);
-        // Remove the event listener when component unmounts
-        return () => window.removeEventListener('load', onPageLoad);
-      }
-
-      if (getParameter('group')) {
-        await setSelectedGroup(getParameter('group'));
-      } else {
-        // 파라미터 값이 없으면 시작페이지로 설정 된 그룹
-        if (jsonLocalStorage.getItem('config')) {
-          await setSelectedGroup(jsonLocalStorage.getItem('config').startGroup);
-        } else {
-          // Check if the page has already loaded
-          if (document.readyState === 'complete') {
-            await onPageLoad();
-          } else {
-            window.addEventListener('load', onPageLoad);
-            // Remove the event listener when component unmounts
-            return () => window.removeEventListener('load', onPageLoad);
-          }
-        }
-      }
-    }
-  }
 
   const handleGrouplinkClick = (e) => {
     e.preventDefault();

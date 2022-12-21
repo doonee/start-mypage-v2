@@ -13,19 +13,13 @@ const MyBookmarks = ({ groupId }) => {
   const [selGroup, setSelGroup] = useState(() => { return groupId });
 
   useEffect(() => {
-    const onPageLoad = () => {
-      setTimeout(() => {
-        setGroupClickStyle();
-      }, 1000);
-    };
-
     // Check if the page has already loaded
     if (document.readyState === 'complete') {
-      onPageLoad();
+      setGroupClickStyle();
     } else {
-      window.addEventListener('load', onPageLoad);
+      window.addEventListener('load', setGroupClickStyle);
       // Remove the event listener when component unmounts
-      return () => window.removeEventListener('load', onPageLoad);
+      return () => window.removeEventListener('load', setGroupClickStyle);
     }
   }, []);
 
@@ -33,7 +27,7 @@ const MyBookmarks = ({ groupId }) => {
     setContents(selGroup);
   }, [selGroup]);
 
-  const setGroupClickStyle = async () => {
+  const setGroupClickStyle = () => {
     try {
       const groups = document.querySelectorAll('#ul-group > li.nav-item.short-title');
       groups.forEach(function (g) {
@@ -44,6 +38,11 @@ const MyBookmarks = ({ groupId }) => {
           setSelGroup(e.target.getAttribute('data-id'))
         });
       });
+      if (!selGroup) {
+        setTimeout(() => {
+          setGroupClickStyle();
+        }, 1000);
+      }
     } catch (error) {
       console.log('error => ', error);
     }
