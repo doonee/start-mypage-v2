@@ -3,16 +3,18 @@
  * 옵션 설정도 소스코드가 아닌 db에 저장해서 필요시마다 가져와서 사용하는 것이 유리!
  * db 저장에 성공할 때만 localStorage에 저장!
  */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ButtonGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import { jsonLocalStorage } from '../Common';
+import axios from 'axios';
 
 export default function ConfigManage() {
-  const [targetValue, setTargetValue] = React.useState('_blank');
-  const [themeValue, setThemeValue] = React.useState('basic');
+  const [targetValue, setTargetValue] = useState('_blank');
+  const [themeValue, setThemeValue] = useState('basic');
+  const [groupData, setGroupData] = useState([]);
 
   const themes = [
     { name: '기본 테마', value: 'basic' },
@@ -23,6 +25,23 @@ export default function ConfigManage() {
     { name: '새창', value: '_blank' },
     { name: '현재창', value: '_self' }
   ]
+
+  useEffect(() => {
+    initData();
+  }, [])
+
+  const initData = async () => {
+    try {
+      const res = await axios.get('/datas/GroupData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        // eslint-disable-next-line eqeqeq
+        const arr = res.data;
+        if (arr && arr.length) await setGroupData(arr);
+      }
+    } catch (err) {
+      console.log('err => ', err);
+    }
+  }
 
   const handleSave = (e) => {
     try {
@@ -40,6 +59,14 @@ export default function ConfigManage() {
     }
   }
 
+  const GroupOptions = ({ gData }) => {
+    return (
+      gData.map((g) => (
+        <option key={g.groupNo} value={g.groupNo}>{g.groupName}</option>
+      ))
+    )
+  }
+
   return (
     <div className="col-12 mt-2">
       <Form onSubmit={handleSave}>
@@ -49,9 +76,7 @@ export default function ConfigManage() {
         <Form.Group className="mb-3" controlId="startGroup">
           <Form.Label>시작그룹을 선택하세요.</Form.Label>
           <Form.Select>
-            <option value="1">그룹1</option>
-            <option value="2">그룹2</option>
-            <option value="3">그룹3</option>
+            <GroupOptions gData={groupData} />
           </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3" controlId="theme">
@@ -66,9 +91,7 @@ export default function ConfigManage() {
                 value={radio.value}
                 checked={themeValue === radio.value}
                 onClick={() => setThemeValue(radio.value)}
-              >
-                {radio.name}
-              </ToggleButton>
+              >{radio.name}</ToggleButton>
             ))}
           </ButtonGroup>
         </Form.Group>

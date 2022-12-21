@@ -16,9 +16,6 @@ const TopGroupLinks = () => {
 
   useEffect(() => {
     initData();
-  }, [topGroupLinksData]);
-
-  useEffect(() => {
     if (curUrl.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
       // Check if the page has already loaded
       if (document.readyState === 'complete') {
@@ -31,6 +28,29 @@ const TopGroupLinks = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const li = document.querySelectorAll('#ul-group > li');
+    li.forEach((l) => {
+      // eslint-disable-next-line eqeqeq
+      if (l.getAttribute('data-id') == selectedGroup) {
+        l.tabIndex = 100;
+        l.focus();
+      }
+    })
+  }, [selectedGroup]);
+
+  const initData = async () => {
+    try {
+      const res = await axios.get('/datas/GroupData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        const arr = res.data;
+        if (arr && arr.length) await setTopGroupLinksData(arr);
+      }
+    } catch (err) {
+      console.log('err => ', err);
+    }
+  }
+
   const intiConfig = () => {
     if (getParameter('group')) {
       setSelectedGroup(getParameter('group'));
@@ -40,22 +60,8 @@ const TopGroupLinks = () => {
         setSelectedGroup(jsonLocalStorage.getItem('config').startGroup);
       } else {
         const el = document.querySelector('#ul-group > li:nth-child(1)');
-        //el.classList.add('active');
         setSelectedGroup(el.getAttribute('data-id'));
       }
-    }
-  }
-
-  const initData = async () => {
-    try {
-      const res = await axios.get('/datas/GroupData.json');
-      if (res && res.status === 200 && res.data && res.data.length) {
-        // eslint-disable-next-line eqeqeq
-        const arr = res.data;
-        if (arr && arr.length) await setTopGroupLinksData(arr);
-      }
-    } catch (err) {
-      console.log('err => ', err);
     }
   }
 
