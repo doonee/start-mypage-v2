@@ -30,6 +30,11 @@ const MyBookmarks = ({ groupId }) => {
   const setGroupClickStyle = () => {
     try {
       const groups = document.querySelectorAll('#ul-group > li.nav-item.short-title');
+      if (!groups) {
+        setTimeout(() => {
+          setGroupClickStyle();
+        }, 1000);
+      }
       groups.forEach(function (g) {
         if (g.classList.contains('active')) {
           setSelGroup(g.getAttribute('data-id'));

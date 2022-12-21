@@ -15,40 +15,33 @@ const TopGroupLinks = () => {
   const [selectedGroup, setSelectedGroup] = React.useState(null);
 
   useEffect(() => {
-    intiConfig();
-  }, []);
-
-  useEffect(() => {
     initData();
   }, [topGroupLinksData]);
 
-  const intiConfig = () => {
+  useEffect(() => {
     if (curUrl.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
       // Check if the page has already loaded
       if (document.readyState === 'complete') {
-        onPageLoad();
+        intiConfig();
       } else {
-        window.addEventListener('load', onPageLoad);
+        window.addEventListener('load', intiConfig);
         // Remove the event listener when component unmounts
-        return () => window.removeEventListener('load', onPageLoad);
+        return () => window.removeEventListener('load', intiConfig);
       }
+    }
+  }, []);
 
-      if (getParameter('group')) {
-        setSelectedGroup(getParameter('group'));
+  const intiConfig = () => {
+    if (getParameter('group')) {
+      setSelectedGroup(getParameter('group'));
+    } else {
+      // 파라미터 값이 없으면 시작페이지로 설정 된 그룹
+      if (jsonLocalStorage.getItem('config')) {
+        setSelectedGroup(jsonLocalStorage.getItem('config').startGroup);
       } else {
-        // 파라미터 값이 없으면 시작페이지로 설정 된 그룹
-        if (jsonLocalStorage.getItem('config')) {
-          setSelectedGroup(jsonLocalStorage.getItem('config').startGroup);
-        } else {
-          // Check if the page has already loaded
-          if (document.readyState === 'complete') {
-            onPageLoad();
-          } else {
-            window.addEventListener('load', onPageLoad);
-            // Remove the event listener when component unmounts
-            return () => window.removeEventListener('load', onPageLoad);
-          }
-        }
+        const el = document.querySelector('#ul-group > li:nth-child(1)');
+        //el.classList.add('active');
+        setSelectedGroup(el.getAttribute('data-id'));
       }
     }
   }
@@ -65,16 +58,6 @@ const TopGroupLinks = () => {
       console.log('err => ', err);
     }
   }
-
-  const onPageLoad = async () => {
-    if (getParameter('group')) {
-      await setSelectedGroup(getParameter('group'));
-    } else {
-      const el = document.querySelector('#ul-group > li:nth-child(1)');
-      //el.classList.add('active');
-      await setSelectedGroup(el.getAttribute('data-id'));
-    }
-  };
 
   const handleGrouplinkClick = (e) => {
     e.preventDefault();
