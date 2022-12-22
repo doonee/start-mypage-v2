@@ -13,6 +13,7 @@ const MyBookmarks = ({ groupId }) => {
   const [selGroup, setSelGroup] = useState(() => { return groupId });
 
   useEffect(() => {
+    console.log('useEffect(()')
     // Check if the page has already loaded
     if (document.readyState === 'complete') {
       setGroupClickStyle();
@@ -21,6 +22,7 @@ const MyBookmarks = ({ groupId }) => {
       // Remove the event listener when component unmounts
       return () => window.removeEventListener('load', setGroupClickStyle);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
