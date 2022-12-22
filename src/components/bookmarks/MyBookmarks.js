@@ -101,9 +101,9 @@ const MyBookmarks = ({ groupId }) => {
         <MyBookmarksCategoryTitle
           item={item}
           showBookmarkModal={showBookmarkModal} />
-        {/* <MyBookmarksByCategory
-            bookmarks={item}
-            showBookmarkModal={showBookmarkModal} /> */}
+        <MyBookmarksByCategory
+          bookmarks={item.bookmarks}
+          showBookmarkModal={showBookmarkModal} />
       </div>
     );
   });
