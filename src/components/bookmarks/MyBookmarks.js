@@ -14,18 +14,24 @@ const MyBookmarks = ({ groupId }) => {
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
-    const initGroup = () => {
-      setGroups(document.querySelectorAll('#ul-group > li.nav-item.short-title'));
-    }
+    const initGroup = setInterval(() => {
+      const groupEl = document.querySelectorAll('#ul-group > li.nav-item.short-title');
+      if (groupEl && groupEl.length) {
+        setGroups(groupEl);
+        clearInterval(initGroup);
+        console.log('groupEl => ', groupEl)
+      }
+    }, 1000);
 
-    // Check if the page has already loaded
-    if (document.readyState === 'complete') {
-      initGroup();
-    } else {
-      window.addEventListener('load', initGroup);
-      // Remove the event listener when component unmounts
-      return () => window.removeEventListener('load', initGroup);
-    }
+
+    // // Check if the page has already loaded
+    // if (document.readyState === 'complete') {
+    //   initGroup();
+    // } else {
+    //   window.addEventListener('load', initGroup);
+    //   // Remove the event listener when component unmounts
+    //   return () => window.removeEventListener('load', initGroup);
+    // }
   }, []);
 
   useEffect(() => {
