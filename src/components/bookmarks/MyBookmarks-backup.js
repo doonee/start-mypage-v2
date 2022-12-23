@@ -4,51 +4,13 @@ import BookmarkModal from "./BookmarkModal";
 import MyBookmarksByCategory from './MyBookmarksByCategory';
 import MyBookmarksCategoryTitle from './MyBookmarksCategoryTitle';
 import axios from 'axios'
-import Loading from '../Loading'
+import Loading from '.././Loading'
 
 const MyBookmarks = ({ groupId }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [modalShow, setModalShow] = useState(false);
-  const [SameGroupCategories, setSameGroupCategories] = useState([]);
+  const [arrsameGroupCategory, setArrSameGroupCategory] = useState([]);
   const [selGroup, setSelGroup] = useState(() => { return groupId });
-
-  const groupIntervalChecking = (SameGroupCategories) => {
-    const groups = document.querySelectorAll('#ul-group > li.nav-item.short-title');
-    console.log('groups => ', groups);
-  };
-
-  useEffect(() => {
-    groupIntervalChecking(SameGroupCategories);
-  }, [SameGroupCategories]);
-
-  // const clearGroupIntervalChecking = (groups) => {
-  //   if (groups && groups.length) clearInterval(groupIntervalChecking);
-  // }
-
-  // useEffect(() => {
-  //   clearGroupIntervalChecking(groups);
-  // }, [groups]);
-
-  const getSameGroupCategoryData = async (gid) => {
-    try {
-      await setIsLoading(true);
-      const res = await axios.get('/datas/MyBookmarkData.json');
-      if (res && res.status === 200 && res.data && res.data.length) {
-        const sameGroupCategory = await res.data.filter(b => Number(b.groupNo) === Number(gid));
-        if (sameGroupCategory && sameGroupCategory.length) {
-          await setSameGroupCategories(sameGroupCategory);
-        }
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      await setIsLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    getSameGroupCategoryData(selGroup);
-  }, [selGroup]);
 
   useEffect(() => {
     console.log('useEffect()')
@@ -61,6 +23,10 @@ const MyBookmarks = ({ groupId }) => {
       return () => window.removeEventListener('load', setGroupClickStyle);
     }
   }, []);
+
+  useEffect(() => {
+    setContents(selGroup);
+  }, [selGroup]);
 
   const setGroupClickStyle = () => {
     try {
@@ -85,6 +51,23 @@ const MyBookmarks = ({ groupId }) => {
       }
     } catch (error) {
       console.log('error => ', error);
+    }
+  }
+
+  const setContents = async (gid) => {
+    try {
+      await setIsLoading(true);
+      const res = await axios.get('/datas/MyBookmarkData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        // eslint-disable-next-line eqeqeq
+        const sameGroupCategory = await res.data.filter(b => b.groupNo == gid);
+        if (sameGroupCategory && sameGroupCategory.length)
+          await setArrSameGroupCategory(sameGroupCategory);
+      }
+    } catch (err) {
+      console.log('err => ', err);
+    } finally {
+      await setIsLoading(false);
     }
   }
 
@@ -113,7 +96,7 @@ const MyBookmarks = ({ groupId }) => {
   };
 
   // 모듈 형태로 넣으면 정렬이 비정상적으로 되서 변수 활용함!
-  const BookItems = SameGroupCategories.map(function (item) {
+  const BookItems = arrsameGroupCategory.map(function (item) {
     return (
       <div key={item.categoryNo}>
         <MyBookmarksCategoryTitle

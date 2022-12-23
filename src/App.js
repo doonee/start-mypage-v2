@@ -25,11 +25,17 @@ import NotFound from "./pages/NotFound";
 const Layout = () => {
   const location = useLocation();
   const curPath = location.pathname;
+  const getParameter = (key) => {
+    if (new URLSearchParams(window.location.search).get(key)) {
+      return new URLSearchParams(window.location.search).get(key);
+    }
+    return '';
+  }
 
   return (
     <div className="App">
       <TopMenus curPath={curPath} />
-      <TopGroupLinks />
+      <TopGroupLinks curPath={curPath} getParameter={getParameter} />
       <Outlet />
       <Footer />
       <GoToTopIcon />

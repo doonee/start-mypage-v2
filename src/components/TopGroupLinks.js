@@ -1,44 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from 'react-router-dom';
 import { jsonLocalStorage } from "./Common";
 import axios from "axios";
 
-const TopGroupLinks = () => {
-  const curUrl = useLocation().pathname;
-  const getParameter = (key) => {
-    if (new URLSearchParams(window.location.search).get(key)) {
-      return new URLSearchParams(window.location.search).get(key);
-    }
-    return '';
-  }
+const TopGroupLinks = ({ curPath, getParameter }) => {
   const [topGroupLinksData, setTopGroupLinksData] = useState([]);
   const [selectedGroup, setSelectedGroup] = React.useState(null);
-
-  useEffect(() => {
-    initData();
-    if (curUrl.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
-      // Check if the page has already loaded
-      if (document.readyState === 'complete') {
-        intiConfig();
-      } else {
-        window.addEventListener('load', intiConfig);
-        // Remove the event listener when component unmounts
-        return () => window.removeEventListener('load', intiConfig);
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const li = document.querySelectorAll('#ul-group > li');
-    li.forEach((l) => {
-      // eslint-disable-next-line eqeqeq
-      if (l.getAttribute('data-id') == selectedGroup) {
-        l.tabIndex = 100;
-        l.focus();
-      }
-    })
-  }, [selectedGroup]);
+  const [gParameter, setGParameter] = useState('');
+  const [config, setConfig] = useState('');
 
   const initData = async () => {
     try {
@@ -52,24 +20,57 @@ const TopGroupLinks = () => {
     }
   }
 
-  const intiConfig = () => {
-    if (getParameter('group')) {
-      setSelectedGroup(getParameter('group'));
-    } else {
-      // 파라미터 값이 없으면 시작페이지로 설정 된 그룹
-      if (jsonLocalStorage.getItem('config')) {
-        setSelectedGroup(jsonLocalStorage.getItem('config').startGroup);
+  useEffect(() => {
+    initData();
+    setGParameter(getParameter('group') || '');
+    setConfig(jsonLocalStorage.getItem('config') || '');
+  }, [getParameter]);
+
+  useEffect(() => {
+    const initSelGroup = async () => {
+      // [1] 파라미터로 접근하는 그룹
+      if (gParameter) {
+        await setSelectedGroup(gParameter);
       } else {
-        const el = document.querySelector('#ul-group > li:nth-child(1)');
-        setSelectedGroup(el.getAttribute('data-id'));
+        // [2] 파라미터 값이 없으면 시작페이지로 설정 된 그룹
+        if (config) {
+          await setSelectedGroup(config.startGroup);
+        } else {
+          // [3] 아무것도 없으면 첫번째 그룹
+          const firstGroup = document.querySelector('#ul-group > li:nth-child(1)');
+          if (firstGroup) await setSelectedGroup(firstGroup.getAttribute('data-id'));
+          //else initSelGroup();
+        }
       }
     }
-  }
+
+    if (topGroupLinksData && topGroupLinksData.length) {
+      if (curPath.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
+        if (document.readyState === 'complete') {
+          initSelGroup();
+        } else {
+          window.addEventListener('load', initSelGroup);
+          return () => window.removeEventListener('load', initSelGroup);
+        }
+      }
+    }
+  }, [topGroupLinksData, curPath, gParameter, config]);
+
+  useEffect(() => {
+    const li = document.querySelectorAll('#ul-group > li');
+    li.forEach((l) => {
+      // eslint-disable-next-line eqeqeq
+      if (l.getAttribute('data-id') == selectedGroup) {
+        l.tabIndex = 100;
+        l.focus();
+      }
+    })
+  }, [selectedGroup]);
 
   const handleGrouplinkClick = (e) => {
     e.preventDefault();
     const selectedGroup = e.target.getAttribute('data-id');
-    if (curUrl.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
+    if (curPath.toUpperCase().includes('/myBookmarks'.toUpperCase())) {
       setSelectedGroup(selectedGroup);
     } else {
       window.location.href = `/myBookmarks/?group=${selectedGroup}`;
@@ -79,7 +80,7 @@ const TopGroupLinks = () => {
   // 그룹리스트 출력
   const groupMenus = topGroupLinksData.map((item) => {
     // eslint-disable-next-line eqeqeq
-    const isActive = item.groupNo == selectedGroup;
+    const isActive = Number(item.groupNo) === Number(selectedGroup);
     return (
       <li key={item.groupNo}
         className={isActive ? "nav-item short-title active" : "nav-item short-title"}
