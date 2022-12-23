@@ -9,84 +9,55 @@ import Loading from '../Loading'
 const MyBookmarks = ({ groupId }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [modalShow, setModalShow] = useState(false);
-  const [SameGroupCategories, setSameGroupCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [selGroup, setSelGroup] = useState(() => { return groupId });
-
-  const groupIntervalChecking = (SameGroupCategories) => {
-    const groups = document.querySelectorAll('#ul-group > li.nav-item.short-title');
-    console.log('groups => ', groups);
-  };
+  const [groups, setGroups] = useState([]);
 
   useEffect(() => {
-    groupIntervalChecking(SameGroupCategories);
-  }, [SameGroupCategories]);
-
-  // const clearGroupIntervalChecking = (groups) => {
-  //   if (groups && groups.length) clearInterval(groupIntervalChecking);
-  // }
-
-  // useEffect(() => {
-  //   clearGroupIntervalChecking(groups);
-  // }, [groups]);
-
-  const getSameGroupCategoryData = async (gid) => {
-    try {
-      await setIsLoading(true);
-      const res = await axios.get('/datas/MyBookmarkData.json');
-      if (res && res.status === 200 && res.data && res.data.length) {
-        const sameGroupCategory = await res.data.filter(b => Number(b.groupNo) === Number(gid));
-        if (sameGroupCategory && sameGroupCategory.length) {
-          await setSameGroupCategories(sameGroupCategory);
-        }
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      await setIsLoading(false);
+    const initGroup = () => {
+      setGroups(document.querySelectorAll('#ul-group > li.nav-item.short-title'));
     }
-  }
 
-  useEffect(() => {
-    getSameGroupCategoryData(selGroup);
-  }, [selGroup]);
-
-  useEffect(() => {
-    console.log('useEffect()')
     // Check if the page has already loaded
     if (document.readyState === 'complete') {
-      setGroupClickStyle();
+      initGroup();
     } else {
-      window.addEventListener('load', setGroupClickStyle);
+      window.addEventListener('load', initGroup);
       // Remove the event listener when component unmounts
-      return () => window.removeEventListener('load', setGroupClickStyle);
+      return () => window.removeEventListener('load', initGroup);
     }
   }, []);
 
-  const setGroupClickStyle = () => {
-    try {
-      const groups = document.querySelectorAll('#ul-group > li.nav-item.short-title');
-      if (!groups) {
-        setTimeout(() => {
-          setGroupClickStyle();
-        }, 1000);
+  useEffect(() => {
+    groups.forEach(function (g) {
+      if (g.classList.contains('active')) {
+        setSelGroup(g.getAttribute('data-id'));
       }
-      groups.forEach(function (g) {
-        if (g.classList.contains('active')) {
-          setSelGroup(g.getAttribute('data-id'));
-        }
-        g.addEventListener('click', (e) => {
-          setSelGroup(e.target.getAttribute('data-id'))
-        });
+      g.addEventListener('click', (e) => {
+        setSelGroup(e.target.getAttribute('data-id'))
       });
-      if (!selGroup) {
-        setTimeout(() => {
-          setGroupClickStyle();
-        }, 1000);
+    });
+  }, [groups]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        await setIsLoading(true);
+        const res = await axios.get('/datas/MyBookmarkData.json');
+        if (res && res.status === 200 && res.data && res.data.length) {
+          const sameGroupCategory = res.data.filter(b => Number(b.groupNo) === Number(selGroup));
+          if (sameGroupCategory && sameGroupCategory.length) {
+            await setCategories(sameGroupCategory);
+          }
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        await setIsLoading(false);
       }
-    } catch (error) {
-      console.log('error => ', error);
     }
-  }
+    getData();
+  }, [selGroup]);
 
   const showBookmarkModal = (e) => {
     // 애니메이션 적용안됨
@@ -113,7 +84,7 @@ const MyBookmarks = ({ groupId }) => {
   };
 
   // 모듈 형태로 넣으면 정렬이 비정상적으로 되서 변수 활용함!
-  const BookItems = SameGroupCategories.map(function (item) {
+  const BookItems = categories.map(function (item) {
     return (
       <div key={item.categoryNo}>
         <MyBookmarksCategoryTitle
