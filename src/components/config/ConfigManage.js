@@ -16,6 +16,13 @@ export default function ConfigManage() {
   const [themeValue, setThemeValue] = useState('basic');
   const [groupData, setGroupData] = useState([]);
 
+  const dummyConfigData = [{
+    appTitle: document.getElementById('appTitle').value,
+    startGroup: document.getElementById('startGroup').value,
+    theme: themeValue,
+    bookmarkTarget: targetValue,
+  }]
+
   const themes = [
     { name: '기본 테마', value: 'basic' },
     { name: '어두운 테마', value: 'dark' },
