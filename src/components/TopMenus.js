@@ -22,7 +22,7 @@ const TopMenus = ({ curPath }) => {
   const basicTitle = '편리한 북마크 무료관리툴 - StartMypage.com';
   const [appTitle, setAppTitle] = useState(() => { return basicTitle });
   const [isChangePage, setIsChangePage] = useState(true);
-
+  alert(appTitle)
   useEffect(() => {
     if (curPath === '/' || curPath === '/config') {
       setIsChangePage(true);
@@ -40,7 +40,7 @@ const TopMenus = ({ curPath }) => {
 
   useEffect(() => {
     if (isChangePage) {
-      if (jsonLocalStorage.getItem('config')) {
+      if (jsonLocalStorage.getItem('config') && jsonLocalStorage.getItem('config').appTitle) {
         setAppTitle(jsonLocalStorage.getItem('config').appTitle);
       } else setAppTitle(basicTitle);
     }
