@@ -7,10 +7,8 @@ import axios from 'axios';
 
 export default function BookmarkManage({ groupId, categoryId }) {
   const [gid, setGid] = useState();
-  console.log("🚀 ~ file: BookmarkManage.js:10 ~ BookmarkManage ~ gid", gid)
   const [cid, setCid] = useState(() => { return categoryId });
   const [groupData, setGroupData] = useState([]);
-  console.log("🚀 ~ file: BookmarkManage.js:13 ~ BookmarkManage ~ groupData", groupData)
   const [categoryData, setCategoryData] = useState([]);
   const [bookmarkData, setBookmarkData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
@@ -50,38 +48,48 @@ export default function BookmarkManage({ groupId, categoryId }) {
     initGroup();
   }, [groupId])
 
-
-
-  const setInitialCategory = async (g) => {
+  const setInitialCategory = async (g, c) => {
     try {
       if (g) {
-        await setGid(g);
         const category = await axios.get('/datas/CategoryData.json');
         if (category && category.status === 200 && category.data && category.data.length) {
-          // eslint-disable-next-line eqeqeq
-          await setCategoryData(category.data.filter(d => d.groupNo == g) || []);
-          // eslint-disable-next-line eqeqeq
-          await setCid(category.data.filter(c => c.groupNo == g)[0].categoryNo || []);
+          await setCategoryData(category.data.filter(d => Number(d.groupNo) === Number(g)));
+          if (!c) await setCid(category.data.filter(c => Number(c.groupNo) === Number(g))[0].categoryNo);
         }
       }
     } catch (err) {
       console.log('err => ', err);
     }
   }
+
+  useEffect(() => {
+    async function initCategory() {
+      await setCid(categoryId);
+      await setInitialCategory(groupId, categoryId);
+    }
+    initCategory();
+  }, [groupId, categoryId])
 
   const setInitialBookmark = async (c) => {
     try {
       if (c) {
         const bookmark = await axios.get('/datas/BookmarkData.json');
         if (bookmark && bookmark.status === 200 && bookmark.data && bookmark.data.length) {
-          // eslint-disable-next-line eqeqeq
-          await setBookmarkData(bookmark.data.filter(b => b.categoryNo == c) || []);
+          await setBookmarkData(bookmark.data.filter(b => Number(b.categoryNo) === Number(c)));
         }
       }
     } catch (err) {
       console.log('err => ', err);
     }
   }
+
+  useEffect(() => {
+    async function initBookmark() {
+      await setCid(categoryId);
+      await setInitialBookmark(categoryId);
+    }
+    initBookmark();
+  }, [categoryId])
 
   const showBookmarkModal = (e) => {
     // 애니메이션 적용안됨
