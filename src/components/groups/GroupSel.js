@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 export default function GroupSel({ groupId, groupData, setInitialCategory, setInitialBookmark }) {
-  const [curGroup, setCurGroup] = useState(null);
-
-  useEffect(() => {
-    if (groupId) setCurGroup(groupId);
-    else if (groupData && groupData.length) setCurGroup(groupData[0].groupNo);
-  }, [groupId, groupData])
+  const [curGroup, setCurGroup] = useState(() => { return groupId });
 
   const handleSelect = (e) => {
     const gid = e.target.value;
     setCurGroup(gid);
     if (gid) {
-      setInitialCategory(gid);
+      setInitialCategory(gid, null);
     } else {
       window.location.href = '/groupManage';
     }
@@ -20,7 +15,7 @@ export default function GroupSel({ groupId, groupData, setInitialCategory, setIn
 
   return (
     <select className="form-select" id="sel-group"
-      value={curGroup || 'notselected'} onChange={handleSelect}>
+      value={curGroup || 'none'} onChange={handleSelect}>
       {
         groupData.map((g) => (
           <option key={g.groupNo} value={g.groupNo}>{g.groupName}</option>

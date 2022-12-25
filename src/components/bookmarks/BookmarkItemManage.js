@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import * as Icon from "react-bootstrap-icons";
 
-export default function BookmarkItemManage({ showBookmarkModal, categoryId, bookmarkData, setInitialBookmark }) {
+export default function BookmarkItemManage({ bookmarkData, showBookmarkModal, setInitialBookmark }) {
   const [selectedLi, setSelectedLi] = useState(null);
 
   const handleRadioChecked = (e) => {

@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 
-export default function CategorySel({ groupId, categoryData, setInitialCategory, setInitialBookmark }) {
-    const [curGroup, setCurGroup] = useState(() => {
-        if (!groupId && categoryData && categoryData.length)
-            return categoryData[0].categoryNo;
-
-        return groupId
-    });
+export default function CategorySel({ categoryId, categoryData, setInitialCategory, setInitialBookmark }) {
+    const [curCategory, setCurGroup] = useState(() => { return categoryId });
 
     const handleSelect = (e) => {
         const cid = e.target.value;
@@ -18,9 +13,10 @@ export default function CategorySel({ groupId, categoryData, setInitialCategory,
             window.location.href = '/categoryManage';
         }
     }
+
     return (
         <select className="form-select" id="sel-category"
-            value={curGroup || 'notselected'} onChange={handleSelect}>
+            value={curCategory || 'nono'} onChange={handleSelect}>
             {
                 categoryData.map((g) => (
                     <option key={g.categoryNo} value={g.categoryNo}>{g.categoryName}</option>
