@@ -85,7 +85,7 @@ export default function GroupItemManage({ showGroupModal }) {
     console.log('data => ', data);
     setTimeout(() => {
       alert('그룹순서가 저장되었습니다.');
-      window.location.replace(`/groups`);
+      window.location.replace(`/groupManage`);
     }, 2000);
   }
 

@@ -6,39 +6,51 @@ import GroupSel from "../groups/GroupSel";
 import axios from 'axios';
 
 export default function BookmarkManage({ groupId, categoryId }) {
-  const [gid, setGid] = useState(() => { return groupId });
+  const [gid, setGid] = useState();
+  console.log("🚀 ~ file: BookmarkManage.js:10 ~ BookmarkManage ~ gid", gid)
   const [cid, setCid] = useState(() => { return categoryId });
   const [groupData, setGroupData] = useState([]);
+  console.log("🚀 ~ file: BookmarkManage.js:13 ~ BookmarkManage ~ groupData", groupData)
   const [categoryData, setCategoryData] = useState([]);
   const [bookmarkData, setBookmarkData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
 
-  useEffect(() => {
-    async function init() {
-      await setInitialGroup(gid);
-      await setInitialCategory(gid);
-    };
-    init();
-  }, [gid]);
+  // useEffect(() => {
+  //   async function init() {
+  //     await setInitialGroup(gid);
+  //     await setInitialCategory(gid);
+  //   };
+  //   init();
+  // }, [gid]);
 
-  useEffect(() => {
-    async function init() {
-      await setInitialBookmark(cid);
-    };
-    init();
-  }, [cid]);
+  // useEffect(() => {
+  //   async function init() {
+  //     await setInitialBookmark(cid);
+  //   };
+  //   init();
+  // }, [cid]);
 
   const setInitialGroup = async (g) => {
     try {
       const group = await axios.get('/datas/GroupData.json');
       if (group && group.status === 200 && group.data && group.data.length) {
-        await setGroupData(group.data || []);
+        await setGroupData(group.data);
         if (!g) await setGid(group.data[0].groupNo);
       }
     } catch (err) {
       console.log('err => ', err);
     }
   }
+
+  useEffect(() => {
+    async function initGroup() {
+      await setGid(groupId);
+      await setInitialGroup(groupId);
+    }
+    initGroup();
+  }, [groupId])
+
+
 
   const setInitialCategory = async (g) => {
     try {

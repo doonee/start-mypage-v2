@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-export default function GroupSel({ groupId, groupData, setInitialCategory }) {
-  const [curGroup, setCurGroup] = useState(() => {
-    if (!groupId && groupData && groupData.length) return groupData[0].groupNo;
-    return groupId
-  });
+export default function GroupSel({ groupId, groupData, setInitialCategory, setInitialBookmark }) {
+  const [curGroup, setCurGroup] = useState(null);
+
+  useEffect(() => {
+    if (groupId) setCurGroup(groupId);
+    else if (groupData && groupData.length) setCurGroup(groupData[0].groupNo);
+  }, [groupId, groupData])
 
   const handleSelect = (e) => {
     const gid = e.target.value;
