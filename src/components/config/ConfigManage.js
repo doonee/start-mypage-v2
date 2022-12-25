@@ -10,45 +10,54 @@ import Form from "react-bootstrap/Form";
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import { jsonLocalStorage } from '../Common';
 import axios from 'axios';
+import uuid from 'react-uuid';
 
 export default function ConfigManage() {
-  const [targetValue, setTargetValue] = useState('_blank');
-  const [themeValue, setThemeValue] = useState('basic');
+  const [titleValue, setTitleValue] = useState('');
   const [groupData, setGroupData] = useState([]);
-
-  const dummyConfigData = [{
-    appTitle: document.getElementById('appTitle').value,
-    startGroup: document.getElementById('startGroup').value,
-    theme: themeValue,
-    bookmarkTarget: targetValue,
-  }]
-
-  const themes = [
-    { name: '기본 테마', value: 'basic' },
-    { name: '어두운 테마', value: 'dark' },
-  ]
-
-  const targets = [
-    { name: '새창', value: '_blank' },
-    { name: '현재창', value: '_self' }
-  ]
-
-  useEffect(() => {
-    initData();
-  }, [])
+  const [groupValue, setGroupValue] = useState('');
+  const [themes, setThemes] = useState([]);
+  const [themeValue, setThemeValue] = useState('');
+  const [targets, setTargets] = useState([]);
+  const [targetValue, setTargetValue] = useState('');
 
   const initData = async () => {
     try {
+      // DB로 가져올 예정!
+      await setThemes([
+        { name: '기본 테마', value: 'basic' },
+        { name: '어두운 테마', value: 'dark' },
+      ]);
+
+      // DB로 가져올 예정!
+      await setTargets([
+        { name: '새창', value: '_blank' },
+        { name: '현재창', value: '_self' }
+      ]);
+
+      // DB로 가져올 예정!
       const res = await axios.get('/datas/GroupData.json');
       if (res && res.status === 200 && res.data && res.data.length) {
-        // eslint-disable-next-line eqeqeq
         const arr = res.data;
         if (arr && arr.length) await setGroupData(arr);
+      }
+
+      // DB로 가져올 예정!
+      const preData = await jsonLocalStorage.getItem('config');
+      if (preData) {
+        await setTitleValue(preData.appTitle || '편리한 북마크 무료관리툴 - StartMypage.com');
+        await setGroupValue(preData.startGroup || '');
+        await setThemeValue(preData.theme || 'basic');
+        await setTargetValue(preData.bookmarkTarget || '_blank');
       }
     } catch (err) {
       console.log('err => ', err);
     }
   }
+
+  useEffect(() => {
+    initData();
+  }, []);
 
   const handleSave = (e) => {
     try {
@@ -69,7 +78,7 @@ export default function ConfigManage() {
   const GroupOptions = ({ gData }) => {
     return (
       gData.map((g) => (
-        <option key={g.groupNo} value={g.groupNo}>{g.groupName}</option>
+        <option key={uuid()} value={g.groupNo}>{g.groupName}</option>
       ))
     )
   }
@@ -78,11 +87,12 @@ export default function ConfigManage() {
     <div className="col-12 mt-2">
       <Form onSubmit={handleSave}>
         <Form.Group className="mb-3" controlId="appTitle">
-          <Form.Control type="text" className='fs-4' placeholder="앱 타이틀을 작성하세요." />
+          <Form.Control type="text" className='fs-4'
+            placeholder="앱 타이틀을 작성하세요." defaultValue={titleValue} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="startGroup">
           <Form.Label>시작그룹을 선택하세요.</Form.Label>
-          <Form.Select>
+          <Form.Select value={groupValue} onChange={(e) => setGroupValue(e.currentTarget.value)}>
             <GroupOptions gData={groupData} />
           </Form.Select>
         </Form.Group>

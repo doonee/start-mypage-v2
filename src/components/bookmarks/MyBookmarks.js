@@ -19,7 +19,6 @@ const MyBookmarks = ({ groupId }) => {
       if (groupEl && groupEl.length) {
         setGroups(groupEl);
         clearInterval(initGroup);
-        console.log('groupEl => ', groupEl)
       }
     }, 300);
   }, []);
