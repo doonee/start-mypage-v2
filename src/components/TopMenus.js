@@ -19,7 +19,8 @@ import {
 import { jsonLocalStorage } from "./Common";
 
 const TopMenus = ({ curPath }) => {
-  const [appTitle, setAppTitle] = useState('');
+  const basicTitle = '편리한 북마크 무료관리툴 - StartMypage.com';
+  const [appTitle, setAppTitle] = useState(() => { return basicTitle });
   const [isChangePage, setIsChangePage] = useState(true);
 
   useEffect(() => {
@@ -39,10 +40,9 @@ const TopMenus = ({ curPath }) => {
 
   useEffect(() => {
     if (isChangePage) {
-      const basic = '편리한 북마크 무료관리툴 - StartMypage.com';
       if (jsonLocalStorage.getItem('config')) {
         setAppTitle(jsonLocalStorage.getItem('config').appTitle);
-      } else setAppTitle(basic);
+      } else setAppTitle(basicTitle);
     }
   }, [isChangePage]);
 

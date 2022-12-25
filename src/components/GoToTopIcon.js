@@ -1,7 +1,20 @@
-const GoToTopIcon = () => {
+/* eslint-disable no-script-url */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from 'react';
+
+const GoToTopIcon = (e) => {
+  function scrollToTop() {
+    if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
+      window.scrollBy(0, -150);
+    }
+  }
+
   return (
     <div className="fixed-bottom m-4 text-end">
-      <a href="#top" className="text-decoration-none link-secondary">
+      <a
+        onClick={scrollToTop}
+        className="text-decoration-none link-secondary"
+        style={{ cursor: 'pointer' }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="26"
