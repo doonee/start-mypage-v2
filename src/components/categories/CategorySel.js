@@ -1,25 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-export default function CategorySel({ categoryId, categoryData, setInitialCategory, setInitialBookmark }) {
-    const [curCategory, setCurGroup] = useState(() => { return categoryId });
+export default function CategorySel({ categoryData, cid, setCid, gid }) {
+    console.log("🚀 ~ file: CategorySel.js:4 ~ CategorySel ~ cid", cid)
+    const [curCategory, setCurCategory] = useState(() => { return cid });
+
+    useEffect(() => {
+        setCurCategory(cid);
+        setCid(cid);
+    }, [gid])
 
     const handleSelect = (e) => {
         const cid = e.target.value;
-        setCurGroup(cid);
         if (cid) {
-            setInitialCategory();
-            setInitialBookmark(cid);
+            setCurCategory(cid);
+            setCid(cid);
         } else {
-            window.location.href = '/categoryManage';
+            window.location.href = `/categoryManage/?group=${gid}`;
         }
     }
 
     return (
         <select className="form-select" id="sel-category"
-            value={curCategory || 'nono'} onChange={handleSelect}>
+            value={curCategory || 'none'} onChange={handleSelect}>
             {
                 categoryData.map((g) => (
-                    <option key={g.categoryNo} value={g.categoryNo}>{g.categoryName}</option>
+                    <option key={g.categoryNo} value={g.categoryNo}
+                    >{g.categoryName}</option>
                 ))
             }
             <option value={''}>:: 카테고리 관리 ::</option>

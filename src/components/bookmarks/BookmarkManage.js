@@ -17,93 +17,83 @@ export default function BookmarkManage({ groupId, categoryId }) {
     try {
       const group = await axios.get('/datas/GroupData.json');
       if (group && group.status === 200 && group.data && group.data.length) {
-        await setGroupData(group.data);
+        const gr = group.data.sort((a, b) => a.groupNo - b.groupNo);
+
+        await setGroupData(gr);
+
+        if (Number(gid) > 0) return gid;
+        else return gr[0].groupNo;
       }
+      return null;
     } catch (err) {
       console.log('err => ', err);
     }
   }
 
   useEffect(() => {
-    setGroupInit(gid);
+    const init = async (gid) => {
+      await setGid(gid);
+      await setGroupData([]);
+      const gd = await setGroupInit(gid);
+      await setGid(gd);
+    }
+    init(gid);
   }, [gid])
 
-  const setCategoryInit = async (gid, cid) => {
+  const setCategoryInit = async (gd, cd) => {
     try {
+      const groupNo = gd || gid;
       const category = await axios.get('/datas/CategoryData.json');
       if (category && category.status === 200 && category.data && category.data.length) {
-        await setCategoryData(category.data.filter(c => Number(c.groupNo) === Number(gid)));
+        const cate = await category.data.filter(c => Number(c.groupNo) === Number(groupNo))
+          .sort((a, b) => a.categoryNo - b.categoryNo);
+
+        await setCategoryData(cate);
+
+        //if (Number(cd) > 0) return cd;
+        //else 
+        return cate[0].categoryNo;
       }
-      const bookmark = await axios.get('/datas/BookmarkData.json');
-      if (bookmark && bookmark.status === 200 && bookmark.data && bookmark.data.length) {
-        await setBookmarkData(bookmark.data.filter(b => Number(b.categoryNo) === Number(cid)));
-      }
+      return null;
     } catch (err) {
       console.log('err => ', err);
     }
   }
 
   useEffect(() => {
-    setCategoryInit(gid, cid);
-  }, [gid, cid])
+    const init = async (gid, cid) => {
+      console.log("🚀 ~ file: BookmarkManage.js:64 ~ init ~ gid", gid)
+      console.log("🚀 ~ file: BookmarkManage.js:64 ~ init ~ cid", cid)
+      await setCid(cid);
+      await setCategoryData([]);
+      const ccd = await setCategoryInit(gid, cid);
+      await setCid(ccd);
+      await setBookmarkInit(ccd);
+    }
+    init(gid, cid);
+  }, [gid])
 
-  // const setInitialGroup = async (g) => {
-  //   try {
-  //     const group = await axios.get('/datas/GroupData.json');
-  //     if (group && group.status === 200 && group.data && group.data.length) {
-  //       await setGroupData(group.data);
+  useEffect(() => {
+    const init = async (cid) => {
+      await setBookmarkInit(cid);
+    }
+    init(cid);
+  }, [cid])
 
-  //       await setGid(g || group.data[0].groupNo);
-  //     }
-  //     console.log("🚀 ~ file: BookmarkManage.js:29 ~ setInitialGroup ~ group.data", group.data)
-  //   } catch (err) {
-  //     console.log('err => ', err);
-  //   }
-  // }
-
-  const setInitialCategory = async (g, ct) => {
+  const setBookmarkInit = async (cd) => {
     try {
-      if (g) {
-        await setGid(g);
+      await setBookmarkData([]);
+      const bookmark = await axios.get('/datas/BookmarkData.json');
+      console.log('bookmark => ', bookmark)
+      if (bookmark && bookmark.status === 200 && bookmark.data && bookmark.data.length) {
+        const arrBookmark = await bookmark.data.filter(b => Number(b.categoryNo) === Number(cd));
 
-        const category = await axios.get('/datas/CategoryData.json');
-        if (category && category.status === 200 && category.data && category.data.length) {
-          await setCategoryData(category.data.filter(d => Number(d.groupNo) === Number(g)));
-
-          await setCid(ct ||
-            category.data.filter(ct => Number(ct.groupNo) === Number(g))[0].categoryNo);
-        }
-        console.log("🚀 ~ file: BookmarkManage.js:50 ~ setInitialCategory ~ category.data", category.data)
+        await setBookmarkData(arrBookmark.sort((a, b) => a.bookmarkNo - b.bookmarkNo));
       }
     } catch (err) {
       console.log('err => ', err);
     }
   }
-
-  // useEffect(() => {
-  //   setInitialCategory(gid, cid);
-  // }, [gid, cid])
-
-  const setInitialBookmark = async (c) => {
-    try {
-      if (c) {
-        setCid(c);
-        const bookmark = await axios.get('/datas/BookmarkData.json');
-        if (bookmark && bookmark.status === 200 && bookmark.data && bookmark.data.length) {
-          await setBookmarkData(bookmark.data.filter(b => Number(b.categoryNo) === Number(c)));
-        }
-        console.log("🚀 ~ file: BookmarkManage.js:70 ~ setInitialBookmark ~ bookmark.data", bookmark.data)
-      }
-    } catch (err) {
-      console.log('err => ', err);
-    }
-  }
-
-  // useEffect(() => {
-  //   setInitialGroup(gid);
-  //   setInitialCategory(gid, cid);
-  //   setInitialBookmark(cid);
-  // }, [gid, cid])
 
   const showBookmarkModal = (e) => {
     // 애니메이션 적용안됨
@@ -130,26 +120,24 @@ export default function BookmarkManage({ groupId, categoryId }) {
           <div className="col-sm-12 col-lg-12 mb-4">
             <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">그룹</h3>
             <GroupSel
-              groupId={gid}
               groupData={groupData}
-              setInitialCategory={setInitialCategory}
-              setInitialBookmark={setInitialBookmark} />
+              gid={gid}
+              setGid={setGid} />
           </div>
           <div className="col-sm-12 col-lg-12">
             <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">카테고리</h3>
             <CategorySel
-              categoryId={cid}
               categoryData={categoryData}
-              setInitialCategory={setInitialCategory}
-              setInitialBookmark={setInitialBookmark} />
+              cid={cid}
+              setCid={setCid}
+              gid={gid} />
           </div>
         </div>
         <div className="col-md-7 mt-4 mt-md-0">
           <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">북마크</h3>
           <BookmarkItemManage
             bookmarkData={bookmarkData}
-            showBookmarkModal={showBookmarkModal}
-            setInitialBookmark={setInitialBookmark} />
+            showBookmarkModal={showBookmarkModal} />
         </div>
       </div>
       <BookmarkModal show={modalShow} onHide={() => setModalShow(false)} />

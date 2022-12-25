@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-export default function GroupSel({ groupId, groupData, setInitialCategory, setInitialBookmark }) {
-  const [curGroup, setCurGroup] = useState(() => { return groupId });
+export default function GroupSel({ groupData, gid, setGid }) {
+  const [curGroup, setCurGroup] = useState(() => { return gid });
 
   const handleSelect = (e) => {
     const gid = e.target.value;
-    setCurGroup(gid);
     if (gid) {
-      setInitialCategory(gid, null);
+      setGid(gid);
+      setCurGroup(gid);
     } else {
-      window.location.href = '/groupManage';
+      window.location.href = `/groupManage`;
     }
   }
 

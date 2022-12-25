@@ -71,17 +71,16 @@ export default function CategoryManage({ groupId }) {
           <div className="col-sm-12 col-lg-12 mb-4">
             <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">그룹</h3>
             <GroupSel
-              groupId={gid}
+              gid={gid}
               groupData={groupData}
-              setInitialCategory={setInitialCategory} />
+              setGid={setGid} />
           </div>
         </div>
         <div className="col-md-7 mt-4 mt-md-0">
           <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">카테고리</h3>
           <CategoryItemManage
-            showCategoryModal={showCategoryModal}
-            groupId={gid}
-            categoryData={categoryData} />
+            categoryData={categoryData}
+            showCategoryModal={showCategoryModal} />
         </div>
       </div>
       <CategoryModal show={modalShow} onHide={() => setModalShow(false)} />

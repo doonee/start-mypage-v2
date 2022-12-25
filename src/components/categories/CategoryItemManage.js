@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import * as Icon from "react-bootstrap-icons";
 
-export default function CategoryItemManage({ showCategoryModal, groupId, categoryData }) {
+export default function CategoryItemManage({ categoryData, showCategoryModal }) {
   const [selectedLi, setSelectedLi] = useState(null);
 
   const handleRadioChecked = (e) => {
