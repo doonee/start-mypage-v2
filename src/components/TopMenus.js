@@ -20,15 +20,15 @@ import { jsonLocalStorage } from "./Common";
 
 const TopMenus = ({ curPath }) => {
   const [appTitle, setAppTitle] = useState('');
+  const [isChangePage, setIsChangePage] = useState(true);
 
   useEffect(() => {
-    const basic = '편리한 북마크 무료관리툴 - StartMypage.com';
-    if (jsonLocalStorage.getItem('config')) {
-      setAppTitle(jsonLocalStorage.getItem('config').appTitle) || setAppTitle(basic);
-    } else setAppTitle(basic);
-  }, []);
+    if (curPath === '/' || curPath === '/config') {
+      setIsChangePage(true);
+    } else {
+      setIsChangePage(false);
+    }
 
-  useEffect(() => {
     const menuLinks = document.querySelectorAll("#ul-topmenu a.nav-link");
     menuLinks.forEach((link) => {
       link.classList.remove("active");
@@ -36,6 +36,15 @@ const TopMenus = ({ curPath }) => {
         link.classList.add("active");
     });
   }, [curPath]);
+
+  useEffect(() => {
+    if (isChangePage) {
+      const basic = '편리한 북마크 무료관리툴 - StartMypage.com';
+      if (jsonLocalStorage.getItem('config')) {
+        setAppTitle(jsonLocalStorage.getItem('config').appTitle);
+      } else setAppTitle(basic);
+    }
+  }, [isChangePage]);
 
   return (
     <header className="container-fluid bg-light">
