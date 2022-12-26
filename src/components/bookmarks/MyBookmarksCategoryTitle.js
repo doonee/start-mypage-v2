@@ -6,7 +6,7 @@ export default function MyBookmarksByCategory({ item, showBookmarkModal }) {
   const groupNo = item.groupNo,
     categoryNo = item.categoryNo,
     categoryName = item.categoryName;
-  const bookmarkMannageUrl = `/bookmarkManage/${groupNo}/${categoryNo}`;
+  const bookmarkMannageUrl = `/bookmarkManage/?group=${groupNo}&category=${categoryNo}`;
   return (
     <h6 key={categoryNo} style={{ lineHeight: '1.7rem' }}>
       <a href={bookmarkMannageUrl} data-category={categoryNo} title={categoryName}>

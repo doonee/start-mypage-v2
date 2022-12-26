@@ -70,7 +70,7 @@ export default function BookmarkItemManage({ bookmarkData, showBookmarkModal, se
     }
     setTimeout(() => {
       alert('북마크 순서가 저장되었습니다.');
-      window.location.replace(`/bookmarkManage/${data.group}/${data.category}`);
+      window.location.replace(`/bookmarkManage/?group=${data.group}&category=${data.category}`);
     }, 2000);
   }
 

@@ -138,7 +138,7 @@ export default function ConfigManage() {
           설정 저장
         </Button>
       </Form>
-      <Loading />
+      <Loading isLoading={isLoading} />
     </div >
   )
 }

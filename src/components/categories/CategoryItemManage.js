@@ -69,7 +69,7 @@ export default function CategoryItemManage({ categoryData, showCategoryModal }) 
     console.log('data => ', data);
     setTimeout(() => {
       alert('카테고리 순서가 저장되었습니다.');
-      window.location.replace(`/categoryManage/${data.group}`);
+      window.location.replace(`/categoryManage/?group=${data.group}`);
     }, 2000);
   }
 
