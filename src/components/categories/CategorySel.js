@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 export default function CategorySel({ categoryData, cid, setCid, gid }) {
-    console.log("🚀 ~ file: CategorySel.js:4 ~ CategorySel ~ cid", cid)
     const [curCategory, setCurCategory] = useState(() => { return cid });
-
-    useEffect(() => {
-        setCurCategory(cid);
-        setCid(cid);
-    }, [gid])
 
     const handleSelect = (e) => {
         const cid = e.target.value;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import BookmarkItemManage from "./BookmarkItemManage";
 import BookmarkModal from "./BookmarkModal";
 import CategorySel from "../categories/CategorySel";
@@ -8,92 +8,92 @@ import axios from 'axios';
 export default function BookmarkManage({ groupId, categoryId }) {
   const [gid, setGid] = useState(() => { return groupId });
   const [cid, setCid] = useState(() => { return categoryId });
+  const [firstCategory, setFirstCategory] = useState(true);
   const [groupData, setGroupData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
   const [bookmarkData, setBookmarkData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
 
-  const setGroupInit = async (gid) => {
+  const initGroupData = useCallback(async () => {
     try {
-      const group = await axios.get('/datas/GroupData.json');
-      if (group && group.status === 200 && group.data && group.data.length) {
-        const gr = group.data.sort((a, b) => a.groupNo - b.groupNo);
+      const res = await axios.get('/datas/GroupData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        const arr = res.data;
+        if (arr && arr.length) {
+          setGroupData(arr);
+        }
 
-        await setGroupData(gr);
+        if (Number(gid) > 0) return Number(gid);
+        else return Number(arr[0].groupNo);
 
-        if (Number(gid) > 0) return gid;
-        else return gr[0].groupNo;
       }
-      return null;
     } catch (err) {
       console.log('err => ', err);
     }
-  }
-
-  useEffect(() => {
-    const init = async (gid) => {
-      await setGid(gid);
-      await setGroupData([]);
-      const gd = await setGroupInit(gid);
-      await setGid(gd);
-    }
-    init(gid);
   }, [gid])
 
-  const setCategoryInit = async (gd, cd) => {
+  useEffect(() => {
+    const init = async () => {
+      const newGid = await initGroupData();
+      setGid(newGid);
+    }
+    init();
+  }, [initGroupData])
+
+  const initCategoryData = useCallback(async () => {
     try {
-      const groupNo = gd || gid;
-      const category = await axios.get('/datas/CategoryData.json');
-      if (category && category.status === 200 && category.data && category.data.length) {
-        const cate = await category.data.filter(c => Number(c.groupNo) === Number(groupNo))
-          .sort((a, b) => a.categoryNo - b.categoryNo);
+      setCategoryData([]);
+      const res = await axios.get('/datas/CategoryData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        const arr = res.data.filter(c => Number(c.groupNo) === Number(gid));
+        if (arr && arr.length) {
+          setCategoryData(arr);
 
-        await setCategoryData(cate);
-
-        //if (Number(cd) > 0) return cd;
-        //else 
-        return cate[0].categoryNo;
+          if (firstCategory) {
+            return Number(cid);
+          } else {
+            if (cid) return Number(cid);
+            else return Number(arr[0].categoryNo);
+          }
+        }
       }
-      return null;
     } catch (err) {
       console.log('err => ', err);
     }
-  }
+  }, [gid, cid, firstCategory])
 
   useEffect(() => {
-    const init = async (gid, cid) => {
-      console.log("🚀 ~ file: BookmarkManage.js:64 ~ init ~ gid", gid)
-      console.log("🚀 ~ file: BookmarkManage.js:64 ~ init ~ cid", cid)
-      await setCid(cid);
-      await setCategoryData([]);
-      const ccd = await setCategoryInit(gid, cid);
-      await setCid(ccd);
-      await setBookmarkInit(ccd);
+    const init = async () => {
+      const newCid = await initCategoryData();
+      setCid(newCid);
     }
-    init(gid, cid);
-  }, [gid])
+    init();
+  }, [initCategoryData, gid, cid])
 
-  useEffect(() => {
-    const init = async (cid) => {
-      await setBookmarkInit(cid);
-    }
-    init(cid);
-  }, [cid])
-
-  const setBookmarkInit = async (cd) => {
+  const initBookmarkData = useCallback(async () => {
     try {
       await setBookmarkData([]);
-      const bookmark = await axios.get('/datas/BookmarkData.json');
-      console.log('bookmark => ', bookmark)
-      if (bookmark && bookmark.status === 200 && bookmark.data && bookmark.data.length) {
-        const arrBookmark = await bookmark.data.filter(b => Number(b.categoryNo) === Number(cd));
-
-        await setBookmarkData(arrBookmark.sort((a, b) => a.bookmarkNo - b.bookmarkNo));
+      const res = await axios.get('/datas/BookmarkData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        const arr = res.data.filter(c => Number(c.categoryNo) === Number(cid));
+        if (arr && arr.length) {
+          await setBookmarkData(arr);
+        }
       }
     } catch (err) {
       console.log('err => ', err);
     }
-  }
+  }, [cid])
+
+  useEffect(() => {
+    const init = async () => {
+      await initBookmarkData();
+      if (Number(groupId) !== Number(gid) || Number(categoryId) !== Number(cid)) {
+        await setFirstCategory(false);
+      }
+    }
+    init();
+  }, [initBookmarkData, categoryId, gid, groupId, cid])
 
   const showBookmarkModal = (e) => {
     // 애니메이션 적용안됨
@@ -122,7 +122,8 @@ export default function BookmarkManage({ groupId, categoryId }) {
             <GroupSel
               groupData={groupData}
               gid={gid}
-              setGid={setGid} />
+              setGid={setGid}
+              setCid={setCid} />
           </div>
           <div className="col-sm-12 col-lg-12">
             <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">카테고리</h3>
