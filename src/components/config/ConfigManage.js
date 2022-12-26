@@ -11,6 +11,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import { jsonLocalStorage } from '../Common';
 import axios from 'axios';
 import uuid from 'react-uuid';
+import Loading from './../Loading';
 
 export default function ConfigManage() {
   const [titleValue, setTitleValue] = useState('');
@@ -20,6 +21,7 @@ export default function ConfigManage() {
   const [themeValue, setThemeValue] = useState('');
   const [targets, setTargets] = useState([]);
   const [targetValue, setTargetValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const initData = async () => {
     try {
@@ -45,10 +47,12 @@ export default function ConfigManage() {
       // DB로 가져올 예정!
       const preData = await jsonLocalStorage.getItem('config');
       if (preData) {
+        await setIsLoading(true);
         await setTitleValue(preData.appTitle || '편리한 북마크 무료관리툴 - StartMypage.com');
         await setGroupValue(preData.startGroup || '');
         await setThemeValue(preData.theme || 'basic');
         await setTargetValue(preData.bookmarkTarget || '_blank');
+        await setIsLoading(false);
       }
     } catch (err) {
       console.log('err => ', err);
@@ -134,6 +138,7 @@ export default function ConfigManage() {
           설정 저장
         </Button>
       </Form>
+      <Loading />
     </div >
   )
 }

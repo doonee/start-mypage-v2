@@ -38,6 +38,7 @@ const MyBookmarks = ({ groupId }) => {
     const getData = async () => {
       try {
         await setIsLoading(true);
+        await setCategories([]);
         const res = await axios.get('/datas/MyBookmarkData.json');
         if (res && res.status === 200 && res.data && res.data.length) {
           const sameGroupCategory = res.data.filter(b => Number(b.groupNo) === Number(selGroup));
