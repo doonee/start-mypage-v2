@@ -8,6 +8,7 @@ import Twitter from '../socials/Twitter'
 import '../../css/social.css'
 
 export default function MyInfo() {
+  const [userId, setUserId] = useState('');
   const [naverConnected, setNaverConnected] = useState(false);
   const [kakaoConnected, setKakaoConnected] = useState(false);
   const [googleConnected, setGoogleConnected] = useState(false);
@@ -16,6 +17,8 @@ export default function MyInfo() {
 
   useEffect(() => {
     // from DB!
+    setUserId('abcd');
+
     const socialConnects = ['naver', 'google'];
     socialConnects.forEach(c => {
       if (c === 'naver') setNaverConnected(true);
@@ -41,7 +44,7 @@ export default function MyInfo() {
           </article>
           <div className="col-12 mt-5">
             <h4 className='text-center'>직접 가입정보</h4>
-            <MyInfoForm />
+            <MyInfoForm userId={userId} />
           </div >
         </div>
       </div>
