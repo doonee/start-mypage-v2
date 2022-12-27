@@ -78,7 +78,11 @@ a {
   display: none !important;
 }
 
-@media screen and (max-width: 280px) {
+.list-group-item:hover {
+  background-color: rgba(182, 210, 231, 0.281);
+}
+
+@media screen and (mrgb(125, 130, 135)) {
   html {
     width: 280px;
     overflow: auto;
@@ -134,7 +138,8 @@ header .navbar .container-fluid ul.nav li.active {
   margin-bottom: 2rem;
   text-align: center;
 }
-#root > div > section div > div > ul > li > svg {
+#root > div > section div > div > ul > li > svg,
+#root > div > section div > div > h3 > span {
   cursor: pointer;
 }
 

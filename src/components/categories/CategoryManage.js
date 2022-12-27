@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import CategoryItemManage from "./CategoryItemManage";
 import GroupSel from "../groups/GroupSel";
 import CategoryModal from "./CategoryModal";
@@ -77,7 +79,16 @@ export default function CategoryManage({ groupId }) {
           </div>
         </div>
         <div className="col-md-7 mt-4 mt-md-0">
-          <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">카테고리</h3>
+          <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">카테고리
+            &nbsp;
+            <span className="align-middle" title="카테고리 추가">
+              <FontAwesomeIcon
+                icon={faPlusCircle}
+                size="lg"
+                onClick={(e) => showCategoryModal()}
+              />
+            </span>
+          </h3>
           <CategoryItemManage
             categoryData={categoryData}
             showCategoryModal={showCategoryModal} />

@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import BookmarkItemManage from "./BookmarkItemManage";
 import BookmarkModal from "./BookmarkModal";
 import CategorySel from "../categories/CategorySel";
@@ -135,7 +137,16 @@ export default function BookmarkManage({ groupId, categoryId }) {
           </div>
         </div>
         <div className="col-md-7 mt-4 mt-md-0">
-          <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">북마크</h3>
+          <h3 className="h4 p-2 bg-gradient bg-dark bg-opacity-25">북마크
+            &nbsp;
+            <span className="align-middle" title="카테고리 추가">
+              <FontAwesomeIcon
+                icon={faPlusCircle}
+                size="lg"
+                onClick={(e) => showBookmarkModal()}
+              />
+            </span>
+          </h3>
           <BookmarkItemManage
             bookmarkData={bookmarkData}
             showBookmarkModal={showBookmarkModal} />

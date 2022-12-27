@@ -6,7 +6,7 @@ export default function BookmarkItemManage({ bookmarkData, showBookmarkModal, se
 
   const handleRadioChecked = (e) => {
     e.target.closest('ul').querySelectorAll('li').forEach(element => {
-      element.style.backgroundColor = 'transparent';
+      element.style.backgroundColor = '';
     });
     e.target.closest('li').style.backgroundColor = '#f8f9e1';
     setSelectedLi(e.target.closest('li'));

@@ -92,8 +92,12 @@ a {
   display: none !important;
 }
 
+.list-group-item:hover {
+  background-color: rgba(182, 210, 231, 0.281);
+}
+
 // 갤럭시 폴더
-@media screen and (max-width: 280px) {
+@media screen and (mrgb(125, 130, 135)) {
   html {
     width: 280px;
     overflow: auto;
