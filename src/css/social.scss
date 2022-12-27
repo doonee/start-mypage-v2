@@ -14,17 +14,32 @@
   }
   .naver {
     background-color: rgb(3 196 97 / 16%);
+    p.fst-italic {
+      background-color: rgb(3 196 97 / 16%);
+    }
   }
   .kakao {
     background-color: rgb(203 184 3 / 16%);
+    p.fst-italic {
+      background-color: rgb(203 184 3 / 16%);
+    }
   }
   .google {
     background-color: bisque;
+    p.fst-italic {
+      background-color: bisque;
+    }
   }
-  .mata {
+  .meta {
     background-color: rgb(44 67 126 / 16%);
+    p.fst-italic {
+      background-color: rgb(44 67 126 / 16%);
+    }
   }
   .twitter {
     background-color: rgb(63 113 178 / 16%);
+    p.fst-italic {
+      background-color: rgb(63 113 178 / 16%);
+    }
   }
 }

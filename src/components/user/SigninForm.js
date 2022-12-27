@@ -22,6 +22,7 @@ export default function SigninForm() {
       password.focus();
       return;
     }
+    alert('OK');
   }
 
   return (
