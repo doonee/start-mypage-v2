@@ -44,6 +44,26 @@ const Layout = () => {
   );
 };
 
+const AnonLayout = () => {
+  const location = useLocation();
+  const curPath = location.pathname;
+  const getParameter = (key) => {
+    if (new URLSearchParams(window.location.search).get(key)) {
+      return new URLSearchParams(window.location.search).get(key);
+    }
+    return '';
+  }
+
+  return (
+    <div className="App">
+      <TopMenus curPath={curPath} getParameter={getParameter} />
+      <Outlet />
+      <Footer />
+      <GoToTopIcon />
+    </div>
+  );
+};
+
 function App() {
   return (
     <>
@@ -54,16 +74,18 @@ function App() {
           <Route path="categoryManage" element={<CategoryManagePage />} />
           <Route path="bookmarkManage" element={<BookmarkManagePage />} />
           <Route path="config" element={<ConfigPage />} />
-          <Route path="signup" element={<SignupPage />} />
-          <Route path="signin" element={<SigninPage />} />
           <Route path="myinfo" element={<MyInfoPage />} />
-          <Route path="signout" element={<SignoutPage />} />
           <Route path="myBookmarks" element={<MyBookmarksPage />} />
           <Route path="searchBookmarks" element={<SearchBookmarksPage />} />
-          <Route path="shareGroup/:groupId" element={<ShareGroupPage />} />
-          <Route path="shareCategory/:categoryId" element={<ShareCategoryPage />} />
           <Route path="devHistory" element={<DevHistoryPage />} />
           <Route path="browserSetting" element={<BrowserSettingPage />} />
+        </Route>
+        <Route path="/" element={<AnonLayout />}>
+          <Route path="signup" element={<SignupPage />} />
+          <Route path="signin" element={<SigninPage />} />
+          <Route path="shareGroup/:groupId" element={<ShareGroupPage />} />
+          <Route path="shareCategory/:categoryId" element={<ShareCategoryPage />} />
+          <Route path="signout" element={<SignoutPage />} />
           <Route path="/*" element={<NotFound />} />
         </Route>
       </Routes>
