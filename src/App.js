@@ -11,7 +11,8 @@ import GroupManagePage from "./pages/GroupsPage/GroupManagePage";
 import BookmarkManagePage from "./pages/BookmarksPage/BookmarkManagePage";
 import CategoryManagePage from "./pages/CategoriesPage/CategoryManagePage";
 import MyBookmarksPage from "./pages/BookmarksPage/MyBookmarksPage";
-import ShareBookmarksPage from "./pages/BookmarksPage/ShareBookmarksPage";
+import ShareGroupPage from "./pages/BookmarksPage/ShareGroupPage";
+import ShareCategoryPage from "./pages/BookmarksPage/ShareCategoryPage";
 import SearchBookmarksPage from "./pages/BookmarksPage/SearchBookmarksPage";
 import DevHistoryPage from "./pages/DevHistoryPage";
 import BrowserSettingPage from "./pages/BrowserSettingPage";
@@ -59,7 +60,8 @@ function App() {
           <Route path="signout" element={<SignoutPage />} />
           <Route path="myBookmarks" element={<MyBookmarksPage />} />
           <Route path="searchBookmarks" element={<SearchBookmarksPage />} />
-          <Route path="shareBookmarks/:groupId/:categoryId" element={<ShareBookmarksPage />} />
+          <Route path="shareGroup/:groupId" element={<ShareGroupPage />} />
+          <Route path="shareCategory/:categoryId" element={<ShareCategoryPage />} />
           <Route path="devHistory" element={<DevHistoryPage />} />
           <Route path="browserSetting" element={<BrowserSettingPage />} />
           <Route path="/*" element={<NotFound />} />

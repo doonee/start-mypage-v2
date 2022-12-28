@@ -102,7 +102,7 @@ a {
 }
 
 // 갤럭시 폴더
-@media screen and (mrgb(125, 130, 135)) {
+@media (max-width: 280px) {
   html {
     width: 280px;
     overflow: auto;

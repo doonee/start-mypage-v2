@@ -86,7 +86,7 @@ a {
   background-color: rgba(182, 210, 231, 0.281);
 }
 
-@media screen and (mrgb(125, 130, 135)) {
+@media (max-width: 280px) {
   html {
     width: 280px;
     overflow: auto;
@@ -126,6 +126,7 @@ header .navbar .container-fluid ul.nav li.nav-item {
   max-width: 100px;
   overflow: hidden;
   text-align: center;
+  margin-bottom: 3px;
 }
 header .navbar .container-fluid ul.nav li.active {
   background-color: rgba(230, 194, 85, 0.57);

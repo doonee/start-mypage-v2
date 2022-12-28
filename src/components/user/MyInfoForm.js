@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 export default function MyInfoForm({ userId }) {
-  const passwordPlaceholder = '비밀번호는 4글자 이상 30글자 이하로 입력해야 합니다.\n 영문, 숫자, 특수문자 혼용할 수 있습니다.';
+  const passwordPlaceholder = '비밀번호는 4글자 이상 30글자 이하로 입력해야 합니다.\n(영문, 숫자, 특수문자 혼용할 수 있습니다.)';
 
   const handleSave = (e) => {
     e.preventDefault();

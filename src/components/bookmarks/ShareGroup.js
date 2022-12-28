@@ -1,7 +1,7 @@
 import React from "react";
 import Masonry from "react-masonry-css";
 
-const ShareBookmarks = () => {
+const ShareGroup = () => {
   const myBreakpointsAndCols = {
     default: 4,
     1100: 3,
@@ -117,4 +117,4 @@ const ShareBookmarks = () => {
   );
 };
 
-export default ShareBookmarks;
+export default ShareGroup;

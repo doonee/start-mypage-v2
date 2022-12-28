@@ -3,8 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 export default function SignupForm() {
-  const userIdPlaceholder = '아이디는 4글자 이상 30글자 이하로 입력해야 합니다.\n영문, 숫자 혼용할 수 있습니다.',
-    passwordPlaceholder = '패스워드는 4글자 이상 30글자 이하로 입력해야 합니다.\n영문, 숫자, 특수문자 혼용할 수 있습니다.';
+  const userIdPlaceholder = '아이디는 4글자 이상 30글자 이하로 입력해야 합니다.\n(영문, 숫자 혼용할 수 있습니다.)',
+    passwordPlaceholder = '패스워드는 4글자 이상 30글자 이하로 입력해야 합니다.\n(영문, 숫자, 특수문자 혼용할 수 있습니다.)';
   const handleSave = (e) => {
     e.preventDefault();
     const userId = document.getElementById('userId'),
