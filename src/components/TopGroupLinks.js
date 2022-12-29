@@ -97,7 +97,7 @@ const TopGroupLinks = ({ curPath, getParameter }) => {
         <FontAwesomeIcon icon={faSquareShareNodes} size="lg" color='orange'
           data-id={groupNo} data-isshare="true"
           onClick={handleGrouplinkClick} />&nbsp;&nbsp; */}
-        <img src="http://startmypage.com/public/img/share.png" width={18} alt={"테스트"}
+        <img src="/img/share.png" width={18} alt={"테스트"}
           data-id={groupNo} data-isshare="true"
           onClick={handleGrouplinkClick} />&nbsp;
         <a data-id={groupNo} onClick={handleGrouplinkClick}>{item.groupName}</a>
