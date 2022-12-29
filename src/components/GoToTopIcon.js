@@ -5,7 +5,7 @@ import React from 'react';
 const GoToTopIcon = (e) => {
   function scrollToTop() {
     if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
-      window.scrollBy(0, -150);
+      window.scrollTo(0, 0);
     }
   }
 

@@ -1,6 +1,6 @@
 import React from "react";
-import ShareBookmarks from "../../components/bookmarks/ShareGroup";
+import ShareCategory from "../../components/bookmarks/ShareCategory";
 
-export default function ShareBookmarksPage() {
-  return <ShareBookmarks />;
+export default function ShareCategoryPage() {
+  return <ShareCategory />;
 }

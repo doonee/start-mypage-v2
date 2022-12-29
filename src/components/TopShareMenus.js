@@ -20,10 +20,10 @@ const TopMenus = ({ curPath }) => {
 
   return (
     <header className="container-fluid bg-light border-bottom">
-      <div class="d-flex align-content-center">
-        <div class="p-3 flex-grow-1 text-center fw-bold overflow-hidden"
+      <div className="d-flex align-content-center">
+        <div className="p-3 flex-grow-1 text-center fw-bold overflow-hidden"
           style={{ 'fontSize': '20px' }}>{appTitle}</div>
-        <div class="p-3 text-center">
+        <div className="p-3 text-center">
           <a style={{ 'color': '#666' }} href="/">
             <small><FontAwesomeIcon icon={faHome} /></small>
           </a>

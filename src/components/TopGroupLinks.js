@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import { jsonLocalStorage } from "./Common";
 import axios from "axios";
@@ -75,19 +76,31 @@ const TopGroupLinks = ({ curPath, getParameter }) => {
     } else {
       window.location.href = `/myBookmarks/?group=${selectedGroup}`;
     }
+    if (e.target.getAttribute('data-isshare'))
+      window.open(`/shareGroup/${selectedGroup}`);
   }
 
   // 그룹리스트 출력
   const groupMenus = topGroupLinksData.map((item) => {
-    // eslint-disable-next-line eqeqeq
     const isActive = Number(item.groupNo) === Number(selectedGroup);
+    const groupNo = Number(item.groupNo);
     return (
-      <li key={item.groupNo}
+      <li key={groupNo}
         className={isActive ? "nav-item short-title active" : "nav-item short-title"}
-        onClick={handleGrouplinkClick}
-        data-id={item.groupNo}
+        data-id={groupNo}
         title={item.groupName}>
-        {item.groupName}
+        {/* 폰트어썸 아이콘을 직접 혹은 컴포넌트 방식으로 사용하면 
+        selGroup이 null로 변해서 북마크가 사라짐!
+        이미지는 괜찮음.
+        이미지를 컴포넌트 형식으로 분리해서 리턴받으면 폰트어썸 아이콘과 같은 현상 발생!
+        폰트어썸 아이콘도 컴포넌트 이니 컴포넌트 사용방식에 문제가 있는 듯.
+        <FontAwesomeIcon icon={faSquareShareNodes} size="lg" color='orange'
+          data-id={groupNo} data-isshare="true"
+          onClick={handleGrouplinkClick} />&nbsp;&nbsp; */}
+        <img src="http://startmypage.com/public/img/share.png" width={18} alt={"테스트"}
+          data-id={groupNo} data-isshare="true"
+          onClick={handleGrouplinkClick} />&nbsp;
+        <a data-id={groupNo} onClick={handleGrouplinkClick}>{item.groupName}</a>
       </li>
     )
   });
