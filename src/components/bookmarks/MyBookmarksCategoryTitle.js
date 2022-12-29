@@ -13,7 +13,7 @@ export default function MyBookmarksByCategory({ item, showBookmarkModal }) {
     <h6 key={categoryNo} style={{ lineHeight: '1.7rem' }}>
       <Link to={`/shareCategory/${categoryNo}`}
         target="_blank" rel="noopener noreferrer">
-        <FontAwesomeIcon icon={faSquareShareNodes} size="lg" color='#ffff00b8' />
+        <FontAwesomeIcon icon={faSquareShareNodes} size="lg" color='#a5d9f7' />
       </Link>
       &nbsp;&nbsp;
       <a href={bookmarkMannageUrl} data-category={categoryNo} title={categoryName}>

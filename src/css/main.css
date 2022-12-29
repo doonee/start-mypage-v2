@@ -134,7 +134,7 @@ header .navbar .container-fluid ul.nav li.active {
 }
 
 #root > div > section {
-  padding-top: 2rem !important;
+  padding-top: 2rem;
   padding-bottom: 2rem !important;
   min-height: 50vh;
 }

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Masonry from "react-masonry-css";
+import axios from 'axios';
 
 const ShareGroup = () => {
+  const [datas, setDatas] = useState([]);
+  console.log("🚀 ~ file: ShareGroup.js:7 ~ ShareGroup ~ datas", datas)
+
   const myBreakpointsAndCols = {
     default: 4,
     1100: 3,
@@ -9,36 +13,24 @@ const ShareGroup = () => {
     500: 1,
   };
 
-  var items = [
-    { id: 1, name: "1 My First Item" },
-    {
-      id: 2,
-      name: "2 Ipsum aute ipsum ullamco sint anim culpa aliqua est in dolore exercitation.",
-    },
-    {
-      id: 3,
-      name: "3 In nostrud sunt proident pariatur exercitation adipisicing. Commodo magna officia proident aute aute nisi laborum commodo laboris enim ex eu nisi exercitation. Esse laborum magna ipsum elit consequat commodo. Ea Lorem occaecat ea exercitation tempor nostrud ad adipisicing dolore. Ut id deserunt sint non esse. Est fugiat eu esse Lorem cillum et commodo esse cupidatat cupidatat sunt magna.",
-    },
-    { id: 4, name: "4 Here is the Fourth" },
-    { id: 5, name: "5 High Five" },
-    {
-      id: 6,
-      name: "6 Ex sit in nostrud sit eiusmod quis nisi sunt nostrud quis mollit occaecat.",
-    },
-    {
-      id: 7,
-      name: "7 Deserunt exercitation anim nostrud culpa occaecat deserunt non eiusmod et occaecat elit veniam.",
-    },
-    { id: 8, name: "8 888" },
-    { id: 9, name: "9 abcdefghijk" },
-    {
-      id: 10,
-      name: "10 Nisi cillum aliqua nulla aliquip tempor deserunt cillum sint.",
-    },
-    { id: 11, name: "11 11번째 카테고리" },
-  ];
+  useEffect(() => {
+    initData();
+  }, [])
 
-  items = items.map(function (item) {
+  const initData = async () => {
+    try {
+      const res = await axios.get('/datas/ShareGroupData.json');
+      if (res && res.status === 200 && res.data && res.data.length) {
+        await setDatas(res.data || []);
+        document.querySelector('#root > div > header > div > div.p-3.flex-grow-1.text-center')
+          .innerHTML = res.data[0].groupName;
+      }
+    } catch (error) {
+      console.log('error => ', error)
+    }
+  }
+
+  const getBookmarks = datas.map(function (item) {
     return (
       <div key={item.id}>
         <h6>
@@ -111,7 +103,7 @@ const ShareGroup = () => {
         breakpointCols={myBreakpointsAndCols}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column">
-        {items}
+        {getBookmarks}
       </Masonry>
     </section>
   );

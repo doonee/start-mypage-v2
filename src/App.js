@@ -3,6 +3,7 @@ import { Outlet, Routes, Route, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/main.css";
 import TopMenus from "./components/TopMenus";
+import TopShareMenus from "./components/TopShareMenus";
 import TopGroupLinks from "./components/TopGroupLinks";
 import Footer from "./components/Footer";
 import GoToTopIcon from "./components/GoToTopIcon";
@@ -56,7 +57,7 @@ const AnonLayout = () => {
 
   return (
     <div className="App">
-      <TopMenus curPath={curPath} getParameter={getParameter} />
+      <TopShareMenus curPath={curPath} getParameter={getParameter} />
       <Outlet />
       <Footer />
       <GoToTopIcon />
