@@ -17,10 +17,11 @@ const ShareCategory = () => {
       try {
         const res = await axios.get('/datas/ShareCategoryData.json');
         if (res && res.status === 200 && res.data && res.data.length) {
+          const categoryName = res.data[0].categoryName;
           await setDatas(res.data || []);
-          await setTitle(res.data[0].categoryName);
+          await setTitle(categoryName);
           document.querySelector('#root > div > header > div > div.flex-grow-1')
-            .innerHTML = title;
+            .innerHTML = categoryName;
         }
       } catch (error) {
         console.log('error => ', error)
@@ -41,7 +42,7 @@ const ShareCategory = () => {
           href={url}
           data-bookmark-no={id}>
           {name}<br />
-          <small className="text-muted">{memo}</small>
+          <small>{memo}</small>
         </a>
       </p>
     );
@@ -54,9 +55,6 @@ const ShareCategory = () => {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column">
         <div>
-          <h6 className="text-white fw-bold">
-            {title}
-          </h6>
           {bookmaks}
         </div>
       </Masonry>

@@ -132,6 +132,12 @@ header .navbar .container-fluid ul.nav li.active {
   background-color: rgba(230, 194, 85, 0.57);
   border-radius: inherit;
 }
+header div div.p-3.flex-grow-1 {
+  font-size: 26px;
+}
+header div div a {
+  color: #666;
+}
 
 #root > div > section {
   padding-top: 2rem;

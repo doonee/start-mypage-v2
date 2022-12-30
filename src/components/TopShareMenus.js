@@ -22,9 +22,9 @@ const TopMenus = ({ curPath }) => {
     <header className="container-fluid bg-light border-bottom">
       <div className="d-flex align-items-center justify-content-center">
         <div className="p-3 flex-grow-1 text-center fw-bold overflow-hidden"
-          style={{ 'fontSize': '26px' }}>{appTitle}</div>
+        >{appTitle}</div>
         <div className="p-3 text-center">
-          <a style={{ 'color': '#666' }} href="/">
+          <a href="/">
             <small><FontAwesomeIcon icon={faHome} /></small>
           </a>
         </div>
