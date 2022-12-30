@@ -4,8 +4,6 @@ import axios from 'axios';
 
 const ShareGroup = () => {
   const [datas, setDatas] = useState([]);
-  console.log("🚀 ~ file: ShareGroup.js:7 ~ ShareGroup ~ datas", datas)
-
   const myBreakpointsAndCols = {
     default: 4,
     1100: 3,

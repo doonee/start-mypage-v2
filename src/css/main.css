@@ -122,8 +122,8 @@ header .navbar .navbar-nav .nav-item .nav-link > p {
 header .navbar .container-fluid ul.nav li.nav-item {
   cursor: pointer;
   padding: 0.4rem;
-  min-width: 90px;
-  max-width: 120px;
+  min-width: 100px;
+  max-width: 190px;
   overflow: hidden;
   text-align: center;
   margin-bottom: 3px;
