@@ -107,6 +107,7 @@ export default function BookmarkItemManage({ bookmarkData, showBookmarkModal, se
                   target="_blank"
                   rel="noreferrer"
                   href={item.bookmarkUrl}
+                  data-url={item.bookmarkUrl}
                   data-bookmark-id={item.bookmarkId}
                   dangerouslySetInnerHTML={{ __html: outerName }}>
                 </a>
