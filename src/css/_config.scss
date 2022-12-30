@@ -29,6 +29,8 @@ body {
 // 모든 포커스 아웃라인 없앰
 *:focus {
   outline: 0;
+  outline: none;
+  box-shadow: none;
 }
 
 ul,

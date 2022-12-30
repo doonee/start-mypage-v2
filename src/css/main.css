@@ -20,6 +20,8 @@ body {
 
 *:focus {
   outline: 0;
+  outline: none;
+  box-shadow: none;
 }
 
 ul,

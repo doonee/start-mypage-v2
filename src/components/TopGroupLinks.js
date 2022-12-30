@@ -8,6 +8,26 @@ const TopGroupLinks = ({ curPath, getParameter }) => {
   const [selectedGroup, setSelectedGroup] = React.useState(null);
   const [gParameter, setGParameter] = useState('');
   const [config, setConfig] = useState('');
+  const [keyword, setKeyword] = useState('');
+  const [searchUrl, setSearchUrl] = useState('');
+
+  useEffect(() => {
+    setKeyword(getParameter('keyword'));
+  }, [getParameter])
+
+  useEffect(() => {
+    setSearchUrl(`/searchBookmarks/?keyword=${keyword}`);
+  }, [keyword])
+
+  const onChangeKeyword = (e) => {
+    e.preventDefault();
+    setKeyword(e.target.value);
+  }
+
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    window.location.href = searchUrl;
+  }
 
   const initData = async () => {
     try {
@@ -119,12 +139,14 @@ const TopGroupLinks = ({ curPath, getParameter }) => {
           <div
             className="collapse navbar-collapse col-md-4 col-lg-3 pt-3 pt-md-0 overflow-hidden"
             id="navbarText">
-            <form className="d-flex ms-auto" role="search" action="/searchBookmarks">
+            <form className="d-flex ms-auto" role="search" onSubmit={onSearchSubmit}>
               <input
-                className="form-control me-2"
+                className="form-control me-2 shadow-none"
                 type="search"
-                placeholder="Search"
+                placeholder="검색어를 입력하세요."
                 aria-label="Search"
+                value={keyword}
+                onChange={onChangeKeyword}
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
