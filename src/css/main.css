@@ -149,7 +149,7 @@ header div div a {
 }
 
 #root > div > section {
-  padding-top: 2rem;
+  padding-top: 1.2rem !important;
   padding-bottom: 2rem !important;
   min-height: 50vh;
 }

@@ -104,11 +104,12 @@ const TopGroupLinks = ({ curPath, getParameter }) => {
   const groupMenus = topGroupLinksData.map((item) => {
     const isActive = Number(item.groupNo) === Number(selectedGroup);
     const groupNo = Number(item.groupNo);
+    const groupName = item.groupName;
     return (
       <li key={groupNo}
         className={isActive ? "nav-item short-title active" : "nav-item short-title"}
         data-id={groupNo}
-        title={item.groupName}>
+        title={groupName}>
         {/* 폰트어썸 아이콘을 직접 혹은 컴포넌트 방식으로 사용하면 
         selGroup이 null로 변해서 북마크가 사라짐!
         이미지는 괜찮음.
@@ -117,10 +118,10 @@ const TopGroupLinks = ({ curPath, getParameter }) => {
         <FontAwesomeIcon icon={faSquareShareNodes} size="lg" color='orange'
           data-id={groupNo} data-isshare="true"
           onClick={handleGrouplinkClick} />&nbsp;&nbsp; */}
-        <img src="/img/share.png" width={22} alt={"테스트"}
+        <img src="/img/share.png" width={22} alt={groupName}
           data-id={groupNo} data-isshare="true"
           onClick={handleGrouplinkClick} />&nbsp;
-        <a data-id={groupNo} onClick={handleGrouplinkClick}>{item.groupName}</a>
+        <a data-id={groupNo} onClick={handleGrouplinkClick}>{groupName}</a>
       </li>
     )
   });
