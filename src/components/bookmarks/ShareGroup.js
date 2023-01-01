@@ -32,7 +32,7 @@ const ShareGroup = () => {
     return (
       <div key={item.id}>
         <h6>
-          <a href="/shareBookmarks/2/1223" data-category="1223">
+          <a href="/shareCategory/2" data-category="1223">
             <strong>{item.name}</strong>
           </a>
         </h6>

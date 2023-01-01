@@ -117,7 +117,7 @@ const TopGroupLinks = ({ curPath, getParameter }) => {
         <FontAwesomeIcon icon={faSquareShareNodes} size="lg" color='orange'
           data-id={groupNo} data-isshare="true"
           onClick={handleGrouplinkClick} />&nbsp;&nbsp; */}
-        <img src="/img/share.png" width={18} alt={"테스트"}
+        <img src="/img/share.png" width={22} alt={"테스트"}
           data-id={groupNo} data-isshare="true"
           onClick={handleGrouplinkClick} />&nbsp;
         <a data-id={groupNo} onClick={handleGrouplinkClick}>{item.groupName}</a>
@@ -142,6 +142,7 @@ const TopGroupLinks = ({ curPath, getParameter }) => {
             <form className="d-flex ms-auto" role="search" onSubmit={onSearchSubmit}>
               <input
                 className="form-control me-2 shadow-none"
+                id="txt-search"
                 type="search"
                 placeholder="검색어를 입력하세요."
                 aria-label="Search"

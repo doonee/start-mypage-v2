@@ -103,6 +103,10 @@ a {
   background-color: rgba(182, 210, 231, 0.281);
 }
 
+.search-results {
+  min-height: 1.5rem;
+}
+
 // 갤럭시 폴더
 @media (max-width: 280px) {
   html {

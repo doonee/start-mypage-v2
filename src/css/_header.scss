@@ -23,11 +23,14 @@ header {
         li.nav-item {
           cursor: pointer;
           padding: 0.4rem;
-          min-width: 100px;
+          min-width: 110px;
           max-width: 190px;
           overflow: hidden;
           text-align: center;
           margin-bottom: 3px;
+          a {
+            vertical-align: middle;
+          }
         }
         li.active {
           background-color: rgb(230 194 85 / 57%);

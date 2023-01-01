@@ -88,6 +88,10 @@ a {
   background-color: rgba(182, 210, 231, 0.281);
 }
 
+.search-results {
+  min-height: 1.5rem;
+}
+
 @media (max-width: 280px) {
   html {
     width: 280px;
@@ -124,11 +128,14 @@ header .navbar .navbar-nav .nav-item .nav-link > p {
 header .navbar .container-fluid ul.nav li.nav-item {
   cursor: pointer;
   padding: 0.4rem;
-  min-width: 100px;
+  min-width: 110px;
   max-width: 190px;
   overflow: hidden;
   text-align: center;
   margin-bottom: 3px;
+}
+header .navbar .container-fluid ul.nav li.nav-item a {
+  vertical-align: middle;
 }
 header .navbar .container-fluid ul.nav li.active {
   background-color: rgba(230, 194, 85, 0.57);
