@@ -158,11 +158,17 @@ header div div a {
   margin-bottom: 2rem;
   text-align: center;
 }
+#root > div > section h4 {
+  padding: 0.8rem;
+}
 #root > div > section div.search-results > ul > li {
-  line-height: 2rem;
+  line-height: 2.2rem;
 }
 #root > div > section div.search-results > ul > li a {
   color: #333;
+}
+#root > div > section div.search-results > ul > li:hover {
+  background-color: rgba(212, 204, 153, 0.333);
 }
 #root > div > section div > div > ul > li > svg,
 #root > div > section div > div > h3 > span {

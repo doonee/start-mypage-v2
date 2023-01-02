@@ -8,11 +8,17 @@
     margin-bottom: 2rem;
     text-align: center;
   }
+  h4 {
+    padding: 0.8rem;
+  }
   div.search-results > ul > li {
-    line-height: 2rem;
+    line-height: 2.2rem;
     a {
       color: #333;
     }
+  }
+  div.search-results > ul > li:hover {
+    background-color: rgba(212, 204, 153, 0.333);
   }
   div > div > ul > li > svg,
   div > div > h3 > span {

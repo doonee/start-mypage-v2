@@ -1,62 +1,57 @@
 import React, { useState } from "react";
 import axios from 'axios'
-import Loading from "../Loading";
-import GetResultMark from "../GetResultMark";
+import LoadingMark from "../LoadingMark";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faObjectGroup,
+  faBookmark,
+  faChartPie,
+} from "@fortawesome/free-solid-svg-icons";
 
-const SearchBookmarks = () => {
-  const [isEmpty, setIsEmpty] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [keyword, setKeyword] = useState("");
+const SearchBookmarks = ({ getParameter }) => {
+  const [length, setLength] = useState(-1);
+  const [msg, setMsg] = useState("Loading...");
   const [arrBookmark, setArrBookmark] = React.useState([]);
 
   const getBookmarks = (keyword) => {
-    if (!keyword) return;
-    try {
-      setArrBookmark([]);
-      axios
-        .get('/datas/BookmarkData.json')
-        .then(res => {
-          if (res && res.status === 200 && res.data && res.data.length) {
-            const arr = res.data.filter(b => b.groupName.includes(keyword)
-              || b.categoryName.includes(keyword)
-              || b.bookmarkName.includes(keyword));
-            if (arr && arr.length) {
-              setIsEmpty(false);
-              setArrBookmark(arr);
-            }
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    } catch (err) {
-      console.log('err >> ', err);
+    setMsg('Loading...');
+    setLength(-1);
+    setArrBookmark([]);
+    if (!keyword) {
+      return;
     }
+    axios.get('/datas/BookmarkData.json')
+      .then(res => {
+        if (res && res.status === 200 && res.data && res.data.length) {
+          const arr = res.data.filter(b => b.groupName.includes(keyword)
+            || b.categoryName.includes(keyword)
+            || b.bookmarkName.includes(keyword));
+          setLength(arr.length);
+          if (arr && arr.length) {
+            setArrBookmark(arr);
+          }
+        } else {
+          setLength(0);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   React.useEffect(() => {
-    const getKeyword = setInterval(() => {
-      setIsLoading(true);
-      const keyword = document.getElementById('txt-search').value;
-      if (keyword && keyword.length) {
-        setKeyword(keyword);
-        clearInterval(getKeyword);
-      }
-    }, 1000);
-  }, []);
-
-  React.useEffect(() => {
-    async function init() {
-      await getBookmarks(keyword);
-      await setIsLoading(false);
+    const k = getParameter('keyword');
+    if (!k) {
+      setMsg('검색어를 입력하세요.');
+      return;
     }
-    init();
-  }, [keyword]);
+    getBookmarks(k);
+  }, [getParameter]);
 
   const bookmarkResults = arrBookmark.map(function (items) {
-    const gName = `<a href="${items.groupUrl}" 
+    const gName = `<a href="/myBookmarks/?group=${items.groupNo}" 
       rel="noopener noreferrer">${items.groupName}</a>`;
-    const cName = `<a href="${items.categoryUrl}" 
+    const cName = `<a href="/myBookmarks/?group=${items.groupNo}" 
       rel="noopener noreferrer">${items.categoryName}</a>`;
     const bName = `<a href="${items.bookmarkUrl}" 
       target="_blank" rel="noopener noreferrer">${items.bookmarkName}</a>`;
@@ -73,12 +68,15 @@ const SearchBookmarks = () => {
 
   return (
     <section className="container-xl py-2">
-      <GetResultMark isEmpty={isEmpty} />
-      <h4>그룹 &gt; 카테고리 &gt; 북마크</h4>
+      <h4 className={length > 0 ? "d-block" : "d-none"}>
+        <FontAwesomeIcon icon={faObjectGroup} /> 그룹 &gt;&nbsp;
+        <FontAwesomeIcon icon={faChartPie} /> 카테고리 &gt;&nbsp;
+        <FontAwesomeIcon icon={faBookmark} /> 북마크
+      </h4>
+      <LoadingMark length={length} msg={msg} />
       <div className="search-results">
         <ul style={{ listStyle: 'circle' }}>{bookmarkResults}</ul>
       </div >
-      <Loading isLoading={isLoading} />
     </section>
   );
 };
