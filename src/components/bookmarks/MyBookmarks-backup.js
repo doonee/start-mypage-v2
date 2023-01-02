@@ -4,7 +4,7 @@ import BookmarkModal from "./BookmarkModal";
 import MyBookmarksByCategory from './MyBookmarksByCategory';
 import MyBookmarksCategoryTitle from './MyBookmarksCategoryTitle';
 import axios from 'axios'
-import Loading from '.././Loading'
+import LoadingPop from '.././LoadingPop'
 
 const MyBookmarks = ({ groupId }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -120,7 +120,7 @@ const MyBookmarks = ({ groupId }) => {
 
       <BookmarkModal show={modalShow} onHide={() => setModalShow(false)} />
 
-      <Loading isLoading={isLoading} />
+      <LoadingPop isLoading={isLoading} />
     </section>
   );
 };

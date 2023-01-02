@@ -10,11 +10,11 @@ import {
 
 const SearchBookmarks = ({ getParameter }) => {
   const [length, setLength] = useState(-1);
-  const [msg, setMsg] = useState("Loading...");
+  const [msg, setMsg] = useState("LoadingPop...");
   const [arrBookmark, setArrBookmark] = React.useState([]);
 
   const getBookmarks = (keyword) => {
-    setMsg('Loading...');
+    setMsg('LoadingPop...');
     setLength(-1);
     setArrBookmark([]);
     if (!keyword) {

@@ -11,7 +11,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import { jsonLocalStorage } from '../Common';
 import axios from 'axios';
 import uuid from 'react-uuid';
-import Loading from './../Loading';
+import LoadingPop from './../LoadingPop';
 
 export default function ConfigManage() {
   const [titleValue, setTitleValue] = useState('');
@@ -138,7 +138,7 @@ export default function ConfigManage() {
           설정 저장
         </Button>
       </Form>
-      <Loading isLoading={isLoading} />
+      <LoadingPop isLoading={isLoading} />
     </div >
   )
 }
