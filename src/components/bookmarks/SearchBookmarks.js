@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import axios from 'axios'
 import LoadingMark from "../LoadingMark";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,14 +13,14 @@ const SearchBookmarks = ({ getParameter }) => {
   const [msg, setMsg] = useState("LoadingPop...");
   const [arrBookmark, setArrBookmark] = React.useState([]);
 
-  const getBookmarks = (keyword) => {
+  const getBookmarks = useCallback(async (keyword) => {
     setMsg('LoadingPop...');
     setLength(-1);
     setArrBookmark([]);
     if (!keyword) {
       return;
     }
-    axios.get('/datas/BookmarkData.json')
+    await axios.get('/datas/BookmarkData.json')
       .then(res => {
         if (res && res.status === 200 && res.data && res.data.length) {
           const arr = res.data.filter(b => b.groupName.includes(keyword)
@@ -28,7 +28,19 @@ const SearchBookmarks = ({ getParameter }) => {
             || b.bookmarkName.includes(keyword));
           setLength(arr.length);
           if (arr && arr.length) {
-            setArrBookmark(arr);
+            const result = [];
+            const k = getParameter('keyword');
+            arr.forEach((item) => {
+              let gname = item.groupName.replace(k, `<mark>${k}</mark>`);
+              let cname = item.categoryName.replace(k, `<mark>${k}</mark>`);
+              let bname = item.bookmarkName.replace(k, `<mark>${k}</mark>`);
+              const markedItem = JSON.parse(JSON.stringify(item));
+              markedItem.groupName = gname;
+              markedItem.categoryName = cname;
+              markedItem.bookmarkName = bname;
+              result.push(markedItem)
+            });
+            setArrBookmark(result);
           }
         } else {
           setLength(0);
@@ -37,7 +49,7 @@ const SearchBookmarks = ({ getParameter }) => {
       .catch(err => {
         console.log(err);
       });
-  }
+  }, [getParameter]);
 
   React.useEffect(() => {
     const k = getParameter('keyword');
@@ -46,20 +58,21 @@ const SearchBookmarks = ({ getParameter }) => {
       return;
     }
     getBookmarks(k);
-  }, [getParameter]);
+  }, [getParameter, getBookmarks]);
 
   const bookmarkResults = arrBookmark.map(function (items) {
     const gName = `<a href="/myBookmarks/?group=${items.groupNo}" 
       rel="noopener noreferrer">${items.groupName}</a>`;
     const cName = `<a href="/myBookmarks/?group=${items.groupNo}" 
       rel="noopener noreferrer">${items.categoryName}</a>`;
-    const bName = `<a href="${items.bookmarkUrl}" 
+    let bName = `<a href="${items.bookmarkUrl}" 
       target="_blank" rel="noopener noreferrer">${items.bookmarkName}</a>`;
-    let bDesc = "";
     if (items.bookmarkDesc && items.bookmarkDesc.trim().length > 0) {
-      bDesc = `<small>- ${items.bookmarkDesc}</small>`;
+      const bDesc = `<small> - ${items.bookmarkDesc}</small>`;
+      bName = `<a href="${items.bookmarkUrl}" 
+      target="_blank" rel="noopener noreferrer">${items.bookmarkName}${bDesc}</a>`;
     }
-    const htmlContent = `${gName} &gt; ${cName} &gt; ${bName}${bDesc}`;
+    const htmlContent = `${gName} &gt; ${cName} &gt; <strong>${bName}</strong>`;
     return (
       <li key={items.bookmarkNo}
         dangerouslySetInnerHTML={{ __html: htmlContent }} />
