@@ -23,17 +23,18 @@ const SearchBookmarks = ({ getParameter }) => {
     await axios.get('/datas/BookmarkData.json')
       .then(res => {
         if (res && res.status === 200 && res.data && res.data.length) {
-          const arr = res.data.filter(b => b.groupName.includes(keyword)
-            || b.categoryName.includes(keyword)
-            || b.bookmarkName.includes(keyword));
+          const arr = res.data.filter(b => b.groupName.toUpperCase().includes(keyword.toUpperCase())
+            || b.categoryName.toUpperCase().includes(keyword.toUpperCase())
+            || b.bookmarkName.toUpperCase().includes(keyword.toUpperCase()));
           setLength(arr.length);
           if (arr && arr.length) {
             const result = [];
-            const k = getParameter('keyword');
+            const k = keyword;
             arr.forEach((item) => {
-              let gname = item.groupName.replace(k, `<mark>${k}</mark>`);
-              let cname = item.categoryName.replace(k, `<mark>${k}</mark>`);
-              let bname = item.bookmarkName.replace(k, `<mark>${k}</mark>`);
+              const regExp = new RegExp(keyword, 'gi');
+              let gname = item.groupName.replace(regExp, `<mark>${k}</mark>`);
+              let cname = item.categoryName.replace(regExp, `<mark>${k}</mark>`);
+              let bname = item.bookmarkName.replace(regExp, `<mark>${k}</mark>`);
               const markedItem = JSON.parse(JSON.stringify(item));
               markedItem.groupName = gname;
               markedItem.categoryName = cname;
@@ -49,7 +50,7 @@ const SearchBookmarks = ({ getParameter }) => {
       .catch(err => {
         console.log(err);
       });
-  }, [getParameter]);
+  }, []);
 
   React.useEffect(() => {
     const k = getParameter('keyword');
