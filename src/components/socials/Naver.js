@@ -6,19 +6,15 @@ https://velog.io/@rxxdo/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%A1%9C%EA%B7%B8%EC%9D%B8-
 [Javascript] Naver 로그인 버튼 커스텀하기
 https://minggu92.tistory.com/37
 */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useScript } from "../Hooks";
 import { jsonLocalStorage } from '../Common';
+import IsConnectDiv from './IsConnectDiv';
 
 export default function Naver({ isConnected }) {
-    const [connectText, setConnectText] = useState("");
     const { naver } = window
     const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
-    const NAVER_CALLBACK_URL = process.env.REACT_APP_NAVER_CALLBACK_URL;
-
-    useEffect(() => {
-        setConnectText(isConnected ? 'connected' : '');
-    }, [isConnected])
+    const NAVER_CALLBACK_URL = process.env.REACT_APP_NAVER_CALLBACK_URI;
 
     const naverLoginSdk = "https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js";
     const naverLoginSdkStatus = useScript(naverLoginSdk);
@@ -36,7 +32,7 @@ export default function Naver({ isConnected }) {
             clientId: NAVER_CLIENT_ID,
             callbackUrl: NAVER_CALLBACK_URL,
             // 팝업창으로 로그인을 진행할 것인지?           
-            isPopup: true,
+            isPopup: false,
             // 버튼 타입 ( 색상, 타입, 크기 변경 가능 )
             loginButton: { color: 'green', type: 3, height: 58 },
             callbackHandle: true,
@@ -67,11 +63,7 @@ export default function Naver({ isConnected }) {
                 // console.log('naverLogin.user.t.email => ', naverLogin.user.email);
                 // console.log('naverLogin.user.t.nickname => ', naverLogin.user.nickname);
 
-                jsonLocalStorage.setItem('naver', {
-                    id: naverLogin.user.id,
-                    email: naverLogin.user.email,
-                    nickname: naverLogin.user.nickname
-                });
+                jsonLocalStorage.setItem('naver', naverLogin.user);
             }
         })
         // 요기!
@@ -107,8 +99,7 @@ export default function Naver({ isConnected }) {
             <button type="button" className="btn border naver"
                 onClick={handleClick}>
                 <img src='/img/social/naver.png' alt="Naver" />
-                <p>Naver</p>
-                <p className='fst-italic'>{connectText}</p>
+                <IsConnectDiv isConnected={isConnected} name="Naver" />
             </button>
         </>
     )
