@@ -84,7 +84,7 @@ function App() {
         </Route>
         <Route path="/" element={<AnonLayout />}>
           <Route path="signup" element={<SignupPage />} />
-          <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandeler />} />
+          <Route path="kakaoAuth" element={<KakaoRedirectHandeler />} />
           <Route path="signin" element={<SigninPage />} />
           <Route path="shareGroup/:groupId" element={<ShareGroupPage />} />
           <Route path="shareCategory/:categoryId" element={<ShareCategoryPage />} />
