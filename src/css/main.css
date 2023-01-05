@@ -67,7 +67,8 @@ a {
 }
 
 #loading-image {
-  background: transparent url(../../public/img/loading.gif) no-repeat center center;
+  background: transparent url(../../public/img/loading.gif) no-repeat center
+    center;
   height: 100px;
   width: 100px;
   position: absolute;
@@ -160,6 +161,7 @@ header div div a {
 }
 #root > div > section h4 {
   padding: 0.8rem;
+  padding-top: 0;
 }
 #root > div > section div.search-results > ul > li {
   line-height: 2.2rem;
@@ -175,7 +177,8 @@ header div div a {
   cursor: pointer;
 }
 
-.my-masonry-grid { /* Not needed if autoprefixing */ /* Not needed if autoprefixing */
+.my-masonry-grid {
+  /* Not needed if autoprefixing */ /* Not needed if autoprefixing */
   display: flex;
   margin-left: -1rem; /* gutter size offset, gutter size와 반대로 일치해야함! */
   width: auto;
@@ -242,4 +245,4 @@ header div div a {
 }
 .my-masonry-grid_column div > p:nth-child(even) {
   background-color: rgba(215, 208, 208, 0.5);
-}/*# sourceMappingURL=main.css.map */
+} /*# sourceMappingURL=main.css.map */

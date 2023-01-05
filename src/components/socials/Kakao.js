@@ -5,7 +5,7 @@
  * https://developers.kakao.com/docs/latest/ko/kakaologin/common
  * https://han-py.tistory.com/417
  */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useScript } from "../Hooks";
 import IsConnectDiv from './IsConnectDiv';
 

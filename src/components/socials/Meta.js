@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import IsConnectDiv from './IsConnectDiv';
 
 export default function Meta({ isConnected }) {
