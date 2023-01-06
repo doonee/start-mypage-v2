@@ -5,6 +5,7 @@ https://velog.io/@rxxdo/%EB%A6%AC%EC%95%A1%ED%8A%B8%EB%A1%9C-%EB%84%A4%EC%9D%B4%
 https://velog.io/@rxxdo/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%A1%9C%EA%B7%B8%EC%9D%B8-API-%EB%84%A4%EC%95%84%EB%A1%9C-%EC%9D%98-%EB%AA%A8%EB%93%A0-%EA%B2%83-%EB%B2%84%ED%8A%BC-%EC%BB%A4%EC%8A%A4%ED%85%80-feat.-useRef
 [Javascript] Naver 로그인 버튼 커스텀하기
 https://minggu92.tistory.com/37
+https://developers.naver.com/docs/login/web/web.md
 */
 import React, { useState, useEffect } from 'react'
 import { useScript } from "../Hooks";
