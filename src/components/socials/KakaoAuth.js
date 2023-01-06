@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { JsonLocalStorage } from "../Common";
 
 const KakaoAuth = () => {
   const navigate = useNavigate();
+  const [msg, setMsg] = useState('Loading...');
 
   const getAuthToken = useCallback(async () => {
     const resultParams = new URL(document.location.toString()).searchParams;
@@ -42,7 +43,10 @@ const KakaoAuth = () => {
         JsonLocalStorage.setItem('ka_token', access_token);
         JsonLocalStorage.setItem('ka_properties', userinfo.data.properties);
         JsonLocalStorage.setItem('ka_account', userinfo.data.kakao_account);
-        navigate('/');
+        setMsg('회원가입이 완료되었습니다.');
+        setTimeout(() => {
+          navigate('/');
+        }, 1000);
       } else {
         navigate(-1);
       }
@@ -63,7 +67,7 @@ const KakaoAuth = () => {
   }, [navigate, getAuthToken, getUserInfo])
 
   return <div className="d-flex justify-content-center align-items-center"
-    style={{ 'height': '200px' }}>Checking...</div>;
+    style={{ 'height': '200px' }}>{msg}</div>;
 };
 
 export default KakaoAuth;

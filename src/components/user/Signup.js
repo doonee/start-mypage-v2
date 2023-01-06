@@ -19,10 +19,10 @@ export default function Signup() {
         <div className="col-md-7 mt-md-0">
           <article className='text-center mb-5' id="social-links">
             <h4>소셜로 가입</h4>
-            <Naver isConnected="connected" />
+            <Naver />
             <Kakao />
             <Google />
-            <Meta isConnected="connected" />
+            <Meta />
             <Twitter />
           </article>
           <div className="col-12 mt-5">

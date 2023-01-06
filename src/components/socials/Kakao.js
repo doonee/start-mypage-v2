@@ -12,8 +12,8 @@ import { useScript } from "../Hooks";
 import IsConnectDiv from './IsConnectDiv';
 
 export default function Kakao() {
-    const { Kakao } = window;
     const [isConnected, setIsConnected] = useState(false);
+    const { Kakao } = window;
     const kakaoLoginSdk = "https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js";
     const kakaoLoginSdkStatus = useScript(kakaoLoginSdk);
 

@@ -6,26 +6,19 @@ https://velog.io/@rxxdo/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%A1%9C%EA%B7%B8%EC%9D%B8-
 [Javascript] Naver 로그인 버튼 커스텀하기
 https://minggu92.tistory.com/37
 */
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useScript } from "../Hooks";
-import { JsonLocalStorage } from '../Common';
+import { JsonLocalStorage, IsValidTokenValue } from '../Common';
 import IsConnectDiv from './IsConnectDiv';
 
-export default function Naver({ isConnected }) {
+export default function Naver() {
+    const [isConnected, setIsConnected] = useState(false);
     const { naver } = window
     const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
     const NAVER_CALLBACK_URL = process.env.REACT_APP_NAVER_CALLBACK_URI;
 
     const naverLoginSdk = "https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js";
     const naverLoginSdkStatus = useScript(naverLoginSdk);
-    // 화면 첫 렌더링이후 바로 실행하기 위해 useEffect 를 사용하였다.
-    useEffect(() => {
-        if (naverLoginSdkStatus === 'ready') {
-            // 삽입한 스크립트 로딩 후 작업할 것 기재
-            initializeNaverLogin()
-            userAccessToken()
-        }
-    })
 
     const initializeNaverLogin = () => {
         const naverLogin = new naver.LoginWithNaverId({
@@ -92,6 +85,17 @@ export default function Naver({ isConnected }) {
         var btnNaverLogin = document.getElementById("naverIdLogin").firstChild;
         btnNaverLogin.click();
     }
+
+    useEffect(() => {
+        if (naverLoginSdkStatus === 'ready') {
+            initializeNaverLogin()
+            userAccessToken()
+        }
+    })
+
+    useEffect(() => {
+        setIsConnected(IsValidTokenValue('naverToken'));
+    }, [])
 
     return (
         <>
