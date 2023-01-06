@@ -13,6 +13,7 @@
 
 # misc
 .DS_Store
+# 임시주석, 서비스때 주석 풀기.
 # .env
 # .env.local
 # .env.development.local

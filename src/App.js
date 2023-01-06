@@ -23,7 +23,7 @@ import SigninPage from "./pages/UserPage/signin";
 import SignoutPage from "./pages/UserPage/signout";
 import MyInfoPage from "./pages/UserPage/myinfo";
 import NotFound from "./pages/NotFound";
-import KakaoRedirectHandeler from "./components/socials/KakaoRedirectHandeler";
+import KakaoAuth from "./components/socials/KakaoAuth";
 
 const Layout = () => {
   const location = useLocation();
@@ -84,7 +84,7 @@ function App() {
         </Route>
         <Route path="/" element={<AnonLayout />}>
           <Route path="signup" element={<SignupPage />} />
-          <Route path="kakaoAuth" element={<KakaoRedirectHandeler />} />
+          <Route path="kakaoAuth" element={<KakaoAuth />} />
           <Route path="signin" element={<SigninPage />} />
           <Route path="shareGroup/:groupId" element={<ShareGroupPage />} />
           <Route path="shareCategory/:categoryId" element={<ShareCategoryPage />} />
