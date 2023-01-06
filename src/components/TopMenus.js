@@ -16,7 +16,7 @@ import {
   faCircleInfo,
   faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
-import { jsonLocalStorage } from "./Common";
+import { JsonLocalStorage } from "./Common";
 
 const TopMenus = ({ curPath }) => {
   const basicTitle = '편리한 북마크 무료관리툴 - StartMypage.com';
@@ -39,8 +39,8 @@ const TopMenus = ({ curPath }) => {
 
   useEffect(() => {
     if (isChangePage) {
-      if (jsonLocalStorage.getItem('config') && jsonLocalStorage.getItem('config').appTitle) {
-        setAppTitle(jsonLocalStorage.getItem('config').appTitle);
+      if (JsonLocalStorage.getItem('config') && JsonLocalStorage.getItem('config').appTitle) {
+        setAppTitle(JsonLocalStorage.getItem('config').appTitle);
       } else setAppTitle(basicTitle);
     }
   }, [isChangePage]);

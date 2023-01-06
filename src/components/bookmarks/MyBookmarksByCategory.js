@@ -1,9 +1,9 @@
 import React from 'react'
 import * as Icon from "react-bootstrap-icons";
-import { jsonLocalStorage } from '../Common'
+import { JsonLocalStorage } from '../Common'
 
 export default function MyBookmarksByCategory({ bookmarks, showBookmarkModal }) {
-    const aTarget = jsonLocalStorage.getItem('config') ? jsonLocalStorage.getItem('config').bookmarkTarget : '_blank';
+    const aTarget = JsonLocalStorage.getItem('config') ? JsonLocalStorage.getItem('config').bookmarkTarget : '_blank';
 
     return (
         bookmarks.map(function (item) {

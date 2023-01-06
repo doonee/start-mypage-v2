@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
-import { jsonLocalStorage } from "./Common";
+import { JsonLocalStorage } from "./Common";
 import axios from "axios";
 
 const TopGroupLinks = ({ curPath, getParameter }) => {
@@ -44,7 +44,7 @@ const TopGroupLinks = ({ curPath, getParameter }) => {
   useEffect(() => {
     initData();
     setGParameter(getParameter('group') || '');
-    setConfig(jsonLocalStorage.getItem('config') || '');
+    setConfig(JsonLocalStorage.getItem('config') || '');
   }, [getParameter]);
 
   useEffect(() => {

@@ -17,7 +17,7 @@ export default function Signup() {
     <section className="container-xl">
       <div className="row d-flex justify-content-center">
         <div className="col-md-7 mt-md-0">
-          <article className='text-center mb-4' id="social-links">
+          <article className='text-center mb-5' id="social-links">
             <h4>소셜로 가입</h4>
             <Naver isConnected="connected" />
             <Kakao />
@@ -25,7 +25,7 @@ export default function Signup() {
             <Meta isConnected="connected" />
             <Twitter />
           </article>
-          <div className="col-12 mt-3">
+          <div className="col-12 mt-5">
             <h4 className='text-center'>직접 가입</h4>
             <SignupForm />
           </div >

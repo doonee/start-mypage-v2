@@ -8,7 +8,7 @@ https://minggu92.tistory.com/37
 */
 import React, { useEffect } from 'react'
 import { useScript } from "../Hooks";
-import { jsonLocalStorage } from '../Common';
+import { JsonLocalStorage } from '../Common';
 import IsConnectDiv from './IsConnectDiv';
 
 export default function Naver({ isConnected }) {
@@ -63,7 +63,7 @@ export default function Naver({ isConnected }) {
                 // console.log('naverLogin.user.t.email => ', naverLogin.user.email);
                 // console.log('naverLogin.user.t.nickname => ', naverLogin.user.nickname);
 
-                jsonLocalStorage.setItem('naver', naverLogin.user);
+                JsonLocalStorage.setItem('naver', naverLogin.user);
             }
         })
         // 요기!
@@ -84,7 +84,7 @@ export default function Naver({ isConnected }) {
         // 이후 로컬 스토리지 또는 state에 저장하여 사용하자!   
         // localStorage.setItem('access_token', token)
         // setGetToken(token)
-        jsonLocalStorage.setItem('naverToken', token);
+        JsonLocalStorage.setItem('naverToken', token);
     }
 
     const handleClick = (e) => {

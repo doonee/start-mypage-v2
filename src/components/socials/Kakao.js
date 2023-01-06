@@ -7,7 +7,7 @@
  * https://www.youtube.com/watch?v=Re2R2rid1K4
  */
 import React, { useEffect, useState } from 'react'
-import { jsonLocalStorage } from '../Common';
+import { IsValidTokenValue } from '../Common';
 import { useScript } from "../Hooks";
 import IsConnectDiv from './IsConnectDiv';
 
@@ -24,11 +24,9 @@ export default function Kakao() {
     })
 
     const checkToken = () => {
-        if (jsonLocalStorage.getItem('ka_token')) setIsConnected(true);
-        else setIsConnected(false);
+        setIsConnected(IsValidTokenValue('ka_token'));
 
-        console.log("🚀 ~ file: Kakao.js:28 ~ checkToken ~ jsonLocalStorage.getItem('ka_token')", jsonLocalStorage.getItem('ka_token'))
-        // const token = jsonLocalStorage.getItem('ka_token');
+        // const token = JsonLocalStorage.getItem('ka_token');
         // if (token) {
         //     Kakao.Auth.setAccessToken(token);
         //     Kakao.Auth.getStatusInfo()

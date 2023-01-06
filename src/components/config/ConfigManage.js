@@ -8,7 +8,7 @@ import { ButtonGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ToggleButton from 'react-bootstrap/ToggleButton';
-import { jsonLocalStorage } from '../Common';
+import { JsonLocalStorage } from '../Common';
 import axios from 'axios';
 import uuid from 'react-uuid';
 import LoadingPop from './../LoadingPop';
@@ -45,7 +45,7 @@ export default function ConfigManage() {
       }
 
       // DB로 가져올 예정!
-      const preData = await jsonLocalStorage.getItem('config');
+      const preData = await JsonLocalStorage.getItem('config');
       if (preData) {
         await setIsLoading(true);
         await setTitleValue(preData.appTitle || '편리한 북마크 무료관리툴 - StartMypage.com');
@@ -72,7 +72,7 @@ export default function ConfigManage() {
         theme: themeValue,
         bookmarkTarget: targetValue,
       }
-      jsonLocalStorage.setItem('config', data);
+      JsonLocalStorage.setItem('config', data);
       window.location.href = '/config';
     } catch (error) {
       console.log(error);

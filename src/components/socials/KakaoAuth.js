@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { jsonLocalStorage } from "../Common";
+import { JsonLocalStorage } from "../Common";
 
-const KakaoRedirectHandler = () => {
+const KakaoAuth = () => {
   const navigate = useNavigate();
 
   const getAuthToken = useCallback(async () => {
@@ -39,9 +39,9 @@ const KakaoRedirectHandler = () => {
         }
       })
       if (userinfo && userinfo.status === 200 && userinfo.data) {
-        jsonLocalStorage.setItem('ka_token', access_token);
-        jsonLocalStorage.setItem('ka_properties', userinfo.data.properties);
-        jsonLocalStorage.setItem('ka_account', userinfo.data.kakao_account);
+        JsonLocalStorage.setItem('ka_token', access_token);
+        JsonLocalStorage.setItem('ka_properties', userinfo.data.properties);
+        JsonLocalStorage.setItem('ka_account', userinfo.data.kakao_account);
         navigate('/');
       } else {
         navigate(-1);
@@ -54,7 +54,7 @@ const KakaoRedirectHandler = () => {
 
   useEffect(() => {
     const init = async () => {
-      await jsonLocalStorage.setItem('ka_token', '');
+      await JsonLocalStorage.setItem('ka_token', '');
       const token = await getAuthToken();
       if (token) await getUserInfo(token);
       else navigate(-1);
@@ -62,7 +62,8 @@ const KakaoRedirectHandler = () => {
     init();
   }, [navigate, getAuthToken, getUserInfo])
 
-  return <div className="text-center" style={{ 'height': '200px' }}>Checking...</div>;
+  return <div className="d-flex justify-content-center align-items-center"
+    style={{ 'height': '200px' }}>Checking...</div>;
 };
 
-export default KakaoRedirectHandler;
+export default KakaoAuth;
