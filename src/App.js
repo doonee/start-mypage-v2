@@ -24,6 +24,7 @@ import SignoutPage from "./pages/UserPage/signout";
 import MyInfoPage from "./pages/UserPage/myinfo";
 import NotFound from "./pages/NotFound";
 import KakaoAuth from "./components/socials/KakaoAuth";
+import NaverAuth from "./components/socials/NaverAuth";
 
 const Layout = () => {
   const location = useLocation();
@@ -85,6 +86,7 @@ function App() {
         <Route path="/" element={<AnonLayout />}>
           <Route path="signup" element={<SignupPage />} />
           <Route path="kakaoAuth" element={<KakaoAuth />} />
+          <Route path="naverAuth" element={<NaverAuth />} />
           <Route path="signin" element={<SigninPage />} />
           <Route path="shareGroup/:groupId" element={<ShareGroupPage />} />
           <Route path="shareCategory/:categoryId" element={<ShareCategoryPage />} />

@@ -9,33 +9,16 @@ https://developers.naver.com/docs/login/web/web.md
 리액트로 네이버 아이디로 로그인 구현하기
 https://2mojurmoyang.tistory.com/193
 */
-import React, { useState, useEffect } from 'react'
-import { IsValidTokenValue } from '../Common';
-import IsConnectDiv from './IsConnectDiv';
+import React, { useEffect } from 'react'
+//import { IsValidTokenValue } from '../Common';
 import { useScript } from "../Hooks";
 
 export default function Naver() {
     const naverLoginSdk = "https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js";
     const naverLoginSdkStatus = useScript(naverLoginSdk);
+    //const [token, setToken] = useState('');
 
-    const [isConnected, setIsConnected] = useState(false);
-    const { naver } = window
-
-    const handleClick = () => {
-        // const DOMAIN = 'https://nid.naver.com/oauth2.0/authorize';
-        // const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
-        // const NAVER_CALLBACK_URI = process.env.REACT_APP_NAVER_CALLBACK_URI;
-        // const STATE = 'RANDOM_STATE';
-        // const requestTokenUri = DOMAIN
-        //     + '?response_type=code'
-        //     + '&client_id=' + NAVER_CLIENT_ID
-        //     + '&redirect_uri=' + encodeURI(NAVER_CALLBACK_URI)
-        //     + '&state=' + STATE;
-
-        // window.location.href = requestTokenUri;
-
-        document.getElementById('naverIdLogin').firstChild.click();
-    }
+    const { naver } = window;
 
     const init = () => {
         const naverLogin = new naver.LoginWithNaverId({
@@ -48,7 +31,7 @@ export default function Naver() {
             callbackHandle: true,
         })
 
-        naverLogin.init()
+        // naverLogin.init()
 
         // 선언된 naverLogin 을 이용하여 유저 (사용자) 정보를 불러오는데  
         // 함수 내부에서 naverLogin을 선언하였기에 지역변수처리가 되어  
@@ -60,22 +43,23 @@ export default function Naver() {
         // 백엔드 개발자가 정보를 전달해준다면 아래 요기! 라고 작성된 부분까지는 
         // 코드 생략이 가능하다.  
 
-        // naverLogin.getLoginStatus(async function (status) {
-        //     if (status) {
-        //         // 아래처럼 선택하여 추출이 가능하고, 
-        //         // const userid = naverLogin.user.getEmail()
-        //         // const nickname = naverLogin.user.getNickName()
+        naverLogin.getLoginStatus(async function (status) {
+            if (status) {
+                // 아래처럼 선택하여 추출이 가능하고, 
+                // const userid = naverLogin.user.getEmail()
+                // const nickname = naverLogin.user.getNickName()
 
-        //         // 정보 전체를 아래처럼 state 에 저장하여 추출하여 사용가능하다. 
-        //         // setUserInfo(naverLogin.user)
+                // 정보 전체를 아래처럼 state 에 저장하여 추출하여 사용가능하다. 
+                // setUserInfo(naverLogin.user)
 
-        //         // console.log('naverLogin.user.t.id => ', naverLogin.user.id);
-        //         // console.log('naverLogin.user.t.email => ', naverLogin.user.email);
-        //         // console.log('naverLogin.user.t.nickname => ', naverLogin.user.nickname);
+                // console.log('naverLogin.user.t.id => ', naverLogin.user.id);
+                // console.log('naverLogin.user.t.email => ', naverLogin.user.email);
+                // console.log('naverLogin.user.t.nickname => ', naverLogin.user.nickname);
 
-        //         setToken('naver', naverLogin.user);
-        //     }
-        // })
+                //setToken('naver', naverLogin.user);
+                console.log("🚀 ~ file: NaverAuth.js:61 ~ naverLogin.user", naverLogin.user)
+            }
+        })
         // // 요기!
     }
 
@@ -94,18 +78,6 @@ export default function Naver() {
         }
     })
 
-    useEffect(() => {
-        setIsConnected(IsValidTokenValue('naverToken'));
-    }, [])
-
-    return (
-        <>
-            <div className='d-none' id="naverIdLogin"></div>
-            <button type="button" className="btn border naver"
-                onClick={handleClick}>
-                <img src='/img/social/naver.png' alt="Naver" />
-                <IsConnectDiv isConnected={isConnected} name="Naver" />
-            </button>
-        </>
-    )
+    return <div className="d-flex justify-content-center align-items-center"
+        style={{ 'height': '200px' }}>Loading...</div>;
 }

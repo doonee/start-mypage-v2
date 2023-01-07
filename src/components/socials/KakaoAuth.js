@@ -5,6 +5,7 @@ import { JsonLocalStorage } from "../Common";
 
 const KakaoAuth = () => {
   const navigate = useNavigate();
+
   const getAuthToken = useCallback(async () => {
     const resultParams = new URL(document.location.toString()).searchParams;
     const code = resultParams.get("code"); // 인가코드 받는 부분
@@ -33,7 +34,7 @@ const KakaoAuth = () => {
     try {
       const userinfo = await axios.get(`https://kapi.kakao.com/v2/user/me`, {
         headers: {
-          'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
           'Authorization': `bearer ${access_token}`
         }
       })
