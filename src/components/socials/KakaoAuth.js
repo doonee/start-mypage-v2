@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { JsonLocalStorage } from "../Common";
 
 const KakaoAuth = () => {
+  const [msg, setMsg] = useState('Loading...');
   const navigate = useNavigate();
 
   const getAuthToken = useCallback(async () => {
@@ -42,14 +43,15 @@ const KakaoAuth = () => {
         JsonLocalStorage.setItem('ka_token', access_token);
         JsonLocalStorage.setItem('ka_properties', userinfo.data.properties);
         JsonLocalStorage.setItem('ka_account', userinfo.data.kakao_account);
-        setTimeout(() => {
-          navigate('/');
-        }, 1000);
+        setMsg('Success!');
+        navigate('/');
       } else {
+        setMsg('Error.');
         navigate(-1);
       }
     } catch (error) {
       console.error(error)
+      setMsg('Error.');
       navigate(-1);
     }
   }, [navigate]);
@@ -65,7 +67,7 @@ const KakaoAuth = () => {
   }, [navigate, getAuthToken, getUserInfo])
 
   return <div className="d-flex justify-content-center align-items-center"
-    style={{ 'height': '200px' }}>Loading...</div>;
+    style={{ 'height': '200px' }}>{msg}</div>;
 };
 
 export default KakaoAuth;
