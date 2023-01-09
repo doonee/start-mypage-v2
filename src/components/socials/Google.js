@@ -3,6 +3,9 @@
  * https://www.youtube.com/watch?v=auD1xmWNztI
  * https://www.youtube.com/watch?v=roxC8SMs7HU
  * https://youtu.be/roxC8SMs7HU
+ * https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow#redirecting
+ * https://cloud.google.com/identity-platform/docs/web/google?hl=ko#web-version-9_4
+ * https://devmemory.tistory.com/99
  **/
 import React, { useEffect, useState } from 'react'
 import IsConnectDiv from './IsConnectDiv';
@@ -44,7 +47,7 @@ export default function Google({ isConnected }) {
             );
 
             // 로그인 자동 모달팝업
-            google.accounts.id.prompt();
+            // google.accounts.id.prompt();
         }
     });
 
@@ -61,7 +64,7 @@ export default function Google({ isConnected }) {
             {user &&
                 <div>
                     <img src={user.picture} alt={user.given_name} />
-                    <h3>{user.name}</h3>
+                    <h3>{user.given_name}</h3>
                 </div>
             }
             <button type="button" className="btn border google" onClick={handleClick}>

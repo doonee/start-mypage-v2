@@ -1,3 +1,6 @@
+/**
+ * https://developers.facebook.com/docs/facebook-login/web
+ */
 import React from 'react'
 import IsConnectDiv from './IsConnectDiv';
 

@@ -8,6 +8,7 @@ https://minggu92.tistory.com/37
 https://developers.naver.com/docs/login/web/web.md
 리액트로 네이버 아이디로 로그인 구현하기
 https://2mojurmoyang.tistory.com/193
+https://devmemory.tistory.com/99
 */
 import React, { useState, useEffect } from 'react'
 import { IsValidTokenValue } from '../Common';

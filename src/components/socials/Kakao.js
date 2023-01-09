@@ -5,6 +5,7 @@
  * https://developers.kakao.com/docs/latest/ko/kakaologin/common
  * https://han-py.tistory.com/417
  * https://www.youtube.com/watch?v=Re2R2rid1K4
+ * https://devmemory.tistory.com/99
  */
 import React, { useEffect, useState } from 'react'
 import { IsValidTokenValue } from '../Common';
