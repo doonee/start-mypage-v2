@@ -64,7 +64,7 @@ export default function Naver() {
 
     return (
         <>
-            <div className='d-none' id="naverIdLogin"></div>
+            <div id="naverIdLogin"></div>
             <button type="button" className="btn border naver"
                 onClick={handleClick}>
                 <img src='/img/social/naver.png' alt="Naver" />

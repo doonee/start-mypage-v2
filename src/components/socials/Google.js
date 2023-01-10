@@ -58,7 +58,7 @@ export default function Google({ isConnected }) {
      */
     return (
         <>
-            <div id="signInDiv" />
+            <div id="signInDiv" className='btnGoogleLogin' />
             {Object.keys(user).length !== 0 &&
                 <button onClick={(e) => handleSignout(e)}>Sign Out</button>
             }

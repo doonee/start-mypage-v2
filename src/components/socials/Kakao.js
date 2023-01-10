@@ -55,9 +55,12 @@ export default function Kakao() {
     }
 
     return (
-        <button type="button" className="btn border kakao" onClick={handleClick}>
-            <img src='/img/social/kakao.png' alt="Kakao" />
-            <IsConnectDiv isConnected={isConnected} name="Kakao" />
-        </button>
+        <>
+            <button type="button" className="btn border kakao" onClick={handleClick}>
+                <img src='/img/social/kakao_login_large_narrow.png' alt="Kakao" />
+                <IsConnectDiv isConnected={isConnected} name="Kakao" />
+            </button>
+            <img src='/img/social/kakao_login_large_narrow.png' alt="Kakao" />
+        </>
     )
 }
