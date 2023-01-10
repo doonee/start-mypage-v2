@@ -23,8 +23,9 @@ export default function Google({ isConnected }) {
     }
 
     const handleCredentialResponse = (response) => {
-        console.log(response.credential);
+        console.log("🚀 ~ file: Google.js:27 ~ handleCredentialResponse ~ response.credential", response.credential)
         const userObject = jwt_decode(response.credential);
+        console.log("🚀 ~ file: Google.js:28 ~ handleCredentialResponse ~ userObject", userObject)
         setUser(userObject);
         document.getElementById('signInDiv').hidden = true;
     };
