@@ -8,7 +8,7 @@ import FacebookLogin from "react-facebook-login";
 import IsConnectDiv from './IsConnectDiv';
 // import { useScript } from "../Hooks";
 
-export default function Meta({ isConnected }) {
+export default function MetaFacebookLoginBackup({ isConnected }) {
     // const loginSdk = "https://connect.facebook.net/en_US/sdk.js";
     // const loginSdkStatus = useScript(loginSdk);
     // const { FB } = window;
@@ -47,8 +47,8 @@ export default function Meta({ isConnected }) {
             <FacebookLogin
                 appId={process.env.REACT_APP_META_APP_ID}
                 autoLoad={false}
-                fields="name,email,picture"
-                scope="public_profile,email,user_friends"
+                // fields="name,email,picture"
+                // scope="public_profile,email,user_friends"
                 cssClass="my-facebook-button-class"
                 callback={responseFacebook}
                 icon="fa-facebook"
