@@ -14,7 +14,12 @@ const KakaoAuth = () => {
     const grantType = "authorization_code";
     const clientId = process.env.REACT_APP_KAKAO_API_KEY;
     const redirectUrl = 'http://localhost:3000/kakaoAuth';
-    const requestUri = `${domain}?grant_type=${grantType}&client_id=${clientId}&redirect_uri=${redirectUrl}&code=${code}`;
+    const requestUri = `${domain}`
+      + `?grant_type=${grantType}`
+      + `&client_id=${clientId}`
+      + `&redirect_uri=${redirectUrl}`
+      + `&code=${code}`;
+
     return await axios.post(requestUri, {
       headers: {
         'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'

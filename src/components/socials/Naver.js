@@ -10,33 +10,33 @@ https://developers.naver.com/docs/login/web/web.md
 https://2mojurmoyang.tistory.com/193
 https://devmemory.tistory.com/99
 */
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { IsValidTokenValue } from '../Common';
-import IsConnectDiv from './IsConnectDiv';
+// import IsConnectDiv from './IsConnectDiv';
 import { useScript } from "../Hooks";
 
 export default function Naver() {
     const naverLoginSdk = "https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js";
     const naverLoginSdkStatus = useScript(naverLoginSdk);
 
-    const [isConnected, setIsConnected] = useState(false);
+    // const [isConnected, setIsConnected] = useState(false);
     const { naver } = window
 
-    const handleClick = () => {
-        // const DOMAIN = 'https://nid.naver.com/oauth2.0/authorize';
-        // const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
-        // const NAVER_CALLBACK_URI = process.env.REACT_APP_NAVER_CALLBACK_URI;
-        // const STATE = 'RANDOM_STATE';
-        // const requestTokenUri = DOMAIN
-        //     + '?response_type=code'
-        //     + '&client_id=' + NAVER_CLIENT_ID
-        //     + '&redirect_uri=' + encodeURI(NAVER_CALLBACK_URI)
-        //     + '&state=' + STATE;
+    // const handleClick = () => {
+    //     // const DOMAIN = 'https://nid.naver.com/oauth2.0/authorize';
+    //     // const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
+    //     // const NAVER_CALLBACK_URI = process.env.REACT_APP_NAVER_CALLBACK_URI;
+    //     // const STATE = 'RANDOM_STATE';
+    //     // const requestTokenUri = DOMAIN
+    //     //     + '?response_type=code'
+    //     //     + '&client_id=' + NAVER_CLIENT_ID
+    //     //     + '&redirect_uri=' + encodeURI(NAVER_CALLBACK_URI)
+    //     //     + '&state=' + STATE;
 
-        // window.location.href = requestTokenUri;
+    //     // window.location.href = requestTokenUri;
 
-        document.getElementById('naverIdLogin').firstChild.click();
-    }
+    //     document.getElementById('naverIdLogin').firstChild.click();
+    // }
 
     const init = () => {
         const naverLogin = new naver.LoginWithNaverId({
@@ -45,7 +45,7 @@ export default function Naver() {
             // 팝업창으로 로그인 진행여부
             isPopup: false,
             // 버튼 타입 ( 색상, 타입, 크기 변경 가능 )
-            loginButton: { color: 'green', type: 3, height: 58 },
+            loginButton: { color: 'green', type: 3, height: 43, width: 200 },
             callbackHandle: true,
         })
 
@@ -58,18 +58,18 @@ export default function Naver() {
         }
     })
 
-    useEffect(() => {
-        setIsConnected(IsValidTokenValue('naverToken'));
-    }, [])
+    // useEffect(() => {
+    //     setIsConnected(IsValidTokenValue('naverToken'));
+    // }, [])
 
     return (
         <>
             <div id="naverIdLogin"></div>
-            <button type="button" className="btn border naver"
+            {/* <button type="button" className="btn border naver"
                 onClick={handleClick}>
                 <img src='/img/social/naver.png' alt="Naver" />
                 <IsConnectDiv isConnected={isConnected} name="Naver" />
-            </button>
+            </button> */}
         </>
     )
 }

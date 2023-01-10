@@ -18,10 +18,9 @@ export default function Signup() {
         <div className="col-md-7 mt-md-0">
           <article className='text-center mb-5' id="social-links">
             <h4>소셜로 가입</h4>
-            <Naver />
-            <Kakao />
-            <Google />
-            <Meta />
+            <div className='col d-flex align-items-center justify-content-center'>
+              <Naver /><Kakao /><Google /><Meta />
+            </div>
           </article>
           <div className="col-12 mt-5">
             <h4 className='text-center'>직접 가입</h4>

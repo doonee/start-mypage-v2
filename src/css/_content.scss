@@ -27,8 +27,8 @@
 }
 
 .my-facebook-button-class {
-  width: 365px !important;
-  height: 35px !important;
+  width: 200px !important;
+  height: 50px !important;
   border-radius: 4px;
   background: #3b5998;
   color: rgb(29, 25, 25);
@@ -38,7 +38,11 @@
   display: inline-block;
 }
 
-.btnGoogleLogin #container iframe {
-  width: 500px !important;
-  height: 100px !important;
+// #naverIdLogin_loginButton > img {
+//   width: 200px;
+//   aspect-ratio: 268.188/58 !important;
+// }
+#social-links > div > img {
+  width: 200px;
+  aspect-ratio: 366/90;
 }

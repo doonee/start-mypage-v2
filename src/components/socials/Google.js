@@ -8,7 +8,6 @@
  * https://devmemory.tistory.com/99
  **/
 import React, { useEffect, useState } from 'react'
-import IsConnectDiv from './IsConnectDiv';
 import { useScript } from "../Hooks";
 import jwt_decode from "jwt-decode";
 
@@ -18,14 +17,8 @@ export default function Google({ isConnected }) {
     const { google } = window;
     const [user, setUser] = useState({});
 
-    const handleClick = (e) => {
-        window.location.href = './GoogleAuth';
-    }
-
     const handleCredentialResponse = (response) => {
-        console.log("🚀 ~ file: Google.js:27 ~ handleCredentialResponse ~ response.credential", response.credential)
         const userObject = jwt_decode(response.credential);
-        console.log("🚀 ~ file: Google.js:28 ~ handleCredentialResponse ~ userObject", userObject)
         setUser(userObject);
         document.getElementById('signInDiv').hidden = true;
     };
@@ -68,10 +61,6 @@ export default function Google({ isConnected }) {
                     <h3>{user.given_name}</h3>
                 </div>
             }
-            <button type="button" className="btn border google" onClick={handleClick}>
-                <img src='/img/social/google.png' alt="Google" />
-                <IsConnectDiv isConnected={isConnected} name="Google" />
-            </button>
         </>
     )
 }

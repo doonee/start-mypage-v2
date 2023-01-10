@@ -10,10 +10,10 @@
 import React, { useEffect, useState } from 'react'
 import { IsValidTokenValue } from '../Common';
 import { useScript } from "../Hooks";
-import IsConnectDiv from './IsConnectDiv';
+// import IsConnectDiv from './IsConnectDiv';
 
 export default function Kakao() {
-    const [isConnected, setIsConnected] = useState(false);
+    // const [isConnected, setIsConnected] = useState(false);
     const { Kakao } = window;
     const kakaoLoginSdk = "https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js";
     const kakaoLoginSdkStatus = useScript(kakaoLoginSdk);
@@ -25,7 +25,7 @@ export default function Kakao() {
     })
 
     const checkToken = () => {
-        setIsConnected(IsValidTokenValue('ka_token'));
+        // setIsConnected(IsValidTokenValue('ka_token'));
 
         // const token = JsonLocalStorage.getItem('ka_token');
         // if (token) {
@@ -56,11 +56,13 @@ export default function Kakao() {
 
     return (
         <>
-            <button type="button" className="btn border kakao" onClick={handleClick}>
+            {/* <button type="button" className="btn border kakao" onClick={handleClick}>
                 <img src='/img/social/kakao_login_large_narrow.png' alt="Kakao" />
                 <IsConnectDiv isConnected={isConnected} name="Kakao" />
-            </button>
-            <img src='/img/social/kakao_login_large_narrow.png' alt="Kakao" />
+            </button> */}
+            <img src='/img/social/kakao_login_large_narrow.png' alt="Kakao"
+                style={{ cursor: 'pointer' }}
+                onClick={handleClick} />
         </>
     )
 }

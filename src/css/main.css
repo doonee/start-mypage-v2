@@ -176,8 +176,8 @@ header div div a {
 }
 
 .my-facebook-button-class {
-  width: 365px !important;
-  height: 35px !important;
+  width: 200px !important;
+  height: 50px !important;
   border-radius: 4px;
   background: #3b5998;
   color: rgb(29, 25, 25);
@@ -187,9 +187,9 @@ header div div a {
   display: inline-block;
 }
 
-.btnGoogleLogin #container iframe {
-  width: 500px !important;
-  height: 100px !important;
+#social-links > div > img {
+  width: 200px;
+  aspect-ratio: 366/90;
 }
 
 .my-masonry-grid { /* Not needed if autoprefixing */ /* Not needed if autoprefixing */
