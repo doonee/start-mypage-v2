@@ -4,7 +4,6 @@ import Google from '../socials/Google'
 import Meta from '../socials/Meta'
 import Naver from '../socials/Naver'
 import Kakao from '../socials/Kakao'
-import Twitter from '../socials/Twitter'
 import '../../css/social.css'
 
 export default function Signin() {
@@ -23,7 +22,6 @@ export default function Signin() {
             <Kakao />
             <Google />
             <Meta />
-            <Twitter />
           </article>
           <div className="col-12 mt-3">
             <h4 className='text-center'>직접 로그인</h4>

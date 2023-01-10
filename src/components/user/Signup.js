@@ -4,7 +4,6 @@ import Google from '../socials/Google'
 import Meta from '../socials/Meta'
 import Naver from '../socials/Naver'
 import Kakao from '../socials/Kakao'
-import Twitter from '../socials/Twitter'
 import '../../css/social.css'
 
 export default function Signup() {
@@ -23,7 +22,6 @@ export default function Signup() {
             <Kakao />
             <Google />
             <Meta />
-            <Twitter />
           </article>
           <div className="col-12 mt-5">
             <h4 className='text-center'>직접 가입</h4>

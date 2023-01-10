@@ -4,7 +4,6 @@ import Google from '../socials/Google'
 import Meta from '../socials/Meta'
 import Naver from '../socials/Naver'
 import Kakao from '../socials/Kakao'
-import Twitter from '../socials/Twitter'
 import '../../css/social.css'
 
 export default function MyInfo() {
@@ -13,7 +12,6 @@ export default function MyInfo() {
   const [kakaoConnected, setKakaoConnected] = useState(false);
   const [googleConnected, setGoogleConnected] = useState(false);
   const [metaConnected, setMetaConnected] = useState(false);
-  const [twitterConnected, setTwitterConnected] = useState(false);
 
   useEffect(() => {
     // from DB!
@@ -25,7 +23,6 @@ export default function MyInfo() {
       else if (c === 'kakao') setKakaoConnected(true);
       else if (c === 'google') setGoogleConnected(true);
       else if (c === 'meta') setMetaConnected(true);
-      else if (c === 'twitter') setTwitterConnected(true);
     })
   }, [])
 
@@ -40,7 +37,6 @@ export default function MyInfo() {
             <Kakao isConnected={kakaoConnected} />
             <Google isConnected={googleConnected} />
             <Meta isConnected={metaConnected} />
-            <Twitter isConnected={twitterConnected} />
           </article>
           <div className="col-12 mt-5">
             <h4 className='text-center'>직접 가입정보</h4>
