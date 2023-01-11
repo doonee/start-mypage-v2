@@ -1,11 +1,17 @@
 /**
  * https://developers.facebook.com/docs/facebook-login/web
  * https://developers.facebook.com/apps/581729881912209/fb-login/settings/
- */
+ * https://chunho.tistory.com/86
+ * https://stackoverflow.com/questions/68082354/how-to-customize-the-facebook-login-button-with-reactjs
+ * bootstrap 사용자 클래스 만드는법
+ * https://5balloons.info/cursor-pointer-and-other-classes-for-bootstrap-5
+*/
 import React from 'react'
-import FacebookLogin from "react-facebook-login";
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import { JsonLocalStorage } from '../Common'
 
 export default function Meta({ isConnected }) {
+    // const [isLoading, setIsLoading] = useState(true);
     // const loginSdk = "https://connect.facebook.net/en_US/sdk.js";
     // const loginSdkStatus = useScript(loginSdk);
     // const { FB } = window;
@@ -15,15 +21,15 @@ export default function Meta({ isConnected }) {
     // const [picture, setPicture] = useState("");
 
     const responseFacebook = (response) => {
-        console.log(response);
+        JsonLocalStorage.setItem("meta => ", response)
+
         // Login failed
         if (response.status === "unknown") {
             alert("Login failed!");
             //setLogin(false);
             return false;
         }
-        // setData(response);
-        // setPicture(response.picture.data.url);
+
         if (response.accessToken) {
             // setLogin(true);
         } else {
@@ -34,13 +40,18 @@ export default function Meta({ isConnected }) {
     return (
         <>
             <FacebookLogin
-                appId={process.env.REACT_APP_META_APP_ID}
+                appId={`${process.env.REACT_APP_META_APP_ID}`}
                 autoLoad={false}
                 fields="name,email,picture"
                 scope="public_profile,email,user_friends"
-                cssClass="my-facebook-button-class"
                 callback={responseFacebook}
-                icon="fa-facebook"
+                render={renderProps => (
+                    <img src="/img/social/meta-icon.png"
+                        alt='meta social login'
+                        style={{ cursor: 'pointer' }}
+                        width={40} height={40} border={0}
+                        onClick={renderProps.onClick} />
+                )}
             />
         </>
     )

@@ -26,8 +26,9 @@
   }
 }
 
+// 소셜로그인
 .my-facebook-button-class {
-  width: 200px !important;
+  width: 50px !important;
   height: 50px !important;
   border-radius: 4px;
   background: #3b5998;
@@ -36,13 +37,4 @@
   text-align: center;
   margin: 5px;
   display: inline-block;
-}
-
-// #naverIdLogin_loginButton > img {
-//   width: 200px;
-//   aspect-ratio: 268.188/58 !important;
-// }
-#social-links > div > img {
-  width: 200px;
-  aspect-ratio: 366/90;
 }
