@@ -42,7 +42,6 @@ export default function Google({ isConnected }) {
                 client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
                 callback: handleCredentialResponse,
                 ux_mode: "redirect",
-                //abc temp
             });
 
             google.accounts.id.renderButton(
