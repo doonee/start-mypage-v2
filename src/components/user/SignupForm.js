@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 
 export default function SignupForm() {
   const userIdPlaceholder = '아이디는 4글자 이상 30글자 이하로 입력해야 합니다.\n(영문, 숫자 혼용할 수 있습니다.)',
-    passwordPlaceholder = '패스워드는 4글자 이상 30글자 이하로 입력해야 합니다.\n(영문, 숫자, 특수문자 혼용할 수 있습니다.)';
+    passwordPlaceholder = '비밀번호는 4글자 이상 30글자 이하로 입력해야 합니다.\n(영문, 숫자, 특수문자 혼용할 수 있습니다.)';
   const handleSave = (e) => {
     e.preventDefault();
     const userId = document.getElementById('userId'),
@@ -42,7 +42,7 @@ export default function SignupForm() {
       return;
     }
     if (data.password !== data.passwordConfirm) {
-      alert('패스워드화 패스워드 확인이 일치하지 않습니다.');
+      alert('비밀번호화 비밀번호 확인이 일치하지 않습니다.');
       passwordConfirm.focus();
       return;
     }

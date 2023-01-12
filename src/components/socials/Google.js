@@ -40,7 +40,8 @@ export default function Google({ isConnected }) {
         if (loginSdkStatus === 'ready') {
             google.accounts.id.initialize({
                 client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-                callback: handleCredentialResponse
+                callback: handleCredentialResponse,
+                ux_mode: "redirect",
             });
 
             google.accounts.id.renderButton(
