@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import SignupForm from './SignupForm';
 import Google from '../socials/Google'
-import Meta from '../socials/Meta'
 import Naver from '../socials/Naver'
 import Kakao from '../socials/Kakao'
 import '../../css/social.css'
@@ -21,8 +20,7 @@ export default function Signup() {
             <div className='col d-flex align-items-center justify-content-center'>
               <Naver />&emsp;&emsp;
               <Kakao />&emsp;&emsp;
-              <Google />&emsp;&emsp;
-              <Meta />
+              <Google />
             </div>
           </article>
           <div className="col-12 mt-5">
