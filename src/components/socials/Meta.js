@@ -7,8 +7,8 @@
  * https://5balloons.info/cursor-pointer-and-other-classes-for-bootstrap-5
 */
 import React from 'react'
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import { JsonLocalStorage } from '../Common'
+// import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+// import { JsonLocalStorage } from '../Common'
 
 export default function Meta({ isConnected }) {
     // const [isLoading, setIsLoading] = useState(true);
@@ -20,26 +20,26 @@ export default function Meta({ isConnected }) {
     // const [data, setData] = useState({});
     // const [picture, setPicture] = useState("");
 
-    const responseFacebook = (response) => {
-        JsonLocalStorage.setItem("meta => ", response)
+    // const responseFacebook = (response) => {
+    //     JsonLocalStorage.setItem("meta => ", response)
 
-        // Login failed
-        if (response.status === "unknown") {
-            alert("Login failed!");
-            //setLogin(false);
-            return false;
-        }
+    //     // Login failed
+    //     if (response.status === "unknown") {
+    //         alert("Login failed!");
+    //         //setLogin(false);
+    //         return false;
+    //     }
 
-        if (response.accessToken) {
-            // setLogin(true);
-        } else {
-            // setLogin(false);
-        }
-    };
+    //     if (response.accessToken) {
+    //         // setLogin(true);
+    //     } else {
+    //         // setLogin(false);
+    //     }
+    // };
 
     return (
         <>
-            <FacebookLogin
+            {/* <FacebookLogin
                 appId={`${process.env.REACT_APP_META_APP_ID}`}
                 autoLoad={false}
                 fields="name,email,picture"
@@ -52,7 +52,7 @@ export default function Meta({ isConnected }) {
                         width={40} height={40} border={0}
                         onClick={renderProps.onClick} />
                 )}
-            />
+            /> */}
         </>
     )
 }
